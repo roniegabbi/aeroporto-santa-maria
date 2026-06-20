@@ -305,9 +305,39 @@
   .logo-adm img{height:38px;max-width:96px;object-fit:contain;background:#f7f5fa;border-radius:6px}
   .logo-adm .ln{flex:1;font-size:13px;font-weight:600}
   .logo-adm button{font-size:12px;font-weight:700;padding:6px 11px;border-radius:8px;border:none;cursor:pointer;background:#fdeaf2;color:var(--coral)}
+
+  /* ===== rolagem suave para os botões do hero ===== */
+  html{scroll-behavior:smooth}
+
+  /* ===== animação de entrada ao rolar (reveal) ===== */
+  .reveal-on .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .reveal-on .reveal.visible{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal-on .reveal{opacity:1!important;transform:none!important;transition:none}}
+
+  /* ===== botões de ação no hero ===== */
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:24px}
+  .hero-btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:999px;font-family:inherit;font-weight:800;font-size:15px;text-decoration:none;cursor:pointer;border:2px solid transparent;transition:transform .15s ease,box-shadow .2s ease,background .2s ease}
+  .hero-btn svg{width:19px;height:19px}
+  .hero-btn.primary{background:var(--amarelo);color:#3a2e00;box-shadow:0 10px 26px rgba(249,176,0,.32)}
+  .hero-btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(249,176,0,.42)}
+  .hero-btn.ghost{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.5)}
+  .hero-btn.ghost:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+  @media(max-width:560px){.hero-btn{flex:1 1 100%;justify-content:center}}
+
+  /* ===== barra de compartilhamento ===== */
+  .share-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin:34px auto 0;max-width:620px;background:#faf8fc;border:1px solid #ece7f1;border-radius:var(--raio);padding:18px 22px;text-align:center}
+  .share-bar .share-lab{font-weight:700;color:var(--roxo);font-size:14px}
+  .share-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;font-family:inherit;font-weight:700;font-size:13.5px;text-decoration:none;cursor:pointer;border:none;color:#fff;transition:transform .15s ease,filter .2s ease}
+  .share-btn svg{width:17px;height:17px;fill:currentColor}
+  .share-btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .share-btn.wa{background:#25D366}
+  .share-btn.fb{background:#1877F2}
+  .share-btn.copy{background:var(--roxo)}
+  .share-btn.copy.ok{background:var(--verde)}
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add('reveal-on')</script>
 <div class="cfgbar" id="cfgbar" style="display:none"></div>
 
 <div class="gov-utilbar">
@@ -354,6 +384,16 @@
             <h1>Novo Aeroporto Regional de Santa Maria</h1>
           </div>
           <p class="sub">Acompanhe, de forma aberta e atualizada, cada etapa do projeto que vai transformar a aviação na Região Central do Rio Grande do Sul.</p>
+          <div class="hero-cta">
+            <a href="#apoioSec" class="hero-btn primary">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              Apoiar o projeto
+            </a>
+            <a href="#etapasSec" class="hero-btn ghost">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 11h12.17l-3.58-3.59L14 6l6 6-6 6-1.41-1.41L16.17 13H4z"/></svg>
+              Ver as etapas
+            </a>
+          </div>
         </div>
         <div class="hero-art" aria-hidden="true">
           <svg viewBox="0 0 480 380" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -410,7 +450,7 @@
   </div>
 </header>
 
-<section>
+<section id="etapasSec" class="reveal">
   <div class="wrap">
     <div class="sec-head"><div class="eyebrow">Onde estamos · Linha do tempo</div><h2>As etapas do projeto</h2>
       <p>Do estudo de áreas à obra — acompanhe o status de cada uma das nove etapas do cronograma, até a decolagem.</p></div>
@@ -439,7 +479,7 @@
   </div>
 </section>
 
-<section style="background:#fff" id="apoioSec">
+<section style="background:#fff" id="apoioSec" class="reveal">
   <div class="wrap">
     <div class="sec-head"><div class="eyebrow">Mural de apoio</div><h2>Deixe sua mensagem de apoio</h2>
       <p>Some sua voz às <b id="apoioCount">0</b> manifestações de quem acredita no novo aeroporto. Toda mensagem passa por uma breve revisão antes de aparecer no mural.</p></div>
@@ -460,10 +500,25 @@
       </form>
     </div>
     <div class="apoio-marquee" id="apoioMarquee"><div class="apoio-track" id="apoioFeed"></div></div>
+    <div class="share-bar">
+      <span class="share-lab">Compartilhe este projeto:</span>
+      <a id="shareWa" class="share-btn wa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.045zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+        WhatsApp
+      </a>
+      <a id="shareFb" class="share-btn fb" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <button id="shareCopy" class="share-btn copy" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+        <span id="shareCopyLab">Copiar link</span>
+      </button>
+    </div>
   </div>
 </section>
 
-<section>
+<section class="reveal">
   <div class="wrap">
     <div class="sec-head"><div class="eyebrow">Marcos do projeto</div><h2>Momentos-chave</h2>
       <p>Eventos importantes que marcam a articulação política e institucional do projeto.</p></div>
@@ -471,15 +526,15 @@
   </div>
 </section>
 
-<section class="ctx">
+<section class="ctx reveal">
   <div class="wrap">
     <div class="sec-head"><div class="eyebrow" style="color:var(--amarelo-2)">Por que um novo aeroporto?</div>
       <h2 style="color:#fff">Santa Maria, hub logístico do RS</h2></div>
     <div class="nums">
-      <div class="num-c"><b>+80%</b><span>de crescimento de passageiros entre 2021 e 2024</span></div>
-      <div class="num-c"><b>46 mil</b><span>usuários por ano no terminal atual</span></div>
+      <div class="num-c"><b data-count="80" data-prefix="+" data-suffix="%">+80%</b><span>de crescimento de passageiros entre 2021 e 2024</span></div>
+      <div class="num-c"><b data-count="46" data-suffix=" mil">46 mil</b><span>usuários por ano no terminal atual</span></div>
       <div class="num-c"><b>36 → 6</b><span>áreas mapeadas pelo ITA, 6 priorizadas</span></div>
-      <div class="num-c"><b>43 km</b><span>raio de busca a partir do Centro</span></div>
+      <div class="num-c"><b data-count="43" data-suffix=" km">43 km</b><span>raio de busca a partir do Centro</span></div>
     </div>
     <div class="why">
       <div class="why-c"><h4>Superar o limite técnico</h4><p>A pista atual atende apenas aeronaves regionais (ATR 72). O novo aeroporto receberá jatos de grande porte como Boeing 737 e Airbus A320, ampliando conexões com Guarulhos, Congonhas e Brasília.</p></div>
@@ -490,7 +545,7 @@
 </section>
 
 <!-- ============ INSTITUIÇÕES APOIADORAS (ticker) ============ -->
-<section style="background:#fff" id="apoiadoresSec">
+<section style="background:#fff" id="apoiadoresSec" class="reveal">
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow">Apoio institucional</div>
@@ -1164,6 +1219,57 @@ document.getElementById("fotoForm").addEventListener("submit",async(ev)=>{
 if(configurado){
   sb.channel("fotos_campo").on("postgres_changes",{event:"*",schema:"public",table:"fotos_campo"},()=>{ carregarFotos(); }).subscribe();
 }
+
+// ===== Animação de entrada ao rolar + contagem de números =====
+(function(){
+  var reduz = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function animarNumero(el){
+    var alvo = parseFloat(el.getAttribute("data-count"));
+    if(isNaN(alvo)) return;
+    var pre = el.getAttribute("data-prefix")||"", suf = el.getAttribute("data-suffix")||"";
+    if(reduz){ el.textContent = pre+alvo+suf; return; }
+    var ini = null, dur = 1400;
+    function passo(t){
+      if(ini===null) ini=t;
+      var p = Math.min((t-ini)/dur, 1);
+      var val = Math.round((1 - Math.pow(1-p,3)) * alvo); // easeOutCubic
+      el.textContent = pre+val+suf;
+      if(p<1) requestAnimationFrame(passo);
+    }
+    requestAnimationFrame(passo);
+  }
+  if(!("IntersectionObserver" in window)){
+    document.querySelectorAll(".reveal").forEach(function(e){e.classList.add("visible");});
+    document.querySelectorAll("[data-count]").forEach(animarNumero);
+    return;
+  }
+  var obs = new IntersectionObserver(function(entradas){
+    entradas.forEach(function(en){
+      if(!en.isIntersecting) return;
+      en.target.classList.add("visible");
+      en.target.querySelectorAll && en.target.querySelectorAll("[data-count]").forEach(animarNumero);
+      obs.unobserve(en.target);
+    });
+  }, {threshold:.16});
+  document.querySelectorAll(".reveal").forEach(function(e){obs.observe(e);});
+})();
+
+// ===== Botões de compartilhamento =====
+(function(){
+  var url = window.location.href.split("#")[0];
+  var txt = "Conheça e apoie o Novo Aeroporto Regional de Santa Maria:";
+  var wa = document.getElementById("shareWa");
+  var fb = document.getElementById("shareFb");
+  var cp = document.getElementById("shareCopy");
+  if(wa) wa.href = "https://wa.me/?text=" + encodeURIComponent(txt + " " + url);
+  if(fb) fb.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url);
+  if(cp) cp.addEventListener("click", function(){
+    var lab = document.getElementById("shareCopyLab");
+    function ok(){ cp.classList.add("ok"); if(lab) lab.textContent="Link copiado!"; setTimeout(function(){cp.classList.remove("ok"); if(lab) lab.textContent="Copiar link";},2200); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(url).then(ok).catch(ok); }
+    else { var t=document.createElement("textarea"); t.value=url; document.body.appendChild(t); t.select(); try{document.execCommand("copy");}catch(e){} document.body.removeChild(t); ok(); }
+  });
+})();
 
 carregar();
 carregarApoios();
