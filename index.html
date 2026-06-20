@@ -334,6 +334,53 @@
   .share-btn.fb{background:#1877F2}
   .share-btn.copy{background:var(--roxo)}
   .share-btn.copy.ok{background:var(--verde)}
+
+  /* ===== como o local é escolhido (metodologia MESA) ===== */
+  .met-sec{background:linear-gradient(180deg,#faf8fc,#fff)}
+  .met-steps{display:grid;gap:16px;max-width:920px;margin:0 auto;counter-reset:met}
+  .met-step{position:relative;display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid #ece7f1;border-radius:var(--raio);padding:20px 22px;box-shadow:0 10px 30px rgba(48,38,131,.07)}
+  .met-step .met-num{flex:0 0 auto;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-family:'Baloo Bhai 2';font-weight:700;font-size:22px;color:#fff;background:linear-gradient(135deg,var(--roxo),var(--coral))}
+  .met-step:nth-child(2) .met-num{background:linear-gradient(135deg,var(--coral),var(--amarelo))}
+  .met-step:nth-child(3) .met-num{background:linear-gradient(135deg,var(--amarelo),var(--verde))}
+  .met-step:nth-child(4) .met-num{background:linear-gradient(135deg,var(--verde),var(--azul))}
+  .met-step:nth-child(5) .met-num{background:linear-gradient(135deg,var(--azul),var(--azul-mar))}
+  .met-step:nth-child(6) .met-num{background:linear-gradient(135deg,var(--azul-mar),var(--roxo))}
+  .met-step h3{font-family:'Baloo Bhai 2';font-weight:700;color:var(--roxo);font-size:18px;margin:2px 0 4px}
+  .met-step p{color:var(--cinza);font-size:14.5px;line-height:1.5}
+  .met-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:920px;margin:30px auto 0}
+  .met-card{background:#fff;border:1px solid #ece7f1;border-radius:var(--raio);padding:20px;text-align:center;box-shadow:0 10px 30px rgba(48,38,131,.07);transition:transform .15s ease,box-shadow .2s ease}
+  .met-card:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(48,38,131,.13)}
+  .met-card .met-ic{width:52px;height:52px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;font-size:26px;background:#f3f0f8}
+  .met-card h4{font-family:'Baloo Bhai 2';font-weight:700;color:var(--roxo);font-size:16px;margin-bottom:5px}
+  .met-card p{color:var(--cinza);font-size:13.5px;line-height:1.45}
+  .met-fonte{text-align:center;color:var(--cinza);font-size:12.5px;margin:26px auto 0;max-width:680px;opacity:.85}
+  @media(max-width:760px){.met-cards{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.met-cards{grid-template-columns:1fr}.met-step{padding:16px}}
+
+  /* ===== estudo aplicado a Santa Maria ===== */
+  .est-sec{background:linear-gradient(180deg,#fff,#faf8fc)}
+  .est-params{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:720px;margin:0 auto}
+  .est-param{background:#fff;border:1px solid #ece7f1;border-radius:var(--raio);padding:20px 16px;text-align:center;box-shadow:0 10px 30px rgba(48,38,131,.07)}
+  .est-param .est-big{font-family:'Baloo Bhai 2';font-weight:700;color:var(--coral);font-size:clamp(26px,4vw,34px);line-height:1}
+  .est-param .est-lab{color:var(--cinza);font-size:13px;margin-top:8px;line-height:1.35}
+  .est-funnel{display:flex;flex-direction:column;align-items:center;gap:10px;max-width:560px;margin:36px auto 0}
+  .est-bar{width:100%;color:#fff;border-radius:14px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;font-weight:700;box-shadow:0 10px 26px rgba(48,38,131,.12)}
+  .est-bar .est-n{font-family:'Baloo Bhai 2';font-size:24px}
+  .est-bar.b1{background:linear-gradient(135deg,var(--roxo),var(--roxo-2))}
+  .est-bar.b2{background:linear-gradient(135deg,var(--azul),var(--azul-mar));width:78%}
+  .est-bar.b3{background:linear-gradient(135deg,var(--coral),var(--amarelo));width:52%}
+  .est-arrow{color:var(--roxo);opacity:.5;font-size:18px;line-height:1}
+  .est-areas{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:720px;margin:30px auto 0}
+  .est-area{background:#fff;border:1px solid #ece7f1;border-radius:var(--raio);padding:20px 22px;box-shadow:0 10px 30px rgba(48,38,131,.07)}
+  .est-area h4{font-family:'Baloo Bhai 2';font-weight:700;color:var(--roxo);font-size:17px;margin-bottom:4px}
+  .est-area p{color:var(--cinza);font-size:14px;line-height:1.45}
+  .est-plano{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:780px;margin:30px auto 0}
+  .est-pcard{background:#fff;border:1px solid #ece7f1;border-radius:var(--raio);padding:20px;text-align:center;box-shadow:0 10px 30px rgba(48,38,131,.07)}
+  .est-pcard .est-pic{font-size:28px;margin-bottom:8px}
+  .est-pcard h4{font-family:'Baloo Bhai 2';font-weight:700;color:var(--roxo);font-size:15px;margin-bottom:4px}
+  .est-pcard p{color:var(--cinza);font-size:13px;line-height:1.4}
+  @media(max-width:760px){.est-params{grid-template-columns:1fr 1fr}.est-plano{grid-template-columns:1fr}}
+  @media(max-width:520px){.est-params{grid-template-columns:1fr 1fr}.est-areas{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -466,6 +513,35 @@
   </div>
 </section>
 
+<section class="met-sec reveal" id="metodologiaSec">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Como o local é escolhido</div><h2>O caminho até o melhor terreno</h2>
+      <p>A escolha do lugar do aeroporto não é no chute. Ela segue um método oficial, passo a passo, que vai afunilando as opções até chegar ao terreno mais favorável.</p></div>
+
+    <div class="met-steps">
+      <div class="met-step"><div class="met-num">1</div><div><h3>Definir o que o aeroporto precisa</h3><p>Primeiro define-se o tipo de avião, o tamanho da pista e a região onde vale a pena procurar.</p></div></div>
+      <div class="met-step"><div class="met-num">2</div><div><h3>Eliminar as áreas que não servem</h3><p>Tira-se do mapa tudo que inviabiliza um aeroporto: restrições do espaço aéreo, áreas ambientais protegidas, ruído sobre a cidade, risco de aves e terrenos sem infraestrutura.</p></div></div>
+      <div class="met-step"><div class="met-num">3</div><div><h3>Encontrar os terrenos possíveis</h3><p>No que sobra, identificam-se os terrenos que de fato poderiam receber o aeroporto — os candidatos.</p></div></div>
+      <div class="met-step"><div class="met-num">4</div><div><h3>Ir a campo</h3><p>A equipe visita cada candidato, tira fotos e examina o solo e o entorno. É a etapa que você vê logo abaixo, na nossa pesquisa de campo.</p></div></div>
+      <div class="met-step"><div class="met-num">5</div><div><h3>Dar nota e ranquear</h3><p>Cada terreno recebe notas em seis critérios técnicos e é ordenado do melhor ao pior.</p></div></div>
+      <div class="met-step"><div class="met-num">6</div><div><h3>Apresentar o resultado</h3><p>Aponta-se, com transparência, o terreno mais favorável e o porquê da escolha.</p></div></div>
+    </div>
+
+    <div class="sec-head" style="margin:42px auto 0"><div class="eyebrow">Os 6 critérios da nota</div><h2>O que pesa na decisão</h2>
+      <p>Na etapa 5, cada terreno é avaliado nestes seis pontos:</p></div>
+    <div class="met-cards">
+      <div class="met-card"><div class="met-ic">⛰️</div><h4>Solo</h4><p>Quanto mais firme e resistente o terreno, melhor para construir.</p></div>
+      <div class="met-card"><div class="met-ic">🚜</div><h4>Terraplenagem</h4><p>Quanto menos terra precisar mover para nivelar, mais barato e rápido.</p></div>
+      <div class="met-card"><div class="met-ic">🔇</div><h4>Ruído</h4><p>Quanto menos casas afetadas pelo barulho dos aviões, melhor.</p></div>
+      <div class="met-card"><div class="met-ic">📍</div><h4>Distância</h4><p>Quanto mais perto da cidade que vai usar o aeroporto, melhor.</p></div>
+      <div class="met-card"><div class="met-ic">🛣️</div><h4>Acesso</h4><p>Quanto mais perto de uma rodovia pavimentada, mais fácil chegar.</p></div>
+      <div class="met-card"><div class="met-ic">⚡</div><h4>Energia</h4><p>Quanto mais perto da rede elétrica e de serviços, menor o custo.</p></div>
+    </div>
+
+    <p class="met-fonte">Baseado na Metodologia de Escolha de Sítios Aeroportuários Regionais (MESA) — Ministério da Infraestrutura / Instituto Tecnológico de Aeronáutica (ITA).</p>
+  </div>
+</section>
+
 <section class="galeria-sec" id="galeriaSec" style="display:none;padding-top:34px">
   <div class="wrap">
     <div class="sec-head"><div class="eyebrow">Pesquisa de Campo</div><h2>O projeto em imagens</h2>
@@ -476,6 +552,43 @@
       </div>
       <div class="moldura-dots" id="molduraDots"></div>
     </div>
+  </div>
+</section>
+
+<section class="est-sec reveal" id="estudoSec">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">O estudo em Santa Maria</div><h2>O que já foi estudado</h2>
+      <p>A metodologia acima já está sendo aplicada ao nosso caso. O ITA, em parceria com a SAC e a Prefeitura, fez o levantamento técnico da região e apresentou os primeiros resultados em março de 2026.</p></div>
+
+    <div class="est-params">
+      <div class="est-param"><div class="est-big">45 km</div><div class="est-lab">raio de busca a partir do centro de Santa Maria</div></div>
+      <div class="est-param"><div class="est-big">737-8 MAX</div><div class="est-lab">avião usado como referência para dimensionar a pista</div></div>
+      <div class="est-param"><div class="est-big">3.600 m</div><div class="est-lab">comprimento de sítio considerado no cenário máximo</div></div>
+    </div>
+
+    <div class="sec-head" style="margin:42px auto 0"><div class="eyebrow">Do mapa ao campo</div><h2>Como as opções foram afuniladas</h2>
+      <p>Partindo da área de busca, o estudo foi eliminando o que não servia até sobrarem os terrenos que valiam uma visita:</p></div>
+    <div class="est-funnel">
+      <div class="est-bar b1"><span>Área de busca avaliada</span><span class="est-n">45 km</span></div>
+      <div class="est-arrow">▼</div>
+      <div class="est-bar b2"><span>Áreas selecionadas tecnicamente</span><span class="est-n">36</span></div>
+      <div class="est-arrow">▼</div>
+      <div class="est-bar b3"><span>Áreas visitadas em campo</span><span class="est-n">6</span></div>
+    </div>
+
+    <div class="est-areas">
+      <div class="est-area"><h4>Área S-1</h4><p>Concentra a maior parte dos terrenos selecionados, em cotas (altitudes) por volta de 158 a 172 metros.</p></div>
+      <div class="est-area"><h4>Área S-4</h4><p>Terreno em cota mais baixa, por volta de 116 metros, também incluído entre os visitados.</p></div>
+    </div>
+
+    <div class="sec-head" style="margin:42px auto 0"><div class="eyebrow">Trabalho de campo</div><h2>O que é feito em cada terreno</h2></div>
+    <div class="est-plano">
+      <div class="est-pcard"><div class="est-pic">🚁</div><h4>Voo de drone</h4><p>Imagens aéreas para enxergar o terreno e o entorno de cima.</p></div>
+      <div class="est-pcard"><div class="est-pic">👁️</div><h4>Inspeção de obstáculos</h4><p>Checagem visual de morros, torres e o que possa atrapalhar os aviões.</p></div>
+      <div class="est-pcard"><div class="est-pic">🧪</div><h4>Amostras de solo</h4><p>Coleta de material em três pontos para analisar a resistência do solo.</p></div>
+    </div>
+
+    <p class="met-fonte">Fonte: Estudo de prospecção de sítios — ITA, em parceria com a Secretaria de Aviação Civil (SAC) e a Prefeitura de Santa Maria. Produto III (MESA-A), março de 2026.</p>
   </div>
 </section>
 
