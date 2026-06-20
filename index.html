@@ -370,8 +370,10 @@
   .est-bar.b2{background:linear-gradient(135deg,var(--azul),var(--azul-mar));width:78%}
   .est-bar.b3{background:linear-gradient(135deg,var(--coral),var(--amarelo));width:52%}
   .est-arrow{color:var(--roxo);opacity:.5;font-size:18px;line-height:1}
-  .est-areas{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:720px;margin:30px auto 0}
-  .est-area{background:#fff;border:1px solid #ece7f1;border-radius:var(--raio);padding:20px 22px;box-shadow:0 10px 30px rgba(48,38,131,.07)}
+  .est-areas{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:980px;margin:0 auto}
+  .est-area{background:#fff;border:1px solid #ece7f1;border-radius:var(--raio);overflow:hidden;box-shadow:0 10px 30px rgba(48,38,131,.07)}
+  .est-area img{display:block;width:100%;height:auto;border-bottom:1px solid #efedf4}
+  .est-area .est-area-txt{padding:18px 22px}
   .est-area h4{font-family:'Baloo Bhai 2';font-weight:700;color:var(--roxo);font-size:17px;margin-bottom:4px}
   .est-area p{color:var(--cinza);font-size:14px;line-height:1.45}
   .est-plano{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:780px;margin:30px auto 0}
@@ -379,8 +381,30 @@
   .est-pcard .est-pic{font-size:28px;margin-bottom:8px}
   .est-pcard h4{font-family:'Baloo Bhai 2';font-weight:700;color:var(--roxo);font-size:15px;margin-bottom:4px}
   .est-pcard p{color:var(--cinza);font-size:13px;line-height:1.4}
-  @media(max-width:760px){.est-params{grid-template-columns:1fr 1fr}.est-plano{grid-template-columns:1fr}}
+  @media(max-width:760px){.est-params{grid-template-columns:1fr 1fr}.est-plano{grid-template-columns:1fr}.est-areas{grid-template-columns:1fr 1fr}}
   @media(max-width:520px){.est-params{grid-template-columns:1fr 1fr}.est-areas{grid-template-columns:1fr}}
+
+  /* ===== ficha da aeronave de referência ===== */
+  .av-card{max-width:920px;margin:30px auto 0;background:#fff;border:1px solid #ece7f1;border-radius:var(--raio);box-shadow:0 14px 38px rgba(48,38,131,.10);overflow:hidden}
+  .av-head{display:flex;align-items:center;gap:16px;padding:22px 26px;background:linear-gradient(135deg,var(--roxo),var(--coral));color:#fff}
+  .av-head .av-emoji{font-size:34px;line-height:1}
+  .av-head h3{font-family:'Baloo Bhai 2';font-weight:700;font-size:22px}
+  .av-head span{display:block;font-weight:600;font-size:13px;opacity:.92;margin-top:2px}
+  .av-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .av-specs{padding:24px 26px;border-right:1px solid #efedf4}
+  .av-spec{display:flex;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px dashed #eee}
+  .av-spec:last-child{border-bottom:none}
+  .av-spec .av-k{flex:0 0 110px;color:var(--cinza);font-size:13px}
+  .av-spec .av-v{font-weight:700;color:var(--roxo);font-size:15.5px}
+  .av-adv{padding:24px 26px}
+  .av-adv h4{font-family:'Baloo Bhai 2';font-weight:700;color:var(--roxo);font-size:15px;margin-bottom:10px}
+  .av-adv ul{list-style:none;display:grid;gap:11px}
+  .av-adv li{position:relative;padding-left:24px;color:var(--cinza);font-size:14px;line-height:1.45}
+  .av-adv li b{color:var(--coral)}
+  .av-adv li::before{content:"✓";position:absolute;left:0;top:0;color:var(--verde);font-weight:800}
+  .av-oper{padding:16px 26px;background:#faf8fc;border-top:1px solid #efedf4;color:var(--cinza);font-size:13.5px;line-height:1.5}
+  .av-oper b{color:var(--roxo)}
+  @media(max-width:620px){.av-body{grid-template-columns:1fr}.av-specs{border-right:none;border-bottom:1px solid #efedf4}}
 </style>
 </head>
 <body>
@@ -566,6 +590,28 @@
       <div class="est-param"><div class="est-big">3.600 m</div><div class="est-lab">comprimento de sítio considerado no cenário máximo</div></div>
     </div>
 
+    <div class="av-card">
+      <div class="av-head"><span class="av-emoji">✈️</span><div><h3>Boeing 737-8 MAX</h3><span>A aeronave usada como referência para dimensionar o aeroporto</span></div></div>
+      <div class="av-body">
+        <div class="av-specs">
+          <div class="av-spec"><div class="av-k">Passageiros</div><div class="av-v">até 210 (cerca de 180 no uso comum)</div></div>
+          <div class="av-spec"><div class="av-k">Autonomia</div><div class="av-v">voa sem escala até ~6.500 km</div></div>
+          <div class="av-spec"><div class="av-k">Carga útil</div><div class="av-v">até ~18 toneladas (passageiros, bagagem e carga)</div></div>
+          <div class="av-spec"><div class="av-k">Motores</div><div class="av-v">2 motores CFM LEAP-1B, de última geração</div></div>
+        </div>
+        <div class="av-adv">
+          <h4>Por que esse avião</h4>
+          <ul>
+            <li>Gasta cerca de <b>15% menos combustível</b> por passageiro que a geração anterior.</li>
+            <li>Emite por volta de <b>16% menos CO₂</b>, ajudando o meio ambiente.</li>
+            <li>Faz <b>menos barulho</b>: a área afetada por ruído é cerca de 40% menor — bom para quem mora perto.</li>
+            <li>Tem <b>maior alcance</b>, permitindo voos diretos para destinos mais distantes.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="av-oper"><b>Quem opera no Brasil:</b> a GOL é a principal companhia brasileira a usar o 737-8 MAX, em rotas nacionais e internacionais. No mundo, dezenas de companhias já voam com o modelo.</div>
+    </div>
+
     <div class="sec-head" style="margin:42px auto 0"><div class="eyebrow">Do mapa ao campo</div><h2>Como as opções foram afuniladas</h2>
       <p>Partindo da área de busca, o estudo foi eliminando o que não servia até sobrarem os terrenos que valiam uma visita:</p></div>
     <div class="est-funnel">
@@ -576,10 +622,17 @@
       <div class="est-bar b3"><span>Áreas visitadas em campo</span><span class="est-n">6</span></div>
     </div>
 
+    <div class="sec-head" style="margin:42px auto 0"><div class="eyebrow">As 6 áreas prioritárias</div><h2>Os terrenos que foram a campo</h2>
+      <p>Mapas técnicos das áreas escolhidas para a visita, mais um panorama geral da região. Imagens ilustrativas.</p></div>
     <div class="est-areas">
-      <div class="est-area"><h4>Área S-1</h4><p>Concentra a maior parte dos terrenos selecionados, em cotas (altitudes) por volta de 158 a 172 metros.</p></div>
-      <div class="est-area"><h4>Área S-4</h4><p>Terreno em cota mais baixa, por volta de 116 metros, também incluído entre os visitados.</p></div>
+      <div class="est-area"><img src="estudo-regiao.jpg" alt="Mapa de relevo (altimetria) da região de Santa Maria com os municípios" loading="lazy"><div class="est-area-txt"><h4>Panorama da região</h4><p>Visão geral do relevo e dos municípios dentro da área de busca de 45 km.</p></div></div>
+      <div class="est-area"><img src="estudo-area-s1.jpg" alt="Mapa técnico dos sítios S-1-A, S-1-E e S-1-K" loading="lazy"><div class="est-area-txt"><h4>Área S-1 · sítios A, E e K</h4><p>Conjunto de terrenos vizinhos em relevo suave, em cotas por volta de 170 metros.</p></div></div>
+      <div class="est-area"><img src="estudo-area-s1cd.jpg" alt="Mapa técnico dos sítios S-1-C e S-1-D" loading="lazy"><div class="est-area-txt"><h4>Área S-1 · sítios C e D</h4><p>Dois terrenos próximos, também na faixa de cotas mais altas da Área S-1.</p></div></div>
+      <div class="est-area"><img src="estudo-area-s1b.jpg" alt="Mapa técnico do sítio S-1-B" loading="lazy"><div class="est-area-txt"><h4>Área S-1 · sítio B</h4><p>Terreno alongado acompanhando o eixo de uma via existente.</p></div></div>
+      <div class="est-area"><img src="estudo-area-s1j.jpg" alt="Mapa técnico do sítio S-1-J" loading="lazy"><div class="est-area-txt"><h4>Área S-1 · sítio J</h4><p>Terreno em cotas um pouco mais baixas, por volta de 120 a 160 metros.</p></div></div>
+      <div class="est-area"><img src="estudo-area-s4.jpg" alt="Mapa técnico da Área S-4" loading="lazy"><div class="est-area-txt"><h4>Área S-4</h4><p>Terreno em cota mais baixa, por volta de 116 metros, em outra região da busca.</p></div></div>
     </div>
+    <p class="met-fonte" style="margin-top:14px">Mapas técnicos do estudo (ITA). As coordenadas geográficas foram removidas das imagens para preservar a localização exata dos terrenos.</p>
 
     <div class="sec-head" style="margin:42px auto 0"><div class="eyebrow">Trabalho de campo</div><h2>O que é feito em cada terreno</h2></div>
     <div class="est-plano">
