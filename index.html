@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Novo Aeroporto Regional de Santa Maria — Painel de Transparência</title>
 <meta name="description" content="Acompanhe de forma transparente o status e o avanço do projeto do Novo Aeroporto Regional de Santa Maria." />
+<meta property="og:title" content="Painel de Transparência — Novo Aeroporto Regional de Santa Maria" />
+<meta property="og:description" content="Status e avanço do projeto do novo aeroporto, atualizado etapa a etapa." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -15,38 +17,48 @@
     --verde:#51AE32; --verde-2:#92C020; --azul:#2581C4; --azul-mar:#302683;
     --escuro:#231F20; --cinza:#6b6b72; --cinza-cl:#eceaf0; --branco:#ffffff;
     --concluido:#51AE32; --andamento:#F9B000; --iniciar:#b9b4c2;
-    --sombra:0 8px 30px rgba(48,38,131,.10);
-    --raio:18px;
+    --sombra:0 8px 30px rgba(48,38,131,.10); --raio:18px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Montserrat',system-ui,sans-serif;color:var(--escuro);background:#f5f3f8;line-height:1.5;-webkit-font-smoothing:antialiased}
   h1,h2,h3,h4,.font-title{font-family:'Baloo Bhai 2','Montserrat',sans-serif;line-height:1.15}
-  a{color:inherit}
   .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-
-  /* HERO */
   header.hero{background:linear-gradient(135deg,var(--roxo-esc) 0%,var(--roxo) 45%,var(--roxo-2) 100%);color:#fff;position:relative;overflow:hidden}
   .hero::after{content:"";position:absolute;right:-120px;top:-120px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(229,0,109,.35),transparent 70%)}
-  .topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  /* faixa de utilidades (padrão portal gov) */
+  .gov-utilbar{background:#3d1259;color:#fff}
+  .gov-utilbar-in{display:flex;align-items:center;justify-content:space-between;min-height:38px;gap:14px}
+  .gov-util-left{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:600;opacity:.9}
+  .gov-util-links{display:flex;gap:20px;flex-wrap:wrap}
+  .gov-util-links a{color:#fff;text-decoration:none;font-size:12px;font-weight:600;opacity:.86;white-space:nowrap}
+  .gov-util-links a:hover{opacity:1;text-decoration:underline}
+  @media(max-width:680px){.gov-util-left{display:none}.gov-utilbar-in{justify-content:center}.gov-util-links{gap:14px;justify-content:center}}
+  /* barra branca com a logomarca */
+  .gov-topbar{background:#fff;border-bottom:1px solid #ece7f1}
+  .gov-topbar-in{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;gap:14px}
   .brand{display:flex;align-items:center;gap:14px}
-  .heart{width:44px;height:44px;flex:0 0 auto}
-  .brand .bt{font-family:'Baloo Bhai 2';font-weight:700;font-size:15px;line-height:1.05;text-transform:lowercase}
-  .brand .bt small{display:block;font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;opacity:.85}
-  .tagline{font-family:'Baloo Bhai 2';font-size:11px;letter-spacing:.28em;opacity:.9}
-  .admin-link{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;padding:8px 14px;border-radius:999px;font-size:12px;font-weight:600;cursor:pointer;backdrop-filter:blur(4px)}
-  .admin-link:hover{background:rgba(255,255,255,.24)}
-  .hero-main{padding:14px 0 56px;position:relative;z-index:2}
+  .brand-default{display:flex;align-items:center;gap:12px}
+  .brand-logo{height:56px;max-width:280px;object-fit:contain;display:block}
+  .heart{width:48px;height:48px;flex:0 0 auto}
+  .brand .bt{font-family:'Baloo Bhai 2';font-weight:700;font-size:17px;line-height:1.05;text-transform:lowercase;color:var(--roxo)}
+  .brand .bt small{display:block;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;opacity:.8;color:var(--roxo-2)}
+  .admin-link{background:var(--roxo);border:none;color:#fff;padding:9px 17px;border-radius:999px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
+  .admin-link:hover{background:var(--roxo-esc)}
+  .hero-main{padding:42px 0 56px;position:relative;z-index:2}
+  .hero-top{display:grid;grid-template-columns:1.12fr .88fr;gap:26px;align-items:center;margin-top:6px}
+  .hero-copy{min-width:0}
+  .hero-art{position:relative}
+  .hero-art svg{width:100%;max-width:470px;height:auto;display:block;margin-left:auto;filter:drop-shadow(0 14px 32px rgba(0,0,0,.18))}
+  @media(max-width:820px){.hero-top{grid-template-columns:1fr;gap:4px}.hero-art{display:none}}
   .eyebrow{font-family:'Baloo Bhai 2';font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--amarelo-2);margin-bottom:10px}
-  .title-row{display:flex;align-items:center;gap:18px;max-width:840px}
+  .title-row{display:flex;align-items:center;gap:18px}
   .plane-badge{flex:0 0 auto;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
   .plane-badge svg{width:34px;height:34px;color:var(--amarelo-2)}
   @media(max-width:560px){.plane-badge{width:50px;height:50px}.plane-badge svg{width:27px;height:27px}.title-row{gap:13px}}
-  .hero h1{font-size:clamp(28px,5vw,50px);font-weight:800;max-width:780px}
-  .hero .sub{margin-top:14px;max-width:640px;font-size:16px;opacity:.92}
+  .hero h1{font-size:clamp(38px,6.2vw,68px);font-weight:800;letter-spacing:-.5px}
+  .hero .sub{margin-top:14px;max-width:560px;font-size:16px;opacity:.92}
   .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;margin-top:34px}
   @media(max-width:760px){.hero-grid{grid-template-columns:1fr}}
-
-  /* progress ring */
   .ring-card{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);border-radius:var(--raio);padding:26px;display:flex;gap:22px;align-items:center;backdrop-filter:blur(6px)}
   .ring{position:relative;width:138px;height:138px;flex:0 0 auto}
   .ring svg{transform:rotate(-90deg)}
@@ -56,21 +68,32 @@
   .ring-info h3{font-size:18px;font-weight:700}
   .ring-info p{font-size:13px;opacity:.9;margin-top:4px}
   .pill{display:inline-block;margin-top:10px;background:var(--amarelo);color:#3a2e00;font-weight:700;font-size:12px;padding:5px 12px;border-radius:999px}
-
   .next-card{background:#fff;color:var(--escuro);border-radius:var(--raio);padding:22px;box-shadow:var(--sombra)}
   .next-card .lab{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);font-weight:700}
   .next-card h3{font-size:18px;font-weight:700;margin-top:6px;font-family:'Baloo Bhai 2'}
   .next-card .when{margin-top:8px;font-weight:700;color:var(--roxo)}
   .next-card .meta{font-size:12px;color:var(--cinza);margin-top:6px}
 
-  /* SECTIONS */
+  /* ===== Moldura de fotos (galeria) ===== */
+  .galeria-sec{background:#fff}
+  .moldura{max-width:980px;margin:0 auto;position:relative;background:#fff;border-radius:22px;padding:14px;box-shadow:0 24px 60px rgba(48,38,131,.16);border:1px solid #efedf4}
+  .moldura-stage{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:16/9;background:linear-gradient(135deg,#f3f0f8,#e9eef7)}
+  .moldura-stage .mol-item{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity 1.1s ease;pointer-events:none}
+  .moldura-stage .mol-item.on{opacity:1;pointer-events:auto}
+  .moldura-stage video.mol-item{background:#000;object-fit:contain}
+  .moldura-tag{position:absolute;top:14px;left:14px;z-index:2;background:rgba(255,255,255,.92);color:var(--roxo);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:30px}
+  .moldura-cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:34px 18px 14px;background:linear-gradient(transparent,rgba(48,38,131,.82));color:#fff;font-weight:600;font-size:14px}
+  .moldura-dots{display:flex;justify-content:center;gap:7px;padding:14px 0 4px}
+  .moldura-dots i{width:8px;height:8px;border-radius:50%;background:#d8d2e3;cursor:pointer;transition:.3s}
+  .moldura-dots i.on{background:var(--coral);width:22px;border-radius:5px}
+  @media(max-width:760px){.moldura{border-radius:16px;padding:10px}}
+  .up-prog{height:12px;border-radius:7px;background:#ece9f1;overflow:hidden;margin-top:8px}
+  .up-prog-bar{height:100%;width:0;border-radius:7px;background:linear-gradient(90deg,var(--coral),var(--roxo));transition:width .15s ease}
   section{padding:52px 0}
   .sec-head{text-align:center;max-width:680px;margin:0 auto 34px}
   .sec-head .eyebrow{color:var(--coral)}
   .sec-head h2{font-size:clamp(22px,3.4vw,32px);font-weight:800;color:var(--roxo)}
   .sec-head p{color:var(--cinza);margin-top:8px;font-size:15px}
-
-  /* fases / steps */
   .fases{display:grid;gap:16px}
   .fase{background:#fff;border-radius:var(--raio);box-shadow:var(--sombra);padding:20px 22px;display:grid;grid-template-columns:46px 1fr auto;gap:18px;align-items:center;border-left:6px solid var(--iniciar)}
   .fase[data-st="concluido"]{border-left-color:var(--concluido)}
@@ -89,8 +112,6 @@
   .badge.a_iniciar{background:#eee;color:#7a7a82}
   .fase .right b{display:block;font-family:'Baloo Bhai 2';font-size:22px;font-weight:800;color:var(--roxo);margin-top:8px}
   @media(max-width:680px){.fase{grid-template-columns:42px 1fr}.fase .right{grid-column:1/-1;text-align:left;display:flex;align-items:center;gap:14px;min-width:0}.fase .right b{margin-top:0}}
-
-  /* timeline */
   .tl{position:relative;margin-top:10px}
   .tl::before{content:"";position:absolute;left:18px;top:6px;bottom:6px;width:3px;background:linear-gradient(var(--roxo),var(--coral))}
   .tl-item{position:relative;padding:0 0 22px 52px}
@@ -100,20 +121,43 @@
   .tl-item .tt{font-weight:700;font-family:'Baloo Bhai 2';font-size:16px}
   .tl-item .dd{font-size:13px;color:var(--cinza)}
 
-  /* timeline HORIZONTAL (etapas da fonte) — base clara */
+  /* timeline HORIZONTAL (etapas unificadas) */
   .htl-wrap{background:transparent;padding:8px 0 4px;position:relative}
-  .htl-scroll{overflow-x:auto;padding:10px 6px 14px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;position:relative;z-index:1}
-  .htl{display:flex;min-width:1320px;position:relative;align-items:flex-start}
-  .htl .step{flex:1 1 0;position:relative;padding:0 8px;text-align:center}
+  .htl-scroll{padding:10px 6px 16px;position:relative;z-index:1}
+  .htl{display:grid;grid-template-columns:repeat(5,1fr);column-gap:8px;row-gap:50px;position:relative;align-items:stretch}
+  .htl .step{position:relative;padding:0 9px;text-align:center;display:flex;flex-direction:column}
+  /* conector horizontal — linha de cima flui da esquerda p/ direita */
   .htl .step::after{content:"";position:absolute;top:30px;left:50%;width:100%;height:4px;background:var(--seg,#dcd7e4);z-index:0;border-radius:999px}
-  .htl .step:last-child::after{display:none}
+  /* posicionamento em serpentina (zig-zag): linha de baixo invertida */
+  .htl .step:nth-child(1){grid-area:1/1/2/2}
+  .htl .step:nth-child(2){grid-area:1/2/2/3}
+  .htl .step:nth-child(3){grid-area:1/3/2/4}
+  .htl .step:nth-child(4){grid-area:1/4/2/5}
+  .htl .step:nth-child(5){grid-area:1/5/2/6}
+  .htl .step:nth-child(6){grid-area:2/5/3/6}
+  .htl .step:nth-child(7){grid-area:2/4/3/5}
+  .htl .step:nth-child(8){grid-area:2/3/3/4}
+  .htl .step:nth-child(9){grid-area:2/2/3/3}
+  .htl .step:nth-child(10){grid-area:2/1/3/2}
+  /* linha de baixo (6→9) flui da direita p/ esquerda */
+  .htl .step:nth-child(6)::after,
+  .htl .step:nth-child(7)::after,
+  .htl .step:nth-child(8)::after,
+  .htl .step:nth-child(9)::after{left:auto;right:50%}
+  /* etapa 10 (Decolagem) é o fim — sem conector */
+  .htl .step:nth-child(10)::after{display:none}
+  /* etapa 5: trecho horizontal do nó até a borda direita (entra na curva) */
+  .htl .step:nth-child(5)::after{left:50%;right:auto;width:50%;background:#dcd7e4}
+  /* curva de retorno à direita (desce da etapa 5 para a 6) */
+  .htl .step:nth-child(5)::before{content:"";position:absolute;z-index:0;top:30px;right:0;width:4px;height:calc(100% + 54px);background:#dcd7e4;border-radius:999px}
+  .htl .step:nth-child(6)::before{content:"";position:absolute;z-index:0;top:30px;left:50%;right:0;height:4px;background:#dcd7e4;border-radius:999px}
   .htl .node{position:relative;z-index:1;width:62px;height:62px;margin:0 auto;border-radius:50%;background:#fff;border:4px solid var(--iniciar);display:flex;align-items:center;justify-content:center;font-family:'Baloo Bhai 2';font-weight:800;font-size:23px;color:var(--roxo);box-shadow:0 4px 14px rgba(48,38,131,.10);transition:transform .2s}
   .htl .step:hover .node{transform:translateY(-3px)}
   .htl .step[data-st="concluido"] .node{border-color:var(--concluido);color:var(--verde)}
   .htl .step[data-st="concluido"] .node::after{content:"\2713";font-size:26px}
   .htl .step[data-st="em_andamento"] .node{border-color:var(--andamento);color:#b87900;box-shadow:0 0 0 6px rgba(249,176,0,.20);animation:pulseNode 2.2s ease-in-out infinite}
   @keyframes pulseNode{0%,100%{box-shadow:0 0 0 6px rgba(249,176,0,.20)}50%{box-shadow:0 0 0 11px rgba(249,176,0,.06)}}
-  .htl .scard{background:#fff;border-radius:16px;border:1px solid #ece8f2;box-shadow:0 6px 20px rgba(48,38,131,.07);padding:16px 14px;margin-top:16px;min-height:184px;position:relative;border-top:4px solid var(--iniciar)}
+  .htl .scard{background:#fff;border-radius:16px;border:1px solid #ece8f2;box-shadow:0 6px 20px rgba(48,38,131,.07);padding:16px 14px;margin-top:16px;min-height:184px;flex:1;position:relative;border-top:4px solid var(--iniciar)}
   .htl .step[data-st="concluido"] .scard{border-top-color:var(--concluido)}
   .htl .step[data-st="em_andamento"] .scard{border-top-color:var(--andamento)}
   .htl .scard h4{font-size:15px;font-weight:700;line-height:1.18;color:var(--escuro);font-family:'Baloo Bhai 2'}
@@ -131,9 +175,15 @@
   .htl-legend{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-top:8px;position:relative;z-index:1}
   .htl-legend span{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--cinza);font-weight:600}
   .htl-legend i{width:12px;height:12px;border-radius:50%;display:inline-block}
-  @media(max-width:680px){.htl{min-width:1180px}}
-
-  /* marcos */
+  /* telas médias: 3 colunas não-serpentina, conector só horizontal por linha */
+  @media(max-width:980px){
+    .htl{grid-template-columns:1fr;row-gap:14px}
+    .htl .step{grid-area:auto !important;display:flex;gap:14px;text-align:left;align-items:flex-start;padding:0}
+    .htl .step .node{margin:0;flex:0 0 auto;width:50px;height:50px;font-size:19px}
+    .htl .step .scard{flex:1;margin-top:0;min-height:0}
+    .htl .step::after,.htl .step::before{display:none !important}
+    .htl .scard .par{right:auto;left:10px}
+  }
   .marcos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
   @media(max-width:820px){.marcos{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:480px){.marcos{grid-template-columns:1fr}}
@@ -141,8 +191,6 @@
   .marco .cod{font-family:'Baloo Bhai 2';font-weight:800;color:var(--coral)}
   .marco .dt{font-weight:700;color:var(--roxo);font-size:13px;margin:4px 0 8px}
   .marco p{font-size:13px;color:#444}
-
-  /* numeros / contexto */
   .ctx{background:linear-gradient(135deg,var(--roxo) 0%,var(--azul-mar) 100%);color:#fff}
   .nums{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:36px}
   @media(max-width:820px){.nums{grid-template-columns:repeat(2,1fr)}}
@@ -154,12 +202,12 @@
   .why-c{background:rgba(255,255,255,.07);border-radius:var(--raio);padding:22px}
   .why-c h4{font-size:17px;color:#fff;margin-bottom:8px}
   .why-c p{font-size:14px;opacity:.92}
-
   footer{background:var(--escuro);color:#cfc9d6;padding:34px 0;font-size:13px}
   footer .fwrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
   footer b{color:#fff}
-
-  /* MODAL ADMIN */
+  .upd{font-size:12px;opacity:.8}
+  .cfgbar{background:#fff3cd;color:#7a5b00;text-align:center;padding:10px;font-size:13px;font-weight:600}
+  .cfgbar.off{background:#fde8ef;color:#9a1c4e}
   .modal{position:fixed;inset:0;background:rgba(35,31,32,.55);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;z-index:50;overflow:auto;backdrop-filter:blur(3px)}
   .modal.open{display:flex}
   .panel{background:#fff;border-radius:20px;width:100%;max-width:760px;box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden}
@@ -167,12 +215,13 @@
   .panel .ph h3{font-family:'Baloo Bhai 2';font-weight:700}
   .panel .ph .x{cursor:pointer;font-size:24px;line-height:1;background:none;border:none;color:#fff;opacity:.85}
   .panel .pb{padding:24px}
-  .login{max-width:340px;margin:10px auto 6px}
-  .login label{font-size:13px;font-weight:600;display:block;margin-bottom:6px}
+  .login{max-width:360px;margin:10px auto 6px}
+  .login label{font-size:13px;font-weight:600;display:block;margin:10px 0 6px}
   .inp{width:100%;padding:11px 13px;border:1.5px solid #ddd;border-radius:10px;font-family:inherit;font-size:14px}
   .inp:focus{outline:none;border-color:var(--roxo)}
   .btn{background:var(--roxo);color:#fff;border:none;padding:11px 18px;border-radius:10px;font-weight:700;cursor:pointer;font-family:inherit;font-size:14px}
   .btn:hover{background:#561c6e}
+  .btn:disabled{opacity:.6;cursor:not-allowed}
   .btn.sec{background:#eee;color:#333}
   .btn.sec:hover{background:#e2e2e2}
   .err{color:var(--coral);font-size:13px;margin-top:10px;min-height:18px}
@@ -184,7 +233,6 @@
   .saved{color:var(--verde);font-size:13px;font-weight:600}
   .note{background:#fbf6ff;border:1px solid #ead9f5;border-radius:12px;padding:12px 14px;font-size:12.5px;color:#6a4d7a;margin-top:16px}
   @media(max-width:560px){.adm-row{grid-template-columns:1fr 1fr;gap:8px}.adm-row .nm{grid-column:1/-1}}
-  .upd{font-size:12px;opacity:.8}
 
   /* ===== MURAL DE APOIO ===== */
   .apoio-top{max-width:540px;margin:0 auto}
@@ -257,45 +305,202 @@
   .logo-adm img{height:38px;max-width:96px;object-fit:contain;background:#f7f5fa;border-radius:6px}
   .logo-adm .ln{flex:1;font-size:13px;font-weight:600}
   .logo-adm button{font-size:12px;font-weight:700;padding:6px 11px;border-radius:8px;border:none;cursor:pointer;background:#fdeaf2;color:var(--coral)}
+
+  /* ===== rolagem suave para os botões do hero ===== */
+  html{scroll-behavior:smooth}
+
+  /* ===== animação de entrada ao rolar (reveal) ===== */
+  .reveal-on .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .reveal-on .reveal.visible{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal-on .reveal{opacity:1!important;transform:none!important;transition:none}}
+
+  /* ===== botões de ação no hero ===== */
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:24px}
+  .hero-btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:999px;font-family:inherit;font-weight:800;font-size:15px;text-decoration:none;cursor:pointer;border:2px solid transparent;transition:transform .15s ease,box-shadow .2s ease,background .2s ease}
+  .hero-btn svg{width:19px;height:19px}
+  .hero-btn.primary{background:var(--amarelo);color:#3a2e00;box-shadow:0 10px 26px rgba(249,176,0,.32)}
+  .hero-btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(249,176,0,.42)}
+  .hero-btn.ghost{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.5)}
+  .hero-btn.ghost:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+  @media(max-width:560px){.hero-btn{flex:1 1 100%;justify-content:center}}
+
+  /* ===== barra de compartilhamento ===== */
+  .share-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin:34px auto 0;max-width:620px;background:#faf8fc;border:1px solid #ece7f1;border-radius:var(--raio);padding:18px 22px;text-align:center}
+  .share-bar .share-lab{font-weight:700;color:var(--roxo);font-size:14px}
+  .share-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;font-family:inherit;font-weight:700;font-size:13.5px;text-decoration:none;cursor:pointer;border:none;color:#fff;transition:transform .15s ease,filter .2s ease}
+  .share-btn svg{width:17px;height:17px;fill:currentColor}
+  .share-btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .share-btn.wa{background:#25D366}
+  .share-btn.fb{background:#1877F2}
+  .share-btn.copy{background:var(--roxo)}
+  .share-btn.copy.ok{background:var(--verde)}
+
+  /* ===== como o local é escolhido (metodologia MESA) ===== */
+  .met-sec{background:linear-gradient(180deg,#faf8fc,#fff)}
+  .met-steps{display:grid;gap:16px;max-width:920px;margin:0 auto;counter-reset:met}
+  .met-step{position:relative;display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid #ece7f1;border-radius:var(--raio);padding:20px 22px;box-shadow:0 10px 30px rgba(48,38,131,.07)}
+  .met-step .met-num{flex:0 0 auto;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-family:'Baloo Bhai 2';font-weight:700;font-size:22px;color:#fff;background:linear-gradient(135deg,var(--roxo),var(--coral))}
+  .met-step:nth-child(2) .met-num{background:linear-gradient(135deg,var(--coral),var(--amarelo))}
+  .met-step:nth-child(3) .met-num{background:linear-gradient(135deg,var(--amarelo),var(--verde))}
+  .met-step:nth-child(4) .met-num{background:linear-gradient(135deg,var(--verde),var(--azul))}
+  .met-step:nth-child(5) .met-num{background:linear-gradient(135deg,var(--azul),var(--azul-mar))}
+  .met-step:nth-child(6) .met-num{background:linear-gradient(135deg,var(--azul-mar),var(--roxo))}
+  .met-step h3{font-family:'Baloo Bhai 2';font-weight:700;color:var(--roxo);font-size:18px;margin:2px 0 4px}
+  .met-step p{color:var(--cinza);font-size:14.5px;line-height:1.5}
+  .met-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:920px;margin:30px auto 0}
+  .met-card{background:#fff;border:1px solid #ece7f1;border-radius:var(--raio);padding:20px;text-align:center;box-shadow:0 10px 30px rgba(48,38,131,.07);transition:transform .15s ease,box-shadow .2s ease}
+  .met-card:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(48,38,131,.13)}
+  .met-card .met-ic{width:52px;height:52px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;font-size:26px;background:#f3f0f8}
+  .met-card h4{font-family:'Baloo Bhai 2';font-weight:700;color:var(--roxo);font-size:16px;margin-bottom:5px}
+  .met-card p{color:var(--cinza);font-size:13.5px;line-height:1.45}
+  .met-fonte{text-align:center;color:var(--cinza);font-size:12.5px;margin:26px auto 0;max-width:680px;opacity:.85}
+  @media(max-width:760px){.met-cards{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.met-cards{grid-template-columns:1fr}.met-step{padding:16px}}
+
+  /* ===== estudo aplicado a Santa Maria ===== */
+  .est-sec{background:linear-gradient(180deg,#fff,#faf8fc)}
+  .est-params{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:720px;margin:0 auto}
+  .est-param{background:#fff;border:1px solid #ece7f1;border-radius:var(--raio);padding:20px 16px;text-align:center;box-shadow:0 10px 30px rgba(48,38,131,.07)}
+  .est-param .est-big{font-family:'Baloo Bhai 2';font-weight:700;color:var(--coral);font-size:clamp(26px,4vw,34px);line-height:1}
+  .est-param .est-lab{color:var(--cinza);font-size:13px;margin-top:8px;line-height:1.35}
+  .est-funnel{display:flex;flex-direction:column;align-items:center;gap:10px;max-width:560px;margin:36px auto 0}
+  .est-bar{width:100%;color:#fff;border-radius:14px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;font-weight:700;box-shadow:0 10px 26px rgba(48,38,131,.12)}
+  .est-bar .est-n{font-family:'Baloo Bhai 2';font-size:24px}
+  .est-bar.b1{background:linear-gradient(135deg,var(--roxo),var(--roxo-2))}
+  .est-bar.b2{background:linear-gradient(135deg,var(--azul),var(--azul-mar));width:78%}
+  .est-bar.b3{background:linear-gradient(135deg,var(--coral),var(--amarelo));width:52%}
+  .est-arrow{color:var(--roxo);opacity:.5;font-size:18px;line-height:1}
+  .est-areas{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:980px;margin:0 auto}
+  .est-area{background:#fff;border:1px solid #ece7f1;border-radius:var(--raio);overflow:hidden;box-shadow:0 10px 30px rgba(48,38,131,.07)}
+  .est-area img{display:block;width:100%;height:auto;border-bottom:1px solid #efedf4}
+  .est-area .est-area-txt{padding:18px 22px}
+  .est-area h4{font-family:'Baloo Bhai 2';font-weight:700;color:var(--roxo);font-size:17px;margin-bottom:4px}
+  .est-area p{color:var(--cinza);font-size:14px;line-height:1.45}
+  .est-plano{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:780px;margin:30px auto 0}
+  .est-pcard{background:#fff;border:1px solid #ece7f1;border-radius:var(--raio);padding:20px;text-align:center;box-shadow:0 10px 30px rgba(48,38,131,.07)}
+  .est-pcard .est-pic{font-size:28px;margin-bottom:8px}
+  .est-pcard h4{font-family:'Baloo Bhai 2';font-weight:700;color:var(--roxo);font-size:15px;margin-bottom:4px}
+  .est-pcard p{color:var(--cinza);font-size:13px;line-height:1.4}
+  @media(max-width:760px){.est-params{grid-template-columns:1fr 1fr}.est-plano{grid-template-columns:1fr}.est-areas{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.est-params{grid-template-columns:1fr 1fr}.est-areas{grid-template-columns:1fr}}
+
+  /* ===== ficha da aeronave de referência ===== */
+  .av-card{max-width:920px;margin:30px auto 0;background:#fff;border:1px solid #ece7f1;border-radius:var(--raio);box-shadow:0 14px 38px rgba(48,38,131,.10);overflow:hidden}
+  .av-head{display:flex;align-items:center;gap:16px;padding:22px 26px;background:linear-gradient(135deg,var(--roxo),var(--coral));color:#fff}
+  .av-head .av-emoji{font-size:34px;line-height:1}
+  .av-head h3{font-family:'Baloo Bhai 2';font-weight:700;font-size:22px}
+  .av-head span{display:block;font-weight:600;font-size:13px;opacity:.92;margin-top:2px}
+  .av-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .av-specs{padding:24px 26px;border-right:1px solid #efedf4}
+  .av-spec{display:flex;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px dashed #eee}
+  .av-spec:last-child{border-bottom:none}
+  .av-spec .av-k{flex:0 0 110px;color:var(--cinza);font-size:13px}
+  .av-spec .av-v{font-weight:700;color:var(--roxo);font-size:15.5px}
+  .av-adv{padding:24px 26px}
+  .av-adv h4{font-family:'Baloo Bhai 2';font-weight:700;color:var(--roxo);font-size:15px;margin-bottom:10px}
+  .av-adv ul{list-style:none;display:grid;gap:11px}
+  .av-adv li{position:relative;padding-left:24px;color:var(--cinza);font-size:14px;line-height:1.45}
+  .av-adv li b{color:var(--coral)}
+  .av-adv li::before{content:"✓";position:absolute;left:0;top:0;color:var(--verde);font-weight:800}
+  .av-oper{padding:16px 26px;background:#faf8fc;border-top:1px solid #efedf4;color:var(--cinza);font-size:13.5px;line-height:1.5}
+  .av-oper b{color:var(--roxo)}
+  @media(max-width:620px){.av-body{grid-template-columns:1fr}.av-specs{border-right:none;border-bottom:1px solid #efedf4}}
 </style>
 </head>
 <body>
-<!-- ================= HERO ================= -->
-<header class="hero">
-  <div class="wrap">
-    <div class="topbar">
-      <div class="brand">
+<script>document.documentElement.classList.add('reveal-on')</script>
+<div class="cfgbar" id="cfgbar" style="display:none"></div>
+
+<div class="gov-utilbar">
+  <div class="wrap gov-utilbar-in">
+    <span class="gov-util-left">Governo de Santa Maria · Painel de Transparência</span>
+    <nav class="gov-util-links">
+      <a href="https://www.santamaria.rs.gov.br/transparencia" target="_blank" rel="noopener">Portal da Transparência</a>
+      <a href="https://www.santamaria.rs.gov.br/smtc/970-demanda-esic" target="_blank" rel="noopener">Acesso à Informação</a>
+      <a href="https://www.santamaria.rs.gov.br/smtc/956-demanda-ouvidoria" target="_blank" rel="noopener">Ouvidoria 156</a>
+      <a href="https://www.santamaria.rs.gov.br/smdei" target="_blank" rel="noopener">Sec. de Desenvolvimento Econômico</a>
+    </nav>
+  </div>
+</div>
+<div class="gov-topbar">
+  <div class="wrap gov-topbar-in">
+    <div class="brand">
+      <img id="brandLogo" class="brand-logo" alt="Prefeitura de Santa Maria" style="display:none">
+      <span id="brandDefault" class="brand-default">
         <svg class="heart" viewBox="0 0 100 92" aria-hidden="true">
-          <path d="M50 88C20 66 4 50 4 30 4 15 15 5 28 5c9 0 16 5 22 13C56 10 63 5 72 5c13 0 24 10 24 25 0 20-16 36-46 58Z" fill="none"/>
           <path d="M50 86C24 66 8 51 8 31 8 17 18 8 29 8c8 0 14 4 21 14" fill="none" stroke="#E5006D" stroke-width="9" stroke-linecap="round"/>
           <path d="M29 8c8 0 14 4 21 14" fill="none" stroke="#F9B000" stroke-width="9" stroke-linecap="round"/>
           <path d="M50 22c6-10 13-14 22-14 11 0 21 9 21 23 0 20-16 35-43 55" fill="none" stroke="#2581C4" stroke-width="9" stroke-linecap="round"/>
           <path d="M93 31c0 20-16 35-43 55" fill="none" stroke="#51AE32" stroke-width="9" stroke-linecap="round"/>
         </svg>
-        <div class="bt"><small>prefeitura de</small>santa&nbsp;maria</div>
-      </div>
-      <button class="admin-link" id="openAdmin">Área administrativa</button>
+        <span class="bt"><small>prefeitura de</small>santa&nbsp;maria</span>
+      </span>
     </div>
-
+    <button class="admin-link" id="openAdmin">Área administrativa</button>
+  </div>
+</div>
+<header class="hero">
+  <div class="wrap">
     <div class="hero-main">
-      <div class="eyebrow">Painel de Transparência · Inovar é Cuidar</div>
-      <div class="title-row">
-        <span class="plane-badge" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14.639 10.258l4.83 -1.294a2 2 0 1 1 1.035 3.863l-14.489 3.883l-4.45 -5.02l2.897 -.776l2.45 2.099l2.897 -.776l-3.743 -6.244l2.898 -.777l5.668 5.042z"/>
-            <path d="M3 21h18"/>
+      <div class="hero-top">
+        <div class="hero-copy">
+          <div class="eyebrow">Painel de Transparência · Inovar é Cuidar</div>
+          <div class="title-row">
+            <span class="plane-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14.639 10.258l4.83 -1.294a2 2 0 1 1 1.035 3.863l-14.489 3.883l-4.45 -5.02l2.897 -.776l2.45 2.099l2.897 -.776l-3.743 -6.244l2.898 -.777l5.668 5.042z"/>
+                <path d="M3 21h18"/>
+              </svg>
+            </span>
+            <h1>Novo Aeroporto Regional de Santa Maria</h1>
+          </div>
+          <p class="sub">Acompanhe, de forma aberta e atualizada, cada etapa do projeto que vai transformar a aviação na Região Central do Rio Grande do Sul.</p>
+          <div class="hero-cta">
+            <a href="#apoioSec" class="hero-btn primary">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              Apoiar o projeto
+            </a>
+            <a href="#etapasSec" class="hero-btn ghost">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 11h12.17l-3.58-3.59L14 6l6 6-6 6-1.41-1.41L16.17 13H4z"/></svg>
+              Ver as etapas
+            </a>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <svg viewBox="0 0 480 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- brilho do sol -->
+            <circle cx="402" cy="66" r="58" fill="#FFED00" opacity=".14"/>
+            <circle cx="402" cy="66" r="33" fill="#FFED00" opacity=".5"/>
+            <!-- nuvens -->
+            <g fill="#fff">
+              <ellipse cx="92" cy="84" rx="56" ry="19" opacity=".12"/>
+              <ellipse cx="128" cy="72" rx="34" ry="14" opacity=".10"/>
+              <ellipse cx="318" cy="306" rx="44" ry="14" opacity=".10"/>
+            </g>
+            <!-- pista em perspectiva -->
+            <path d="M150 380 L226 252 L286 252 L372 380 Z" fill="#fff" opacity=".09"/>
+            <line x1="256" y1="264" x2="262" y2="372" stroke="#FFED00" stroke-width="5" stroke-dasharray="11 14" opacity=".42" stroke-linecap="round"/>
+            <!-- rastro de decolagem -->
+            <path d="M64 352 Q 240 322 404 146" stroke="#E5006D" stroke-width="6" stroke-dasharray="2 16" stroke-linecap="round" opacity=".8"/>
+            <!-- linhas de velocidade -->
+            <g stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".38">
+              <path d="M64 212 h54"/>
+              <path d="M46 236 h42"/>
+              <path d="M80 260 h46"/>
+            </g>
+            <!-- avião grande decolando -->
+            <svg x="118" y="54" width="330" height="214" viewBox="0 3 22 15" preserveAspectRatio="xMidYMid meet">
+              <path d="M14.639 10.258l4.83 -1.294a2 2 0 1 1 1.035 3.863l-14.489 3.883l-4.45 -5.02l2.897 -.776l2.45 2.099l2.897 -.776l-3.743 -6.244l2.898 -.777l5.668 5.042z" fill="#fff"/>
+            </svg>
           </svg>
-        </span>
-        <h1>Novo Aeroporto Regional de Santa Maria</h1>
+        </div>
       </div>
-      <p class="sub">Acompanhe, de forma aberta e atualizada, cada etapa do projeto que vai transformar a aviação na Região Central do Rio Grande do Sul.</p>
-
       <div class="hero-grid">
         <div class="ring-card">
           <div class="ring">
             <svg width="138" height="138" viewBox="0 0 138 138">
               <circle cx="69" cy="69" r="60" stroke="rgba(255,255,255,.2)" stroke-width="14" fill="none"/>
-              <circle id="ringArc" cx="69" cy="69" r="60" stroke="#FFED00" stroke-width="14" fill="none" stroke-linecap="round" stroke-dasharray="376.99" stroke-dashoffset="376.99"/>
+              <circle id="ringArc" cx="69" cy="69" r="60" stroke="#FFED00" stroke-width="14" fill="none" stroke-linecap="round" stroke-dasharray="376.99" stroke-dashoffset="376.99" style="transition:stroke-dashoffset .6s ease"/>
             </svg>
             <div class="pct"><b id="ringPct">0%</b><span>concluído</span></div>
           </div>
@@ -305,7 +510,6 @@
             <span class="pill" id="faseAtualPill">—</span>
           </div>
         </div>
-
         <div class="next-card">
           <div class="lab">Próximo marco</div>
           <h3 id="nextNome">—</h3>
@@ -317,18 +521,138 @@
   </div>
 </header>
 
-<!-- ============ MURAL DE APOIO ============ -->
-<section style="background:#fff" id="apoioSec">
+<section id="etapasSec" class="reveal">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Mural de apoio</div>
-      <h2>Deixe sua mensagem de apoio</h2>
-      <p>Some sua voz às <b id="apoioCount">0</b> manifestações de quem acredita no novo aeroporto. Toda mensagem passa por uma breve revisão antes de aparecer no mural.</p>
+    <div class="sec-head"><div class="eyebrow">Onde estamos · Linha do tempo</div><h2>As etapas do projeto</h2>
+      <p>Do estudo de áreas à obra — acompanhe o status de cada uma das nove etapas do cronograma, até a decolagem.</p></div>
+    <div class="htl-wrap">
+      <div class="htl-scroll"><div class="htl" id="fasesList"></div></div>
+      <div class="htl-legend">
+        <span><i style="background:var(--concluido)"></i>Concluído</span>
+        <span><i style="background:var(--andamento)"></i>Em andamento</span>
+        <span><i style="background:var(--iniciar)"></i>A iniciar</span>
+        <span><i style="background:var(--azul)"></i>Etapa paralela</span>
+      </div>
     </div>
+  </div>
+</section>
+
+<section class="met-sec reveal" id="metodologiaSec">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Como o local é escolhido</div><h2>O caminho até o melhor terreno</h2>
+      <p>A escolha do lugar do aeroporto não é no chute. Ela segue um método oficial, passo a passo, que vai afunilando as opções até chegar ao terreno mais favorável.</p></div>
+
+    <div class="met-steps">
+      <div class="met-step"><div class="met-num">1</div><div><h3>Definir o que o aeroporto precisa</h3><p>Primeiro define-se o tipo de avião, o tamanho da pista e a região onde vale a pena procurar.</p></div></div>
+      <div class="met-step"><div class="met-num">2</div><div><h3>Eliminar as áreas que não servem</h3><p>Tira-se do mapa tudo que inviabiliza um aeroporto: restrições do espaço aéreo, áreas ambientais protegidas, ruído sobre a cidade, risco de aves e terrenos sem infraestrutura.</p></div></div>
+      <div class="met-step"><div class="met-num">3</div><div><h3>Encontrar os terrenos possíveis</h3><p>No que sobra, identificam-se os terrenos que de fato poderiam receber o aeroporto — os candidatos.</p></div></div>
+      <div class="met-step"><div class="met-num">4</div><div><h3>Ir a campo</h3><p>A equipe visita cada candidato, tira fotos e examina o solo e o entorno. É a etapa que você vê logo abaixo, na nossa pesquisa de campo.</p></div></div>
+      <div class="met-step"><div class="met-num">5</div><div><h3>Dar nota e ranquear</h3><p>Cada terreno recebe notas em seis critérios técnicos e é ordenado do melhor ao pior.</p></div></div>
+      <div class="met-step"><div class="met-num">6</div><div><h3>Apresentar o resultado</h3><p>Aponta-se, com transparência, o terreno mais favorável e o porquê da escolha.</p></div></div>
+    </div>
+
+    <div class="sec-head" style="margin:42px auto 0"><div class="eyebrow">Os 6 critérios da nota</div><h2>O que pesa na decisão</h2>
+      <p>Na etapa 5, cada terreno é avaliado nestes seis pontos:</p></div>
+    <div class="met-cards">
+      <div class="met-card"><div class="met-ic">⛰️</div><h4>Solo</h4><p>Quanto mais firme e resistente o terreno, melhor para construir.</p></div>
+      <div class="met-card"><div class="met-ic">🚜</div><h4>Terraplenagem</h4><p>Quanto menos terra precisar mover para nivelar, mais barato e rápido.</p></div>
+      <div class="met-card"><div class="met-ic">🔇</div><h4>Ruído</h4><p>Quanto menos casas afetadas pelo barulho dos aviões, melhor.</p></div>
+      <div class="met-card"><div class="met-ic">📍</div><h4>Distância</h4><p>Quanto mais perto da cidade que vai usar o aeroporto, melhor.</p></div>
+      <div class="met-card"><div class="met-ic">🛣️</div><h4>Acesso</h4><p>Quanto mais perto de uma rodovia pavimentada, mais fácil chegar.</p></div>
+      <div class="met-card"><div class="met-ic">⚡</div><h4>Energia</h4><p>Quanto mais perto da rede elétrica e de serviços, menor o custo.</p></div>
+    </div>
+
+    <p class="met-fonte">Baseado na Metodologia de Escolha de Sítios Aeroportuários Regionais (MESA) — Ministério da Infraestrutura / Instituto Tecnológico de Aeronáutica (ITA).</p>
+  </div>
+</section>
+
+<section class="galeria-sec" id="galeriaSec" style="display:none;padding-top:34px">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Pesquisa de Campo</div><h2>O projeto em imagens</h2>
+      <p>Registros do andamento do projeto, atualizados pela equipe.</p></div>
+    <div class="moldura">
+      <div class="moldura-stage" id="molduraStage">
+        <span class="moldura-tag">Pesquisa de Campo</span>
+      </div>
+      <div class="moldura-dots" id="molduraDots"></div>
+    </div>
+  </div>
+</section>
+
+<section class="est-sec reveal" id="estudoSec">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">O estudo em Santa Maria</div><h2>O que já foi estudado</h2>
+      <p>A metodologia acima já está sendo aplicada ao nosso caso. O ITA, em parceria com a SAC e a Prefeitura, fez o levantamento técnico da região e apresentou os primeiros resultados em março de 2026.</p></div>
+
+    <div class="est-params">
+      <div class="est-param"><div class="est-big">45 km</div><div class="est-lab">raio de busca a partir do centro de Santa Maria</div></div>
+      <div class="est-param"><div class="est-big">737-8 MAX</div><div class="est-lab">avião usado como referência para dimensionar a pista</div></div>
+      <div class="est-param"><div class="est-big">3.600 m</div><div class="est-lab">comprimento de sítio considerado no cenário máximo</div></div>
+    </div>
+
+    <div class="av-card">
+      <div class="av-head"><span class="av-emoji">✈️</span><div><h3>Boeing 737-8 MAX</h3><span>A aeronave usada como referência para dimensionar o aeroporto</span></div></div>
+      <div class="av-body">
+        <div class="av-specs">
+          <div class="av-spec"><div class="av-k">Passageiros</div><div class="av-v">até 210 (cerca de 180 no uso comum)</div></div>
+          <div class="av-spec"><div class="av-k">Autonomia</div><div class="av-v">voa sem escala até ~6.500 km</div></div>
+          <div class="av-spec"><div class="av-k">Carga útil</div><div class="av-v">até ~18 toneladas (passageiros, bagagem e carga)</div></div>
+          <div class="av-spec"><div class="av-k">Motores</div><div class="av-v">2 motores CFM LEAP-1B, de última geração</div></div>
+        </div>
+        <div class="av-adv">
+          <h4>Por que esse avião</h4>
+          <ul>
+            <li>Gasta cerca de <b>15% menos combustível</b> por passageiro que a geração anterior.</li>
+            <li>Emite por volta de <b>16% menos CO₂</b>, ajudando o meio ambiente.</li>
+            <li>Faz <b>menos barulho</b>: a área afetada por ruído é cerca de 40% menor — bom para quem mora perto.</li>
+            <li>Tem <b>maior alcance</b>, permitindo voos diretos para destinos mais distantes.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="av-oper"><b>Quem opera no Brasil:</b> a GOL é a principal companhia brasileira a usar o 737-8 MAX, em rotas nacionais e internacionais. No mundo, dezenas de companhias já voam com o modelo.</div>
+    </div>
+
+    <div class="sec-head" style="margin:42px auto 0"><div class="eyebrow">Do mapa ao campo</div><h2>Como as opções foram afuniladas</h2>
+      <p>Partindo da área de busca, o estudo foi eliminando o que não servia até sobrarem os terrenos que valiam uma visita:</p></div>
+    <div class="est-funnel">
+      <div class="est-bar b1"><span>Área de busca avaliada</span><span class="est-n">45 km</span></div>
+      <div class="est-arrow">▼</div>
+      <div class="est-bar b2"><span>Áreas selecionadas tecnicamente</span><span class="est-n">36</span></div>
+      <div class="est-arrow">▼</div>
+      <div class="est-bar b3"><span>Áreas visitadas em campo</span><span class="est-n">6</span></div>
+    </div>
+
+    <div class="sec-head" style="margin:42px auto 0"><div class="eyebrow">As 6 áreas prioritárias</div><h2>Os terrenos que foram a campo</h2>
+      <p>Mapas técnicos das áreas escolhidas para a visita, mais um panorama geral da região. Imagens ilustrativas.</p></div>
+    <div class="est-areas">
+      <div class="est-area"><img src="estudo-regiao.jpg" alt="Mapa de relevo (altimetria) da região de Santa Maria com os municípios"><div class="est-area-txt"><h4>Panorama da região</h4><p>Visão geral do relevo e dos municípios dentro da área de busca de 45 km.</p></div></div>
+      <div class="est-area"><img src="estudo-area-s1.jpg" alt="Mapa técnico dos sítios S-1-A, S-1-E e S-1-K"><div class="est-area-txt"><h4>Área S-1 · sítios A, E e K</h4><p>Conjunto de terrenos vizinhos em relevo suave, em cotas por volta de 170 metros.</p></div></div>
+      <div class="est-area"><img src="estudo-area-s1cd.jpg" alt="Mapa técnico dos sítios S-1-C e S-1-D"><div class="est-area-txt"><h4>Área S-1 · sítios C e D</h4><p>Dois terrenos próximos, também na faixa de cotas mais altas da Área S-1.</p></div></div>
+      <div class="est-area"><img src="estudo-area-s1b.jpg" alt="Mapa técnico do sítio S-1-B"><div class="est-area-txt"><h4>Área S-1 · sítio B</h4><p>Terreno alongado acompanhando o eixo de uma via existente.</p></div></div>
+      <div class="est-area"><img src="estudo-area-s1j.jpg" alt="Mapa técnico do sítio S-1-J"><div class="est-area-txt"><h4>Área S-1 · sítio J</h4><p>Terreno em cotas um pouco mais baixas, por volta de 120 a 160 metros.</p></div></div>
+      <div class="est-area"><img src="estudo-area-s4.jpg" alt="Mapa técnico da Área S-4"><div class="est-area-txt"><h4>Área S-4</h4><p>Terreno em cota mais baixa, por volta de 116 metros, em outra região da busca.</p></div></div>
+    </div>
+    <p class="met-fonte" style="margin-top:14px">Mapas técnicos do estudo (ITA). As coordenadas geográficas foram removidas das imagens para preservar a localização exata dos terrenos.</p>
+
+    <div class="sec-head" style="margin:42px auto 0"><div class="eyebrow">Trabalho de campo</div><h2>O que é feito em cada terreno</h2></div>
+    <div class="est-plano">
+      <div class="est-pcard"><div class="est-pic">🚁</div><h4>Voo de drone</h4><p>Imagens aéreas para enxergar o terreno e o entorno de cima.</p></div>
+      <div class="est-pcard"><div class="est-pic">👁️</div><h4>Inspeção de obstáculos</h4><p>Checagem visual de morros, torres e o que possa atrapalhar os aviões.</p></div>
+      <div class="est-pcard"><div class="est-pic">🧪</div><h4>Amostras de solo</h4><p>Coleta de material em três pontos para analisar a resistência do solo.</p></div>
+    </div>
+
+    <p class="met-fonte">Fonte: Estudo de prospecção de sítios — ITA, em parceria com a Secretaria de Aviação Civil (SAC) e a Prefeitura de Santa Maria. Produto III (MESA-A), março de 2026.</p>
+  </div>
+</section>
+
+<section style="background:#fff" id="apoioSec" class="reveal">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Mural de apoio</div><h2>Deixe sua mensagem de apoio</h2>
+      <p>Some sua voz às <b id="apoioCount">0</b> manifestações de quem acredita no novo aeroporto. Toda mensagem passa por uma breve revisão antes de aparecer no mural.</p></div>
     <div class="apoio-top">
       <form class="apoio-form" id="apoioForm" autocomplete="off">
         <h3>Sua voz importa</h3>
-        <p class="fhint">Conte por que você apoia o novo aeroporto. Sua mensagem aparece no mural após a revisão da equipe.</p>
+        <p class="fhint">Conte porque você apoia o novo aeroporto.</p>
         <div class="row2">
           <div><label for="apNome">Seu nome</label><input id="apNome" class="inp" maxlength="80" placeholder="Ex.: Maria Silva" required /></div>
           <div><label for="apCidade">Cidade</label><input id="apCidade" class="inp" maxlength="80" placeholder="Ex.: Santa Maria" /></div>
@@ -342,53 +666,41 @@
       </form>
     </div>
     <div class="apoio-marquee" id="apoioMarquee"><div class="apoio-track" id="apoioFeed"></div></div>
-  </div>
-</section>
-
-<!-- ============ ETAPAS / LINHA DO TEMPO (unificado) ============ -->
-<section>
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Onde estamos · Linha do tempo</div>
-      <h2>As etapas do projeto</h2>
-      <p>Do estudo de áreas à obra — acompanhe o status de cada uma das nove etapas do cronograma, até a decolagem.</p>
-    </div>
-    <div class="htl-wrap">
-      <div class="htl-scroll"><div class="htl" id="fasesList"></div></div>
-      <div class="htl-legend">
-        <span><i style="background:var(--concluido)"></i>Concluído</span>
-        <span><i style="background:var(--andamento)"></i>Em andamento</span>
-        <span><i style="background:var(--iniciar)"></i>A iniciar</span>
-        <span><i style="background:var(--azul)"></i>Etapa paralela</span>
-      </div>
+    <div class="share-bar">
+      <span class="share-lab">Compartilhe este projeto:</span>
+      <a id="shareWa" class="share-btn wa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.045zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+        WhatsApp
+      </a>
+      <a id="shareFb" class="share-btn fb" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <button id="shareCopy" class="share-btn copy" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+        <span id="shareCopyLab">Copiar link</span>
+      </button>
     </div>
   </div>
 </section>
 
-<!-- ============ MARCOS ============ -->
-<section>
+<section class="reveal">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow">Marcos do projeto</div>
-      <h2>Momentos-chave</h2>
-      <p>Eventos importantes que marcam a articulação política e institucional do projeto.</p>
-    </div>
+    <div class="sec-head"><div class="eyebrow">Marcos do projeto</div><h2>Momentos-chave</h2>
+      <p>Eventos importantes que marcam a articulação política e institucional do projeto.</p></div>
     <div class="marcos" id="marcosList"></div>
   </div>
 </section>
 
-<!-- ============ CONTEXTO / NÚMEROS ============ -->
-<section class="ctx">
+<section class="ctx reveal">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow" style="color:var(--amarelo-2)">Por que um novo aeroporto?</div>
-      <h2 style="color:#fff">Santa Maria, hub logístico do RS</h2>
-    </div>
+    <div class="sec-head"><div class="eyebrow" style="color:var(--amarelo-2)">Por que um novo aeroporto?</div>
+      <h2 style="color:#fff">Santa Maria, hub logístico do RS</h2></div>
     <div class="nums">
-      <div class="num-c"><b>+80%</b><span>de crescimento de passageiros entre 2021 e 2024</span></div>
-      <div class="num-c"><b>46 mil</b><span>usuários por ano no terminal atual</span></div>
+      <div class="num-c"><b data-count="80" data-prefix="+" data-suffix="%">+80%</b><span>de crescimento de passageiros entre 2021 e 2024</span></div>
+      <div class="num-c"><b data-count="46" data-suffix=" mil">46 mil</b><span>usuários por ano no terminal atual</span></div>
       <div class="num-c"><b>36 → 6</b><span>áreas mapeadas pelo ITA, 6 priorizadas</span></div>
-      <div class="num-c"><b>43 km</b><span>raio de busca a partir do Centro</span></div>
+      <div class="num-c"><b data-count="43" data-suffix=" km">43 km</b><span>raio de busca a partir do Centro</span></div>
     </div>
     <div class="why">
       <div class="why-c"><h4>Superar o limite técnico</h4><p>A pista atual atende apenas aeronaves regionais (ATR 72). O novo aeroporto receberá jatos de grande porte como Boeing 737 e Airbus A320, ampliando conexões com Guarulhos, Congonhas e Brasília.</p></div>
@@ -399,7 +711,7 @@
 </section>
 
 <!-- ============ INSTITUIÇÕES APOIADORAS (ticker) ============ -->
-<section style="background:#fff" id="apoiadoresSec">
+<section style="background:#fff" id="apoiadoresSec" class="reveal">
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow">Apoio institucional</div>
@@ -413,45 +725,55 @@
 <footer>
   <div class="wrap fwrap">
     <div>Painel público de transparência — <b>Novo Aeroporto Regional de Santa Maria</b><br/>
+    <b>Secretaria de Desenvolvimento Econômico e Inovação</b><br/>
     Fontes: Cronograma do projeto (SAC / Município) e apresentação institucional.</div>
     <div class="upd">Última atualização: <b id="lastUpd">—</b></div>
   </div>
 </footer>
 
-<!-- ============ MODAL ADMIN ============ -->
 <div class="modal" id="adminModal">
   <div class="panel">
     <div class="ph"><h3>Área administrativa</h3><button class="x" id="closeAdmin">&times;</button></div>
     <div class="pb">
-      <!-- LOGIN -->
       <div id="loginView">
         <div class="login">
-          <label for="pwd">Senha de acesso</label>
-          <input type="password" id="pwd" class="inp" placeholder="Digite a senha" autocomplete="current-password" />
+          <label for="email">E-mail</label>
+          <input type="email" id="email" class="inp" placeholder="seu@email.gov.br" autocomplete="username" />
+          <label for="pwd">Senha</label>
+          <input type="password" id="pwd" class="inp" placeholder="Sua senha" autocomplete="current-password" />
           <div class="err" id="loginErr"></div>
           <button class="btn" id="doLogin" style="width:100%;margin-top:6px">Entrar</button>
         </div>
-        <div class="note"><b>Atenção de segurança:</b> esta é uma versão de validação. A verificação de senha acontece no navegador (não é segura para produção). Para uso público real, a autenticação e os dados devem ficar em um servidor — veja o caminho recomendado entregue junto ao arquivo.</div>
+        <div class="note">Acesso restrito à equipe autorizada. A autenticação é feita com segurança pelo Supabase — a senha não fica armazenada neste site. Esqueceu a senha? Redefina pelo painel do Supabase.</div>
       </div>
-      <!-- EDITOR -->
       <div id="editorView" style="display:none">
-        <p style="font-size:13px;color:var(--cinza);margin-bottom:8px">Atualize o status e o percentual de cada fase. O avanço geral é recalculado automaticamente.</p>
+        <p style="font-size:13px;color:var(--cinza);margin-bottom:8px">Atualize o status e o percentual de cada fase. O avanço geral é recalculado automaticamente e publicado para todos os visitantes ao salvar.</p>
         <div id="admFases"></div>
         <div style="margin-top:18px">
           <label style="font-size:13px;font-weight:600">Próximo marco em destaque</label>
           <select id="admNext" class="inp" style="margin-top:6px"></select>
         </div>
         <div class="adm-actions">
-          <button class="btn" id="saveBtn">Salvar alterações</button>
+          <button class="btn" id="saveBtn">Salvar e publicar</button>
           <button class="btn sec" id="exportBtn">Exportar dados (.json)</button>
           <button class="btn sec" id="logoutBtn">Sair</button>
           <span class="saved" id="savedMsg"></span>
         </div>
-        <div class="note">As alterações ficam salvas neste navegador. Para publicar para todos os visitantes, clique em <b>Exportar dados</b> e substitua o arquivo de dados no servidor (ou conecte ao backend conforme o guia).</div>
+
+        <div class="mod-sec">
+          <h4>Logo do cabeçalho (Prefeitura)</h4>
+          <p style="font-size:12.5px;color:var(--cinza);margin-top:4px">Carregue a logomarca que aparece no topo do site, no canto esquerdo. Use PNG com fundo transparente para melhor resultado. Ela substitui o coração + texto padrão.</p>
+          <form class="logo-form" id="brandForm" autocomplete="off" style="grid-template-columns:1fr auto">
+            <input type="file" id="brandArquivo" accept="image/*">
+            <button type="submit" class="btn" id="brandAdd">Salvar logo</button>
+          </form>
+          <div id="brandMsg" style="font-size:12.5px;font-weight:600;color:var(--coral);min-height:16px"></div>
+          <div id="brandAtual" style="margin-top:6px"></div>
+        </div>
 
         <div class="mod-sec">
           <h4>Mural de apoio — moderação</h4>
-          <p style="font-size:12.5px;color:var(--cinza);margin-top:4px">Aprove as mensagens para que apareçam no site, ou exclua as indevidas. (Demo: salvo neste navegador.)</p>
+          <p style="font-size:12.5px;color:var(--cinza);margin-top:4px">Aprove as mensagens para que apareçam no site, ou exclua as indevidas.</p>
           <div class="mod-tabs">
             <button type="button" class="mod-tab active" data-tab="pendentes" id="tabPend">Pendentes <span class="cnt" id="cntPend">(0)</span></button>
             <button type="button" class="mod-tab" data-tab="publicadas" id="tabPub">Publicadas <span class="cnt" id="cntPub">(0)</span></button>
@@ -461,94 +783,95 @@
 
         <div class="mod-sec">
           <h4>Instituições apoiadoras — logomarcas</h4>
-          <p style="font-size:12.5px;color:var(--cinza);margin-top:4px">Cadastre a logo informando a URL de uma imagem (PNG/SVG/JPG). Ela entra no ticker público imediatamente. (Demo: salvo neste navegador.)</p>
+          <p style="font-size:12.5px;color:var(--cinza);margin-top:4px">Carregue a imagem da logo direto do seu computador (PNG com fundo transparente fica melhor). Ela entra no ticker público ao vivo para todos os visitantes.</p>
           <form class="logo-form" id="logoForm" autocomplete="off">
             <input type="text" id="logoNome" placeholder="Nome da instituição" maxlength="120">
-            <input type="url" id="logoUrl" placeholder="URL da imagem (https://...)">
-            <input type="url" id="logoSite" placeholder="Site (opcional)">
+            <input type="file" id="logoArquivo" accept="image/*">
+            <input type="url" id="logoSite" placeholder="Site da instituição (opcional)">
             <button type="submit" class="btn" id="logoAdd">Adicionar</button>
           </form>
+          <p style="font-size:11.5px;color:#9a93a6;margin-top:2px">Tem só o link de uma imagem? Cole aqui (opcional): <input type="url" id="logoUrl" placeholder="https://...imagem.png" style="width:220px;max-width:100%"></p>
           <div id="logoMsg" style="font-size:12.5px;font-weight:600;color:var(--coral);min-height:16px"></div>
           <div id="logosAdminList"></div>
+        </div>
+
+        <div class="mod-sec">
+          <h4>Galeria — fotos e vídeos das obras em campo</h4>
+          <p style="font-size:12.5px;color:var(--cinza);margin-top:4px">Envie fotos ou vídeos do projeto. Eles aparecem na moldura no topo do site. As fotos são otimizadas automaticamente; os vídeos vão no tamanho original (use arquivos de até ~50&nbsp;MB).</p>
+          <form class="logo-form" id="fotoForm" autocomplete="off">
+            <input type="text" id="fotoLegenda" placeholder="Legenda (opcional)" maxlength="160">
+            <input type="file" id="fotoArquivo" accept="image/*,video/*">
+            <button type="submit" class="btn" id="fotoAdd">Enviar</button>
+          </form>
+          <div id="fotoMsg" style="font-size:12.5px;font-weight:600;color:var(--coral);min-height:16px"></div>
+          <div id="fotoProg" class="up-prog" style="display:none"><div id="fotoProgBar" class="up-prog-bar"></div></div>
+          <div id="fotosAdminList"></div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-// ============ DADOS BASE (editáveis) ============
-// Senha de demonstração — TROQUE antes de usar. Em produção, validar no servidor.
-const ADMIN_PASSWORD = "SantaMaria2026";
+// ===================== CONFIGURAÇÃO =====================
+// Cole aqui os dados do seu projeto Supabase (Settings > API).
+// A chave "anon" é pública por natureza — a segurança vem das políticas RLS no banco.
+const SUPABASE_URL  = "https://gvrgbyvyqrxhvoppkiuc.supabase.co";
+const SUPABASE_ANON = "sb_publishable_nIcYRc38O1mMEUinPzV01w_NYgo_FJ7";
+// =======================================================
 
 const DEFAULT_DATA = {
-  atualizadoEm: "2026-06-19",
-  proximoMarco: "M1",
-  fases: [
-    {id:"f1", num:"1", nome:"Estudo e priorização de áreas", periodo:"nov/2025 – set/2026", resp:"ITA e SAC", peso:8, status:"em_andamento", progresso:40, paralela:false,
-      desc:"Estudo técnico de áreas e priorização pelo ITA/SAC."},
-    {id:"f2", num:"2", nome:"Escolha da área pelo Município", periodo:"out/2026 – dez/2026", resp:"Município", peso:4, status:"a_iniciar", progresso:0, paralela:false,
-      desc:"Avaliação e escolha definitiva do sítio aeroportuário."},
-    {id:"f3", num:"3", nome:"Viabilidade técnica e ambiental", periodo:"mar/2027 – out/2027", resp:"SAC", peso:10, status:"a_iniciar", progresso:0, paralela:false,
-      desc:"Levantamento, diretrizes, cenários e estudo preliminar."},
-    {id:"f4", num:"4", nome:"Declaração de utilidade pública", periodo:"nov/2027 – dez/2027", resp:"Município", peso:3, status:"a_iniciar", progresso:0, paralela:false,
-      desc:"Decreto de utilidade pública das áreas necessárias."},
-    {id:"f5", num:"5", nome:"Convênio de Delegação SAC", periodo:"jan/2028 – mar/2028", resp:"SAC e Município", peso:5, status:"a_iniciar", progresso:0, paralela:false,
-      desc:"Celebração do convênio de delegação SAC/Município."},
-    {id:"f6", num:"6", nome:"Desapropriação das áreas", periodo:"jan/2028 – dez/2028", resp:"Município", peso:10, status:"a_iniciar", progresso:0, paralela:true,
-      desc:"Desapropriação das áreas — corre em paralelo às demais etapas."},
-    {id:"f7", num:"7", nome:"Licença Prévia Ambiental", periodo:"jun/2027 – mai/2029", resp:"SAC e Município", peso:15, status:"a_iniciar", progresso:0, paralela:true,
-      desc:"Licenciamento ambiental — em paralelo do início até o fim da obra."},
-    {id:"f8", num:"8", nome:"Projeto Básico", periodo:"abr/2028 – jul/2029", resp:"SAC", peso:15, status:"a_iniciar", progresso:0, paralela:false,
-      desc:"Elaboração do Projeto Básico de engenharia."},
-    {id:"f9", num:"9", nome:"Execução da obra", periodo:"ago/2029 – jan/2032", resp:"SAC e Município", peso:30, status:"a_iniciar", progresso:0, paralela:false,
-      desc:"Execução da obra do novo aeroporto."}
+  atualizadoEm:"2026-06-19", proximoMarco:"M1",
+  fases:[
+    {id:"f1",num:"1",nome:"Estudo e priorização de áreas",periodo:"nov/2025 – set/2026",resp:"ITA e SAC",peso:8,status:"em_andamento",progresso:40,paralela:false,desc:"Estudo técnico de áreas e priorização pelo ITA/SAC."},
+    {id:"f2",num:"2",nome:"Escolha da área pelo Município",periodo:"out/2026 – dez/2026",resp:"Município",peso:4,status:"a_iniciar",progresso:0,paralela:false,desc:"Avaliação e escolha definitiva do sítio aeroportuário."},
+    {id:"f3",num:"3",nome:"Viabilidade técnica e ambiental",periodo:"mar/2027 – out/2027",resp:"SAC",peso:10,status:"a_iniciar",progresso:0,paralela:false,desc:"Levantamento, diretrizes, cenários e estudo preliminar."},
+    {id:"f4",num:"4",nome:"Declaração de utilidade pública",periodo:"nov/2027 – dez/2027",resp:"Município",peso:3,status:"a_iniciar",progresso:0,paralela:false,desc:"Decreto de utilidade pública das áreas necessárias."},
+    {id:"f5",num:"5",nome:"Convênio de Delegação SAC",periodo:"jan/2028 – mar/2028",resp:"SAC e Município",peso:5,status:"a_iniciar",progresso:0,paralela:false,desc:"Celebração do convênio de delegação SAC/Município."},
+    {id:"f6",num:"6",nome:"Desapropriação das áreas",periodo:"jan/2028 – dez/2028",resp:"Município",peso:10,status:"a_iniciar",progresso:0,paralela:true,desc:"Desapropriação das áreas — corre em paralelo às demais etapas."},
+    {id:"f7",num:"7",nome:"Licença Prévia Ambiental",periodo:"jun/2027 – mai/2029",resp:"SAC e Município",peso:15,status:"a_iniciar",progresso:0,paralela:true,desc:"Licenciamento ambiental — em paralelo do início até o fim da obra."},
+    {id:"f8",num:"8",nome:"Projeto Básico",periodo:"abr/2028 – jul/2029",resp:"SAC",peso:15,status:"a_iniciar",progresso:0,paralela:false,desc:"Elaboração do Projeto Básico de engenharia."},
+    {id:"f9",num:"9",nome:"Execução da obra",periodo:"ago/2029 – jan/2032",resp:"SAC e Município",peso:30,status:"a_iniciar",progresso:0,paralela:false,desc:"Execução da obra do novo aeroporto."}
   ],
-  marcos: [
-    {cod:"M1", nome:"Apresentação à AMCentro das tratativas e próximos passos", data:"jul/2026", resp:"Município"},
-    {cod:"M2", nome:"Recepção do estudo de áreas para o novo sítio aeroportuário", data:"out/2026", resp:"Município"},
-    {cod:"M3", nome:"Visita ao Ministro de Portos e Aeroportos e apresentação da área", data:"dez/2026", resp:"SAC e Município"},
-    {cod:"M4", nome:"Celebração do Convênio de delegação SAC/Município", data:"mar/2028", resp:"SAC e Município"}
+  marcos:[
+    {cod:"M1",nome:"Apresentação à AMCentro das tratativas e próximos passos",data:"jul/2026",resp:"Município"},
+    {cod:"M2",nome:"Recepção do estudo de áreas para o novo sítio aeroportuário",data:"out/2026",resp:"Município"},
+    {cod:"M3",nome:"Visita ao Ministro de Portos e Aeroportos e apresentação da área",data:"dez/2026",resp:"SAC e Município"},
+    {cod:"M4",nome:"Celebração do Convênio de delegação SAC/Município",data:"mar/2028",resp:"SAC e Município"}
   ]
 };
+const STATUS_LABEL={concluido:"Concluído",em_andamento:"Em andamento",a_iniciar:"A iniciar"};
 
-const STATUS_LABEL = {concluido:"Concluído", em_andamento:"Em andamento", a_iniciar:"A iniciar"};
-const STORE_KEY = "aeroporto_sm_dashboard_v2";
+let DATA = JSON.parse(JSON.stringify(DEFAULT_DATA));
+let sb = null;
+const configurado = SUPABASE_URL.startsWith("http") && SUPABASE_ANON.length>20;
+if(configurado){ sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON); }
 
-function loadData(){
-  try{ const s=localStorage.getItem(STORE_KEY); if(s) return JSON.parse(s); }catch(e){}
-  return JSON.parse(JSON.stringify(DEFAULT_DATA));
-}
-function saveData(d){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(d)); }catch(e){} }
+function overallPct(d){let sp=0,sw=0;d.fases.forEach(f=>{sp+=(f.progresso||0)*(f.peso||0);sw+=(f.peso||0);});return sw?Math.round(sp/sw):0;}
+function fmtDateBR(iso){if(!iso)return "—";const p=String(iso).slice(0,10).split("-");return p.length===3?`${p[2]}/${p[1]}/${p[0]}`:iso;}
 
-let DATA = loadData();
-
-// ============ RENDER PÚBLICO ============
-function overallPct(d){
-  let sp=0, sw=0; d.fases.forEach(f=>{ sp += (f.progresso||0)*(f.peso||0); sw += (f.peso||0); });
-  return sw? Math.round(sp/sw):0;
-}
-function fmtDateBR(iso){
-  if(!iso) return "—";
-  const [y,m,dd]=iso.split("-"); return `${dd}/${m}/${y}`;
+function aplicarBrandLogo(){
+  const img=document.getElementById("brandLogo"), def=document.getElementById("brandDefault");
+  if(!img||!def) return;
+  const url=DATA&&DATA.logoPrefeitura;
+  if(url){ img.src=url; img.style.display="block"; def.style.display="none";
+    img.onerror=()=>{ img.style.display="none"; def.style.display="flex"; }; }
+  else{ img.style.display="none"; def.style.display="flex"; }
 }
 function render(){
-  const pct = overallPct(DATA);
-  const C=2*Math.PI*60;
-  document.getElementById("ringArc").setAttribute("stroke-dashoffset", C*(1-pct/100));
-  document.getElementById("ringPct").textContent = pct+"%";
-  const atual = DATA.fases.find(f=>f.status==="em_andamento") || DATA.fases.find(f=>f.status==="a_iniciar") || DATA.fases[DATA.fases.length-1];
-  document.getElementById("faseAtualPill").textContent = "Fase atual: "+(atual?atual.nome:"—");
-  document.getElementById("lastUpd").textContent = fmtDateBR(DATA.atualizadoEm);
-
-  // próximo marco
-  const nm = DATA.marcos.find(m=>m.cod===DATA.proximoMarco) || DATA.marcos[0];
-  if(nm){ document.getElementById("nextNome").textContent=nm.nome; document.getElementById("nextData").textContent=nm.data; document.getElementById("nextResp").textContent="Responsável: "+nm.resp; }
-
-  // etapas / linha do tempo HORIZONTAL
+  aplicarBrandLogo();
+  const pct=overallPct(DATA),C=2*Math.PI*60;
+  document.getElementById("ringArc").setAttribute("stroke-dashoffset",C*(1-pct/100));
+  document.getElementById("ringPct").textContent=pct+"%";
+  const atual=DATA.fases.find(f=>f.status==="em_andamento")||DATA.fases.find(f=>f.status==="a_iniciar")||DATA.fases[DATA.fases.length-1];
+  document.getElementById("faseAtualPill").textContent="Fase atual: "+(atual?atual.nome:"—");
+  document.getElementById("lastUpd").textContent=fmtDateBR(DATA.atualizadoEm);
+  const nm=DATA.marcos.find(m=>m.cod===DATA.proximoMarco)||DATA.marcos[0];
+  if(nm){document.getElementById("nextNome").textContent=nm.nome;document.getElementById("nextData").textContent=nm.data;document.getElementById("nextResp").textContent="Responsável: "+nm.resp;}
   const segCor={concluido:"var(--concluido)",em_andamento:"var(--andamento)",a_iniciar:"var(--iniciar)"};
   const fimObra=(DATA.fases[DATA.fases.length-1].periodo.split(/[–—-]/).pop()||"").trim();
-  document.getElementById("fasesList").innerHTML = DATA.fases.map(f=>`
+  document.getElementById("fasesList").innerHTML=DATA.fases.map(f=>`
     <div class="step" data-st="${f.status}" style="--seg:${segCor[f.status]||'var(--iniciar)'}">
       <div class="node">${f.status==="concluido"?"":f.num}</div>
       <div class="scard">
@@ -564,59 +887,82 @@ function render(){
       <div class="node"><svg viewBox="0 0 24 24" width="27" height="27" fill="#fff" aria-hidden="true"><path d="M2.5 19h19v2h-19v-2zm19.57-9.36c-.21-.8-1.04-1.28-1.84-1.06L14.92 10l-6.9-6.43-1.93.51 4.14 7.17-4.97 1.33-1.97-1.54-1.45.39 2.59 4.49 1.71-.46 8.65-2.32 5.34-1.43c.81-.23 1.28-1.05 1.07-1.85z"/></svg></div>
       <div class="scard"><b>Decolagem</b><span>${fimObra}</span></div>
     </div>`;
-
-  // marcos
-  document.getElementById("marcosList").innerHTML = DATA.marcos.map(m=>`
-    <div class="marco">
-      <div class="cod">${m.cod}</div>
-      <div class="dt">${m.data}</div>
-      <p>${m.nome}</p>
-    </div>`).join("");
+  document.getElementById("marcosList").innerHTML=DATA.marcos.map(m=>`
+    <div class="marco"><div class="cod">${m.cod}</div><div class="dt">${m.data}</div><p>${m.nome}</p></div>`).join("");
 }
-render();
 
-// ============ ADMIN ============
+function cfgbar(msg,off){const b=document.getElementById("cfgbar");b.textContent=msg;b.className="cfgbar"+(off?" off":"");b.style.display="block";}
+
+async function carregar(){
+  if(!configurado){ render(); cfgbar("Modo demonstração — configure o Supabase no topo do arquivo para dados ao vivo.",false); return; }
+  try{
+    const {data,error}=await sb.from("painel_aeroporto").select("dados,atualizado_em").eq("id",1).single();
+    if(error) throw error;
+    if(data&&data.dados){ DATA=data.dados; if(data.atualizado_em) DATA.atualizadoEm=data.atualizado_em; }
+    render();
+  }catch(e){ render(); cfgbar("Não foi possível carregar os dados ao vivo agora. Exibindo a última versão conhecida.",true); }
+}
+
+// Realtime: atualiza o painel público quando o admin salva
+if(configurado){
+  sb.channel("painel").on("postgres_changes",{event:"UPDATE",schema:"public",table:"painel_aeroporto"},
+    payload=>{ if(payload.new&&payload.new.dados){DATA=payload.new.dados;DATA.atualizadoEm=payload.new.atualizado_em||DATA.atualizadoEm;render();} }).subscribe();
+}
+
+// ===== Modal / Admin =====
 const modal=document.getElementById("adminModal");
-document.getElementById("openAdmin").onclick=()=>{modal.classList.add("open");};
-document.getElementById("closeAdmin").onclick=()=>{modal.classList.remove("open");};
+document.getElementById("openAdmin").onclick=async()=>{ modal.classList.add("open"); if(configurado){const {data}=await sb.auth.getSession(); if(data&&data.session) showEditor();} };
+document.getElementById("closeAdmin").onclick=()=>modal.classList.remove("open");
 modal.addEventListener("click",e=>{if(e.target===modal)modal.classList.remove("open");});
 
+async function tryLogin(){
+  const err=document.getElementById("loginErr");
+  if(!configurado){ err.textContent="Configure o Supabase no arquivo para habilitar o login."; return; }
+  const email=document.getElementById("email").value.trim();
+  const pwd=document.getElementById("pwd").value;
+  const btn=document.getElementById("doLogin"); btn.disabled=true; err.textContent="";
+  const {error}=await sb.auth.signInWithPassword({email,password:pwd});
+  btn.disabled=false;
+  if(error){ err.textContent="E-mail ou senha incorretos."; return; }
+  document.getElementById("pwd").value=""; showEditor();
+}
 document.getElementById("doLogin").onclick=tryLogin;
 document.getElementById("pwd").addEventListener("keydown",e=>{if(e.key==="Enter")tryLogin();});
-function tryLogin(){
-  const v=document.getElementById("pwd").value;
-  if(v===ADMIN_PASSWORD){ document.getElementById("loginErr").textContent=""; document.getElementById("pwd").value=""; showEditor(); }
-  else{ document.getElementById("loginErr").textContent="Senha incorreta."; }
-}
-document.getElementById("logoutBtn").onclick=()=>{ document.getElementById("editorView").style.display="none"; document.getElementById("loginView").style.display="block"; };
+document.getElementById("logoutBtn").onclick=async()=>{ if(sb) await sb.auth.signOut(); document.getElementById("editorView").style.display="none"; document.getElementById("loginView").style.display="block"; };
 
 function showEditor(){
   document.getElementById("loginView").style.display="none";
   document.getElementById("editorView").style.display="block";
-  document.getElementById("admFases").innerHTML = DATA.fases.map((f,i)=>`
-    <div class="adm-row">
-      <div class="nm">${f.nome}<small>${f.periodo}</small></div>
+  document.getElementById("admFases").innerHTML=DATA.fases.map((f,i)=>`
+    <div class="adm-row"><div class="nm">${f.nome}<small>${f.periodo}</small></div>
       <select data-i="${i}" class="admStatus">
         <option value="a_iniciar"${f.status==="a_iniciar"?" selected":""}>A iniciar</option>
         <option value="em_andamento"${f.status==="em_andamento"?" selected":""}>Em andamento</option>
         <option value="concluido"${f.status==="concluido"?" selected":""}>Concluído</option>
       </select>
       <input type="number" min="0" max="100" value="${f.progresso}" data-i="${i}" class="admProg" />
-      <span style="font-size:12px;color:#999">% / peso ${f.peso}</span>
-    </div>`).join("");
-  document.getElementById("admNext").innerHTML = DATA.marcos.map(m=>`<option value="${m.cod}"${DATA.proximoMarco===m.cod?" selected":""}>${m.cod} — ${m.data} — ${m.nome.slice(0,42)}…</option>`).join("");
+      <span style="font-size:12px;color:#999">% / peso ${f.peso}</span></div>`).join("");
+  document.getElementById("admNext").innerHTML=DATA.marcos.map(m=>`<option value="${m.cod}"${DATA.proximoMarco===m.cod?" selected":""}>${m.cod} — ${m.data} — ${m.nome.slice(0,40)}…</option>`).join("");
   carregarModeracao();
+  carregarLogosAdmin();
+  carregarFotosAdmin();
+  renderBrandAtual();
 }
 
-document.getElementById("saveBtn").onclick=()=>{
+document.getElementById("saveBtn").onclick=async()=>{
   document.querySelectorAll(".admStatus").forEach(s=>{DATA.fases[+s.dataset.i].status=s.value;});
-  document.querySelectorAll(".admProg").forEach(p=>{let v=Math.max(0,Math.min(100,+p.value||0));DATA.fases[+p.dataset.i].progresso=v;});
-  // auto: concluído -> 100, a iniciar -> 0 se 0
-  DATA.fases.forEach(f=>{ if(f.status==="concluido") f.progresso=100; });
+  document.querySelectorAll(".admProg").forEach(p=>{DATA.fases[+p.dataset.i].progresso=Math.max(0,Math.min(100,+p.value||0));});
+  DATA.fases.forEach(f=>{if(f.status==="concluido")f.progresso=100;});
   DATA.proximoMarco=document.getElementById("admNext").value;
   const d=new Date(); DATA.atualizadoEm=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
-  saveData(DATA); render(); showEditor();
-  const m=document.getElementById("savedMsg"); m.textContent="✓ Salvo e publicado neste navegador"; setTimeout(()=>m.textContent="",3500);
+  const msg=document.getElementById("savedMsg");
+  if(configurado){
+    msg.style.color="#666"; msg.textContent="Salvando…";
+    const {error}=await sb.from("painel_aeroporto").update({dados:DATA}).eq("id",1);
+    if(error){ msg.style.color="#E5006D"; msg.textContent="Erro ao salvar (verifique se está logado)."; return; }
+    msg.style.color="#51AE32"; msg.textContent="✓ Publicado para todos";
+  }else{ msg.style.color="#51AE32"; msg.textContent="✓ Salvo (modo demo)"; }
+  render(); showEditor(); setTimeout(()=>msg.textContent="",4000);
 };
 
 document.getElementById("exportBtn").onclick=()=>{
@@ -624,18 +970,11 @@ document.getElementById("exportBtn").onclick=()=>{
   const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="dados-aeroporto-sm.json"; a.click();
 };
 
-// ============ MURAL DE APOIO (demo / localStorage) ============
-const APOIO_KEY="aeroporto_sm_apoios_v1";
-function loadApoios(){
-  try{ const s=localStorage.getItem(APOIO_KEY); if(s) return JSON.parse(s); }catch(e){}
-  return [{id:"seed1",nome:"Equipe do Projeto",cidade:"Santa Maria",mensagem:"Que este mural se encha de vozes que acreditam no futuro da nossa região. Deixe aqui o seu apoio!",aprovado:true,criado_em:new Date().toISOString()}];
-}
-function saveApoios(l){ try{ localStorage.setItem(APOIO_KEY,JSON.stringify(l)); }catch(e){} }
-let APOIOS=loadApoios();
-
+// ===================== MURAL DE APOIO =====================
 function escapeHtml(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
-function fmtDataApoio(iso){try{const d=new Date(iso);return `${String(d.getDate()).padStart(2,"0")}/${String(d.getMonth()+1).padStart(2,"0")}/${d.getFullYear()}`;}catch(e){return "";}}
-
+function fmtDataApoio(iso){
+  try{const d=new Date(iso);const dd=String(d.getDate()).padStart(2,"0"),mm=String(d.getMonth()+1).padStart(2,"0");return `${dd}/${mm}/${d.getFullYear()}`;}catch(e){return "";}
+}
 function apoioCardHtml(m){
   return `<div class="apoio-card">
       <div class="msg">${escapeHtml(m.mensagem)}</div>
@@ -643,43 +982,74 @@ function apoioCardHtml(m){
       <span class="dt">${fmtDataApoio(m.criado_em)}</span></div>
     </div>`;
 }
-function renderApoios(){
-  const aprovados=APOIOS.filter(a=>a.aprovado).sort((a,b)=>new Date(b.criado_em)-new Date(a.criado_em));
-  document.getElementById("apoioCount").textContent=aprovados.length;
+function renderApoios(lista){
   const track=document.getElementById("apoioFeed"), wrap=document.getElementById("apoioMarquee");
-  if(!aprovados.length){ wrap.classList.add("is-empty"); track.innerHTML=`<div class="apoio-empty">Seja a primeira pessoa a deixar uma mensagem de apoio ao novo aeroporto.</div>`; return; }
+  document.getElementById("apoioCount").textContent=lista.length;
+  if(!lista.length){ wrap.classList.add("is-empty"); track.innerHTML=`<div class="apoio-empty">Seja a primeira pessoa a deixar uma mensagem de apoio ao novo aeroporto.</div>`; return; }
   wrap.classList.remove("is-empty");
-  let base=aprovados.slice(); while(base.length<4){ base=base.concat(aprovados); } // garante largura p/ loop suave
+  let base=lista.slice(); while(base.length<4){ base=base.concat(lista); } // garante largura p/ loop suave
   const uma=base.map(apoioCardHtml).join("");
   track.innerHTML=uma+uma; // duas cópias = rolagem contínua sem emendas
   track.style.animationDuration=Math.max(26,base.length*7)+"s";
 }
-renderApoios();
+async function carregarApoios(){
+  if(!configurado){
+    renderApoios([{nome:"Equipe do Projeto",cidade:"Santa Maria",mensagem:"Configure o Supabase para receber e exibir as mensagens de apoio dos visitantes ao vivo.",criado_em:new Date().toISOString()}]);
+    return;
+  }
+  try{
+    const {data,error}=await sb.from("mensagens_apoio").select("nome,cidade,mensagem,criado_em").eq("aprovado",true).order("criado_em",{ascending:false}).limit(200);
+    if(error) throw error;
+    renderApoios(data||[]);
+  }catch(e){ renderApoios([]); }
+}
 
-document.getElementById("apMsg").addEventListener("input",e=>{document.getElementById("apCount").textContent=e.target.value.length;});
-document.getElementById("apoioForm").addEventListener("submit",ev=>{
+// Envio do formulário
+document.getElementById("apoioForm").addEventListener("submit",async(ev)=>{
   ev.preventDefault();
   const msgEl=document.getElementById("apFeedbackMsg");
   const nome=document.getElementById("apNome").value.trim();
   const cidade=document.getElementById("apCidade").value.trim();
   const mensagem=document.getElementById("apMsg").value.trim();
-  if(document.getElementById("apWeb").value){ return; } // honeypot
+  const hp=document.getElementById("apWeb").value; // honeypot anti-spam
+  if(hp){ return; } // bot preencheu campo oculto — ignora silenciosamente
   if(nome.length<2||mensagem.length<3){ msgEl.style.color="#FFED00"; msgEl.textContent="Preencha seu nome e uma mensagem."; return; }
-  APOIOS.push({id:"a"+Date.now(),nome,cidade:cidade||null,mensagem,aprovado:false,criado_em:new Date().toISOString()});
-  saveApoios(APOIOS);
+  const btn=document.getElementById("apBtn"); btn.disabled=true; msgEl.style.color="#fff"; msgEl.textContent="Enviando…";
+  if(!configurado){
+    msgEl.style.color="#FFED00"; msgEl.textContent="Modo demonstração — configure o Supabase para enviar de verdade.";
+    btn.disabled=false; return;
+  }
+  const {error}=await sb.from("mensagens_apoio").insert({nome,cidade:cidade||null,mensagem,aprovado:false});
+  btn.disabled=false;
+  if(error){ msgEl.style.color="#FFED00"; msgEl.textContent="Não foi possível enviar agora. Tente novamente."; return; }
   document.getElementById("apoioForm").reset(); document.getElementById("apCount").textContent="0";
   msgEl.style.color="#FFED00"; msgEl.textContent="✓ Obrigado! Sua mensagem foi enviada e aparecerá após a revisão.";
   setTimeout(()=>{msgEl.textContent="";},6000);
 });
+// contador de caracteres
+document.getElementById("apMsg").addEventListener("input",e=>{document.getElementById("apCount").textContent=e.target.value.length;});
 
-// ===== Moderação (demo) =====
-let MOD_TAB="pendentes";
-function carregarModeracao(){ renderModeracao(); renderLogosAdmin(); }
+// Realtime: novo apoio aprovado aparece sozinho no mural
+if(configurado){
+  sb.channel("apoios").on("postgres_changes",{event:"*",schema:"public",table:"mensagens_apoio"},()=>{ carregarApoios(); }).subscribe();
+}
+
+// ===== Moderação (admin) =====
+let MOD_TAB="pendentes", MOD_DADOS=[];
+async function carregarModeracao(){
+  const lista=document.getElementById("modLista");
+  if(!configurado){ lista.innerHTML=`<div class="mod-empty">Configure o Supabase para moderar as mensagens.</div>`; return; }
+  lista.innerHTML=`<div class="mod-empty">Carregando…</div>`;
+  const {data,error}=await sb.from("mensagens_apoio").select("*").order("criado_em",{ascending:false});
+  if(error){ lista.innerHTML=`<div class="mod-empty">Erro ao carregar (verifique se está logado).</div>`; return; }
+  MOD_DADOS=data||[];
+  renderModeracao();
+}
 function renderModeracao(){
-  const pend=APOIOS.filter(m=>!m.aprovado), pub=APOIOS.filter(m=>m.aprovado);
+  const pend=MOD_DADOS.filter(m=>!m.aprovado), pub=MOD_DADOS.filter(m=>m.aprovado);
   document.getElementById("cntPend").textContent=`(${pend.length})`;
   document.getElementById("cntPub").textContent=`(${pub.length})`;
-  const lista=(MOD_TAB==="pendentes"?pend:pub).sort((a,b)=>new Date(b.criado_em)-new Date(a.criado_em));
+  const lista=MOD_TAB==="pendentes"?pend:pub;
   const el=document.getElementById("modLista");
   if(!lista.length){ el.innerHTML=`<div class="mod-empty">${MOD_TAB==="pendentes"?"Nenhuma mensagem pendente.":"Nenhuma mensagem publicada ainda."}</div>`; return; }
   el.innerHTML=lista.map(m=>`
@@ -691,59 +1061,386 @@ function renderModeracao(){
         <button class="btn-del" data-del="${m.id}">Excluir</button>
       </div>
     </div>`).join("");
-  el.querySelectorAll("[data-ap]").forEach(b=>b.onclick=()=>{const m=APOIOS.find(x=>x.id===b.dataset.ap);if(m){m.aprovado=true;saveApoios(APOIOS);renderModeracao();renderApoios();}});
-  el.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{ if(!confirm("Excluir esta mensagem definitivamente?"))return; APOIOS=APOIOS.filter(x=>x.id!==b.dataset.del);saveApoios(APOIOS);renderModeracao();renderApoios();});
+  el.querySelectorAll("[data-ap]").forEach(b=>b.onclick=()=>aprovarApoio(b.dataset.ap));
+  el.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>excluirApoio(b.dataset.del));
+}
+async function aprovarApoio(id){
+  const {error}=await sb.from("mensagens_apoio").update({aprovado:true}).eq("id",id);
+  if(!error){ await carregarModeracao(); carregarApoios(); }
+}
+async function excluirApoio(id){
+  if(!confirm("Excluir esta mensagem definitivamente?")) return;
+  const {error}=await sb.from("mensagens_apoio").delete().eq("id",id);
+  if(!error){ await carregarModeracao(); carregarApoios(); }
 }
 document.getElementById("tabPend").onclick=()=>{MOD_TAB="pendentes";document.getElementById("tabPend").classList.add("active");document.getElementById("tabPub").classList.remove("active");renderModeracao();};
 document.getElementById("tabPub").onclick=()=>{MOD_TAB="publicadas";document.getElementById("tabPub").classList.add("active");document.getElementById("tabPend").classList.remove("active");renderModeracao();};
 
-// ===== Instituições apoiadoras (logos) — demo =====
-const LOGOS_KEY="aeroporto_sm_apoiadores_v1";
-function loadLogos(){ try{ const s=localStorage.getItem(LOGOS_KEY); if(s) return JSON.parse(s); }catch(e){} return []; }
-function saveLogos(l){ try{ localStorage.setItem(LOGOS_KEY,JSON.stringify(l)); }catch(e){} }
-let LOGOS=loadLogos();
-
+// ===================== INSTITUIÇÕES APOIADORAS (logos) =====================
 function logoItemHtml(l){
-  const img=`<img src="${escapeHtml(l.url)}" alt="${escapeHtml(l.nome)}" loading="lazy" onerror="this.parentNode.style.display='none'">`;
-  const inner=l.site?`<a href="${escapeHtml(l.site)}" target="_blank" rel="noopener" title="${escapeHtml(l.nome)}">${img}</a>`:img;
+  const img=`<img src="${escapeHtml(l.logo_url)}" alt="${escapeHtml(l.nome)}" loading="lazy" onerror="this.parentNode.style.display='none'">`;
+  const inner=l.site_url?`<a href="${escapeHtml(l.site_url)}" target="_blank" rel="noopener" title="${escapeHtml(l.nome)}">${img}</a>`:img;
   return `<div class="logo-item">${inner}</div>`;
 }
-function renderLogos(){
+function renderLogos(lista){
   const track=document.getElementById("logosTrack"), wrap=document.getElementById("logosMarquee");
-  if(!LOGOS.length){ wrap.classList.add("is-empty"); track.innerHTML=`<div class="logos-empty">Em breve, as instituições que apoiam o projeto aparecerão aqui.</div>`; return; }
+  if(!lista.length){ wrap.classList.add("is-empty"); track.innerHTML=`<div class="logos-empty">Em breve, as instituições que apoiam o projeto aparecerão aqui.</div>`; return; }
   wrap.classList.remove("is-empty");
-  let base=LOGOS.slice(); while(base.length<5){ base=base.concat(LOGOS); }
+  let base=lista.slice(); while(base.length<5){ base=base.concat(lista); }
   const uma=base.map(logoItemHtml).join("");
   track.innerHTML=uma+uma;
   track.style.animationDuration=Math.max(24,base.length*5)+"s";
 }
-renderLogos();
+async function carregarLogos(){
+  if(!configurado){ renderLogos([]); return; }
+  try{
+    const {data,error}=await sb.from("apoiadores").select("nome,logo_url,site_url,ordem").order("ordem",{ascending:true}).order("criado_em",{ascending:true}).limit(200);
+    if(error) throw error;
+    renderLogos(data||[]);
+  }catch(e){ renderLogos([]); }
+}
 
+// Admin: gestão de logos
+let LOGOS_ADM=[];
+async function carregarLogosAdmin(){
+  const el=document.getElementById("logosAdminList");
+  if(!configurado){ el.innerHTML=`<div class="mod-empty">Configure o Supabase para cadastrar logomarcas.</div>`; return; }
+  el.innerHTML=`<div class="mod-empty">Carregando…</div>`;
+  const {data,error}=await sb.from("apoiadores").select("*").order("ordem",{ascending:true}).order("criado_em",{ascending:true});
+  if(error){ el.innerHTML=`<div class="mod-empty">Erro ao carregar (verifique se está logado).</div>`; return; }
+  LOGOS_ADM=data||[]; renderLogosAdmin();
+}
 function renderLogosAdmin(){
   const el=document.getElementById("logosAdminList");
-  if(!LOGOS.length){ el.innerHTML=`<div class="mod-empty">Nenhuma logomarca cadastrada ainda.</div>`; return; }
-  el.innerHTML=LOGOS.map(l=>`
+  if(!LOGOS_ADM.length){ el.innerHTML=`<div class="mod-empty">Nenhuma logomarca cadastrada ainda.</div>`; return; }
+  el.innerHTML=LOGOS_ADM.map(l=>`
     <div class="logo-adm">
-      <img src="${escapeHtml(l.url)}" alt="" onerror="this.style.visibility='hidden'">
+      <img src="${escapeHtml(l.logo_url)}" alt="" onerror="this.style.visibility='hidden'">
       <span class="ln">${escapeHtml(l.nome)}</span>
       <button data-dellogo="${l.id}">Excluir</button>
     </div>`).join("");
-  el.querySelectorAll("[data-dellogo]").forEach(b=>b.onclick=()=>{ if(!confirm("Excluir esta logomarca?"))return; LOGOS=LOGOS.filter(x=>x.id!==b.dataset.dellogo); saveLogos(LOGOS); renderLogosAdmin(); renderLogos(); });
+  el.querySelectorAll("[data-dellogo]").forEach(b=>b.onclick=()=>excluirLogo(b.dataset.dellogo));
 }
-document.getElementById("logoForm").addEventListener("submit",ev=>{
+async function excluirLogo(id){
+  if(!confirm("Excluir esta logomarca?")) return;
+  const {error}=await sb.from("apoiadores").delete().eq("id",id);
+  if(!error){ await carregarLogosAdmin(); carregarLogos(); }
+}
+document.getElementById("logoForm").addEventListener("submit",async(ev)=>{
   ev.preventDefault();
   const msg=document.getElementById("logoMsg");
   const nome=document.getElementById("logoNome").value.trim();
-  const url=document.getElementById("logoUrl").value.trim();
-  const site=document.getElementById("logoSite").value.trim();
-  if(nome.length<1||!/^https?:\/\//i.test(url)){ msg.style.color="var(--coral)"; msg.textContent="Informe o nome e uma URL de imagem válida (https://...)."; return; }
-  LOGOS.push({id:"l"+Date.now(),nome,url,site:site||null});
-  saveLogos(LOGOS);
-  document.getElementById("logoForm").reset();
-  msg.style.color="var(--verde)"; msg.textContent="✓ Logomarca adicionada.";
-  setTimeout(()=>{msg.textContent="";},4000);
-  renderLogosAdmin(); renderLogos();
+  const site_url=document.getElementById("logoSite").value.trim();
+  const inp=document.getElementById("logoArquivo");
+  const file=inp.files&&inp.files[0];
+  let logo_url=document.getElementById("logoUrl").value.trim();
+  if(nome.length<1){ msg.style.color="var(--coral)"; msg.textContent="Informe o nome da instituição."; return; }
+  if(!file && !/^https?:\/\//i.test(logo_url)){ msg.style.color="var(--coral)"; msg.textContent="Carregue a imagem da logo (ou cole o link de uma imagem)."; return; }
+  if(!configurado){ msg.style.color="var(--coral)"; msg.textContent="Configure o Supabase para cadastrar de verdade."; return; }
+  const btn=document.getElementById("logoAdd"); btn.disabled=true;
+  try{
+    if(file){
+      msg.style.color="var(--roxo)"; msg.textContent="Otimizando e enviando a imagem…";
+      const blob=await comprimirImagem(file,600,0.92,"image/png");
+      const nomeArq=`logos/logo_${Date.now()}_${Math.random().toString(36).slice(2,7)}.png`;
+      const {error:upErr}=await sb.storage.from("fotos-campo").upload(nomeArq,blob,{contentType:"image/png",upsert:false});
+      if(upErr) throw upErr;
+      logo_url=sb.storage.from("fotos-campo").getPublicUrl(nomeArq).data.publicUrl;
+    }
+    const {error}=await sb.from("apoiadores").insert({nome,logo_url,site_url:site_url||null});
+    if(error) throw error;
+    document.getElementById("logoForm").reset();
+    document.getElementById("logoUrl").value="";
+    msg.style.color="var(--verde)"; msg.textContent="✓ Logomarca adicionada.";
+    setTimeout(()=>{msg.textContent="";},4000);
+    await carregarLogosAdmin(); carregarLogos();
+  }catch(e){ msg.style.color="var(--coral)"; msg.textContent="Não foi possível salvar (verifique se está logado e se o bucket fotos-campo existe)."; }
+  btn.disabled=false;
 });
+
+// Admin: logo do cabeçalho (Prefeitura) — salvo no painel_aeroporto
+function renderBrandAtual(){
+  const el=document.getElementById("brandAtual"); if(!el) return;
+  const url=DATA&&DATA.logoPrefeitura;
+  if(!url){ el.innerHTML=`<div class="mod-empty">Usando o coração + texto padrão.</div>`; return; }
+  el.innerHTML=`<div class="logo-adm"><img src="${escapeHtml(url)}" alt="" style="background:var(--roxo)"><span class="ln">Logo atual no cabeçalho</span><button id="brandDel">Remover</button></div>`;
+  const b=document.getElementById("brandDel"); if(b) b.onclick=removerBrandLogo;
+}
+async function salvarLogoPrefeitura(url){
+  DATA.logoPrefeitura=url||null;
+  if(configurado){ const {error}=await sb.from("painel_aeroporto").update({dados:DATA}).eq("id",1); if(error) throw error; }
+  aplicarBrandLogo(); renderBrandAtual();
+}
+async function removerBrandLogo(){
+  if(!confirm("Remover a logo do cabeçalho e voltar ao padrão?")) return;
+  const msg=document.getElementById("brandMsg");
+  try{ await salvarLogoPrefeitura(null); if(msg){msg.style.color="var(--verde)";msg.textContent="✓ Voltou ao padrão.";setTimeout(()=>msg.textContent="",4000);} }
+  catch(e){ if(msg){msg.style.color="var(--coral)";msg.textContent="Não foi possível salvar (verifique se está logado).";} }
+}
+const brandFormEl=document.getElementById("brandForm");
+if(brandFormEl) brandFormEl.addEventListener("submit",async(ev)=>{
+  ev.preventDefault();
+  const msg=document.getElementById("brandMsg");
+  const inp=document.getElementById("brandArquivo");
+  const file=inp.files&&inp.files[0];
+  if(!file){ msg.style.color="var(--coral)"; msg.textContent="Selecione o arquivo da logo."; return; }
+  if(!configurado){ msg.style.color="var(--coral)"; msg.textContent="Configure o Supabase para salvar."; return; }
+  const btn=document.getElementById("brandAdd"); btn.disabled=true;
+  try{
+    msg.style.color="var(--roxo)"; msg.textContent="Otimizando e enviando a imagem…";
+    const blob=await comprimirImagem(file,800,0.92,"image/png");
+    const nomeArq=`logos/prefeitura_${Date.now()}_${Math.random().toString(36).slice(2,7)}.png`;
+    const {error:upErr}=await sb.storage.from("fotos-campo").upload(nomeArq,blob,{contentType:"image/png",upsert:false});
+    if(upErr) throw upErr;
+    const url=sb.storage.from("fotos-campo").getPublicUrl(nomeArq).data.publicUrl;
+    await salvarLogoPrefeitura(url);
+    document.getElementById("brandForm").reset();
+    msg.style.color="var(--verde)"; msg.textContent="✓ Logo salva e publicada no cabeçalho.";
+    setTimeout(()=>{msg.textContent="";},4000);
+  }catch(e){ msg.style.color="var(--coral)"; msg.textContent="Não foi possível salvar (verifique se está logado e se o bucket fotos-campo existe)."; }
+  btn.disabled=false;
+});
+
+// Realtime: logos atualizam ao vivo no ticker público
+if(configurado){
+  sb.channel("apoiadores").on("postgres_changes",{event:"*",schema:"public",table:"apoiadores"},()=>{ carregarLogos(); }).subscribe();
+}
+
+/* ===================== GALERIA DE FOTOS ===================== */
+// Moldura pública (carrossel com crossfade)
+let FOTOS=[], fotoIdx=0, fotoTimer=null, MEDIA=[];
+function ehVideo(u){ return /\.(mp4|webm|ogg|mov|m4v)(\?|$)/i.test(u||""); }
+async function carregarFotos(){
+  if(!configurado){ renderMoldura(); return; }
+  try{
+    const {data,error}=await sb.from("fotos_campo").select("legenda,url,ordem").order("ordem",{ascending:true}).order("criado_em",{ascending:true}).limit(60);
+    if(error) throw error;
+    FOTOS=(data||[]).filter(f=>f.url);
+    renderMoldura();
+  }catch(e){ FOTOS=[]; renderMoldura(); }
+}
+function renderMoldura(){
+  const sec=document.getElementById("galeriaSec");
+  const stage=document.getElementById("molduraStage");
+  const dots=document.getElementById("molduraDots");
+  clearTimeout(fotoTimer); fotoTimer=null;
+  if(!FOTOS.length){ sec.style.display="none"; return; }
+  sec.style.display="";
+  stage.querySelectorAll(".mol-item,.moldura-cap").forEach(n=>n.remove());
+  MEDIA=FOTOS.map((f,i)=>{
+    let el;
+    if(ehVideo(f.url)){
+      el=document.createElement("video");
+      el.src=f.url; el.muted=true; el.playsInline=true; el.setAttribute("playsinline","");
+      el.preload="metadata"; el.controls=true;
+    }else{
+      el=document.createElement("img");
+      el.src=f.url; el.loading="lazy";
+    }
+    el.className="mol-item"; el.setAttribute("alt",f.legenda||"");
+    if(i===0) el.classList.add("on");
+    stage.appendChild(el);
+    return el;
+  });
+  const cap=document.createElement("div"); cap.className="moldura-cap"; stage.appendChild(cap);
+  dots.innerHTML=FOTOS.map((_,i)=>`<i class="${i===0?'on':''}" data-fi="${i}"></i>`).join("");
+  dots.querySelectorAll("[data-fi]").forEach(d=>d.onclick=()=>mostrarFoto(+d.dataset.fi));
+  fotoIdx=0; aplicarFoto();
+}
+function aplicarFoto(){
+  const cap=document.getElementById("molduraStage").querySelector(".moldura-cap");
+  MEDIA.forEach((el,i)=>{
+    const on=i===fotoIdx;
+    el.classList.toggle("on",on);
+    if(el.tagName==="VIDEO" && !on){ try{ el.pause(); }catch(e){} }
+  });
+  const atual=FOTOS[fotoIdx]||{};
+  const leg=atual.legenda||"";
+  if(cap){ cap.textContent=leg; cap.style.display=(leg && !ehVideo(atual.url))?"":"none"; }
+  document.querySelectorAll("#molduraDots i").forEach((d,i)=>d.classList.toggle("on",i===fotoIdx));
+  agendarProxima();
+}
+function agendarProxima(){
+  clearTimeout(fotoTimer); fotoTimer=null;
+  if(FOTOS.length<2) return;
+  const el=MEDIA[fotoIdx];
+  if(el && el.tagName==="VIDEO"){
+    try{ el.currentTime=0; }catch(e){}
+    el.onended=()=>mostrarFoto(fotoIdx+1);
+    const p=el.play();
+    if(p && p.catch){ p.catch(()=>{ fotoTimer=setTimeout(()=>mostrarFoto(fotoIdx+1),9000); }); }
+  }else{
+    fotoTimer=setTimeout(()=>mostrarFoto(fotoIdx+1),5500);
+  }
+}
+function mostrarFoto(i){
+  if(!FOTOS.length) return;
+  fotoIdx=(i+FOTOS.length)%FOTOS.length;
+  aplicarFoto();
+}
+
+// Compressão da imagem no navegador (canvas) antes do upload
+async function comprimirImagem(file, maxLado=1600, q=0.82, mime="image/jpeg"){
+  const dataUrl=await new Promise((res,rej)=>{ const r=new FileReader(); r.onload=()=>res(r.result); r.onerror=rej; r.readAsDataURL(file); });
+  const img=await new Promise((res,rej)=>{ const im=new Image(); im.onload=()=>res(im); im.onerror=rej; im.src=dataUrl; });
+  let w=img.naturalWidth||img.width, h=img.naturalHeight||img.height;
+  if(w>maxLado||h>maxLado){ const s=Math.min(maxLado/w,maxLado/h); w=Math.round(w*s); h=Math.round(h*s); }
+  const c=document.createElement("canvas"); c.width=w; c.height=h;
+  c.getContext("2d").drawImage(img,0,0,w,h);
+  const blob=await new Promise(res=>c.toBlob(res,mime,q));
+  return blob;
+}
+
+// Upload ao Storage com barra de progresso (via XHR, para acompanhar o %)
+async function uploadComProgresso(path, blob, contentType, onProg){
+  const {data:{session}}=await sb.auth.getSession();
+  const token=(session&&session.access_token)?session.access_token:SUPABASE_ANON;
+  const destino=`${SUPABASE_URL}/storage/v1/object/fotos-campo/`+path.split("/").map(encodeURIComponent).join("/");
+  await new Promise((resolve,reject)=>{
+    const xhr=new XMLHttpRequest();
+    xhr.open("POST",destino);
+    xhr.setRequestHeader("Authorization","Bearer "+token);
+    xhr.setRequestHeader("apikey",SUPABASE_ANON);
+    xhr.setRequestHeader("x-upsert","false");
+    xhr.setRequestHeader("cache-control","3600");
+    if(contentType) xhr.setRequestHeader("Content-Type",contentType);
+    xhr.upload.onprogress=(e)=>{ if(e.lengthComputable && onProg) onProg(e.loaded/e.total); };
+    xhr.onload=()=>{ (xhr.status>=200&&xhr.status<300)?resolve():reject(new Error("upload "+xhr.status+": "+xhr.responseText)); };
+    xhr.onerror=()=>reject(new Error("Falha de rede no envio."));
+    xhr.send(blob);
+  });
+}
+
+// Admin: gestão de fotos
+let FOTOS_ADM=[];
+async function carregarFotosAdmin(){
+  const el=document.getElementById("fotosAdminList");
+  if(!configurado){ el.innerHTML=`<div class="mod-empty">Configure o Supabase para enviar fotos.</div>`; return; }
+  el.innerHTML=`<div class="mod-empty">Carregando…</div>`;
+  const {data,error}=await sb.from("fotos_campo").select("*").order("ordem",{ascending:true}).order("criado_em",{ascending:true});
+  if(error){ el.innerHTML=`<div class="mod-empty">Erro ao carregar (verifique se está logado).</div>`; return; }
+  FOTOS_ADM=data||[]; renderFotosAdmin();
+}
+function renderFotosAdmin(){
+  const el=document.getElementById("fotosAdminList");
+  if(!FOTOS_ADM.length){ el.innerHTML=`<div class="mod-empty">Nenhuma foto enviada ainda.</div>`; return; }
+  el.innerHTML=FOTOS_ADM.map(f=>`
+    <div class="logo-adm">
+      ${ehVideo(f.url)
+        ? `<video src="${escapeHtml(f.url)}#t=0.1" muted preload="metadata" style="width:54px;height:40px;object-fit:cover;border-radius:6px;background:#000"></video>`
+        : `<img src="${escapeHtml(f.url)}" alt="" onerror="this.style.visibility='hidden'">`}
+      <span class="ln">${ehVideo(f.url)?"🎬 ":""}${escapeHtml(f.legenda||"(sem legenda)")}</span>
+      <button data-delfoto="${f.id}" data-arq="${escapeHtml(f.arquivo||'')}">Excluir</button>
+    </div>`).join("");
+  el.querySelectorAll("[data-delfoto]").forEach(b=>b.onclick=()=>excluirFoto(b.dataset.delfoto,b.dataset.arq));
+}
+async function excluirFoto(id,arquivo){
+  if(!confirm("Excluir esta foto?")) return;
+  if(arquivo){ try{ await sb.storage.from("fotos-campo").remove([arquivo]); }catch(e){} }
+  const {error}=await sb.from("fotos_campo").delete().eq("id",id);
+  if(!error){ await carregarFotosAdmin(); carregarFotos(); }
+}
+document.getElementById("fotoForm").addEventListener("submit",async(ev)=>{
+  ev.preventDefault();
+  const msg=document.getElementById("fotoMsg");
+  const legenda=document.getElementById("fotoLegenda").value.trim();
+  const inp=document.getElementById("fotoArquivo");
+  const file=inp.files&&inp.files[0];
+  if(!file){ msg.style.color="var(--coral)"; msg.textContent="Escolha uma foto ou vídeo."; return; }
+  if(!configurado){ msg.style.color="var(--coral)"; msg.textContent="Configure o Supabase para enviar de verdade."; return; }
+  const btn=document.getElementById("fotoAdd"); btn.disabled=true;
+  const ehVid=(file.type||"").startsWith("video");
+  const prog=document.getElementById("fotoProg"), bar=document.getElementById("fotoProgBar");
+  const label=ehVid?"vídeo":"foto";
+  const setProg=(frac)=>{ const p=Math.round(frac*100); bar.style.width=p+"%"; msg.style.color="var(--roxo)"; msg.textContent=`Enviando ${label}… ${p}%`; };
+  try{
+    let blob, nome, ctype;
+    if(ehVid){
+      blob=file; ctype=file.type||"video/mp4";
+      const ext=((file.name.split(".").pop()||"mp4").toLowerCase()).replace(/[^a-z0-9]/g,"")||"mp4";
+      nome=`video_${Date.now()}_${Math.random().toString(36).slice(2,7)}.${ext}`;
+    }else{
+      msg.style.color="var(--roxo)"; msg.textContent="Otimizando…";
+      blob=await comprimirImagem(file); ctype="image/jpeg";
+      nome=`foto_${Date.now()}_${Math.random().toString(36).slice(2,7)}.jpg`;
+    }
+    prog.style.display=""; bar.style.width="0%"; setProg(0);
+    await uploadComProgresso(nome,blob,ctype,setProg);
+    bar.style.width="100%";
+    const {data:pub}=sb.storage.from("fotos-campo").getPublicUrl(nome);
+    const url=pub.publicUrl;
+    const ordem=FOTOS_ADM.length;
+    const {error:insErr}=await sb.from("fotos_campo").insert({legenda:legenda||null,arquivo:nome,url,ordem});
+    if(insErr) throw insErr;
+    document.getElementById("fotoForm").reset();
+    setTimeout(()=>{ prog.style.display="none"; bar.style.width="0%"; },600);
+    msg.style.color="var(--verde)"; msg.textContent=ehVid?"✓ Vídeo enviado.":"✓ Foto enviada.";
+    setTimeout(()=>{msg.textContent="";},4000);
+    await carregarFotosAdmin(); carregarFotos();
+  }catch(e){ prog.style.display="none"; bar.style.width="0%"; msg.style.color="var(--coral)"; msg.textContent="Não foi possível enviar (verifique se está logado, se o bucket fotos-campo existe e se o arquivo não é grande demais)."; }
+  btn.disabled=false;
+});
+
+// Realtime: a moldura atualiza ao vivo quando uma foto é enviada/removida
+if(configurado){
+  sb.channel("fotos_campo").on("postgres_changes",{event:"*",schema:"public",table:"fotos_campo"},()=>{ carregarFotos(); }).subscribe();
+}
+
+// ===== Animação de entrada ao rolar + contagem de números =====
+(function(){
+  var reduz = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function animarNumero(el){
+    var alvo = parseFloat(el.getAttribute("data-count"));
+    if(isNaN(alvo)) return;
+    var pre = el.getAttribute("data-prefix")||"", suf = el.getAttribute("data-suffix")||"";
+    if(reduz){ el.textContent = pre+alvo+suf; return; }
+    var ini = null, dur = 1400;
+    function passo(t){
+      if(ini===null) ini=t;
+      var p = Math.min((t-ini)/dur, 1);
+      var val = Math.round((1 - Math.pow(1-p,3)) * alvo); // easeOutCubic
+      el.textContent = pre+val+suf;
+      if(p<1) requestAnimationFrame(passo);
+    }
+    requestAnimationFrame(passo);
+  }
+  if(!("IntersectionObserver" in window)){
+    document.querySelectorAll(".reveal").forEach(function(e){e.classList.add("visible");});
+    document.querySelectorAll("[data-count]").forEach(animarNumero);
+    return;
+  }
+  var obs = new IntersectionObserver(function(entradas){
+    entradas.forEach(function(en){
+      if(!en.isIntersecting) return;
+      en.target.classList.add("visible");
+      en.target.querySelectorAll && en.target.querySelectorAll("[data-count]").forEach(animarNumero);
+      obs.unobserve(en.target);
+    });
+  }, {threshold:.16});
+  document.querySelectorAll(".reveal").forEach(function(e){obs.observe(e);});
+})();
+
+// ===== Botões de compartilhamento =====
+(function(){
+  var url = window.location.href.split("#")[0];
+  var txt = "Conheça e apoie o Novo Aeroporto Regional de Santa Maria:";
+  var wa = document.getElementById("shareWa");
+  var fb = document.getElementById("shareFb");
+  var cp = document.getElementById("shareCopy");
+  if(wa) wa.href = "https://wa.me/?text=" + encodeURIComponent(txt + " " + url);
+  if(fb) fb.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url);
+  if(cp) cp.addEventListener("click", function(){
+    var lab = document.getElementById("shareCopyLab");
+    function ok(){ cp.classList.add("ok"); if(lab) lab.textContent="Link copiado!"; setTimeout(function(){cp.classList.remove("ok"); if(lab) lab.textContent="Copiar link";},2200); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(url).then(ok).catch(ok); }
+    else { var t=document.createElement("textarea"); t.value=url; document.body.appendChild(t); t.select(); try{document.execCommand("copy");}catch(e){} document.body.removeChild(t); ok(); }
+  });
+})();
+
+carregar();
+carregarApoios();
+carregarLogos();
+carregarFotos();
 </script>
 </body>
 </html>
