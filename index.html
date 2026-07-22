@@ -9,7 +9,7 @@
 <meta property="og:description" content="Status e avanço do projeto do novo aeroporto, atualizado etapa a etapa." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" />
 <style>
   :root{
     --roxo:#662382; --roxo-2:#7d2a93; --roxo-esc:#4a1a5e;
@@ -221,6 +221,7 @@
   .login{max-width:360px;margin:10px auto 6px}
   .login label{font-size:13px;font-weight:600;display:block;margin:10px 0 6px}
   .inp{width:100%;padding:11px 13px;border:1.5px solid #ddd;border-radius:10px;font-family:inherit;font-size:14px}
+@media(max-width:600px){.inp,select.inp,textarea{font-size:16px}}
   .inp:focus{outline:none;border-color:var(--roxo)}
   .btn{background:var(--roxo);color:#fff;border:none;padding:11px 18px;border-radius:10px;font-weight:700;cursor:pointer;font-family:inherit;font-size:14px}
   .btn:hover{background:#561c6e}
@@ -720,6 +721,21 @@
 #aaSec canvas.aa-sig{width:100%;height:150px;display:block;touch-action:none;border-radius:12px;cursor:crosshair}
 #aaSec .aa-sighint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#b3a3c4;font-size:14px;pointer-events:none}
 #aaSec .aa-sigact{display:flex;justify-content:flex-end;margin-top:6px}
+#aaSec .aa-sig-preview{margin-top:8px;min-height:72px;display:flex;align-items:center;justify-content:center;border:1.5px solid #e6dcf0;border-radius:12px;background:#faf7fd;font-family:'Dancing Script',cursive;font-weight:700;font-size:38px;color:#231F20;padding:6px 14px;word-break:break-word;text-align:center;line-height:1.05}
+#aaSec .aa-sig-preview[data-empty="1"]{font-family:'Montserrat',sans-serif;font-weight:500;font-size:14px;color:#b3a3c4}
+#aaSec .aa-sighelp{font-size:12px;color:#8a7d96;margin-top:6px}
+#aaSec .aa-inp{font-size:16px}
+@media(max-width:520px){
+  #aaSec .aa-tab{font-size:12px;padding:9px 3px}
+  #aaSec .aa-sig-preview{font-size:30px}
+  #aaSec .aa-cbox b{font-size:26px}
+  #aaSec .aa-cbox.total b{font-size:32px}
+  #aaSec .aa-card{padding:18px}
+  #aaSec .aa-share .aa-btn{flex:1}
+}
+body.modo-assinatura header.hero,
+body.modo-assinatura section:not(#aaSec){display:none!important}
+body.modo-assinatura #aaSec{opacity:1!important;transform:none!important;padding-top:26px}
 #aaSec .aa-consent{display:flex;gap:9px;align-items:flex-start;margin-top:14px;font-size:12.5px;color:#555}
 #aaSec .aa-consent input{margin-top:3px}
 #aaSec .aa-btn{background:var(--roxo,#662382);color:#fff;border:0;padding:12px 18px;border-radius:11px;font-weight:700;cursor:pointer;font-family:inherit;font-size:15px;width:100%;margin-top:14px}
@@ -831,9 +847,10 @@
 
           <input class="aa-hp" id="aaWeb" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-          <label>Assinatura *</label>
-          <div class="aa-sigbox"><canvas id="aaSig" class="aa-sig"></canvas><div class="aa-sighint" id="aaSigHint">Assine aqui com o dedo ou o mouse</div></div>
-          <div class="aa-sigact"><button type="button" class="aa-link" id="aaClear">Limpar assinatura</button></div>
+          <label>Assinatura * <span style="font-weight:400;color:#888">— digite seu nome completo</span></label>
+          <input class="aa-inp" id="aaSigNome" placeholder="Digite seu nome como assinatura" autocomplete="off" />
+          <div class="aa-sig-preview" id="aaSigPrev" data-empty="1">Sua assinatura aparecerá aqui</div>
+          <div class="aa-sighelp">Ao digitar, seu nome vira sua assinatura eletrônica, registrada com data, hora e código de verificação (Lei 14.063/2020).</div>
 
           <label class="aa-consent"><input type="checkbox" id="aaConsent" />
             <span>Declaro que as informações são verdadeiras e autorizo o uso dos dados exclusivamente para este abaixo-assinado, conforme a LGPD (Lei 13.709/2018).</span></label>
@@ -1653,12 +1670,13 @@ function aaFmt(iso){const d=new Date(iso);return d.toLocaleDateString("pt-BR")+"
 
 function aaInit(){
   if(!document.getElementById("aaSec"))return;
+  if(/assinar/i.test(location.search+location.hash)){document.body.classList.add("modo-assinatura");setTimeout(function(){var s=document.getElementById("aaSec");if(s)s.scrollIntoView();},60);}
   ["aaCpf","aaCpfE","aaCpfC"].forEach(id=>{const e=document.getElementById(id);if(e)e.addEventListener("input",ev=>ev.target.value=aaMCPF(ev.target.value));});
   const cn=document.getElementById("aaCnpj");if(cn)cn.addEventListener("input",e=>e.target.value=aaMCNPJ(e.target.value));
   const uf=document.getElementById("aaUF");if(uf)uf.addEventListener("input",e=>e.target.value=e.target.value.toUpperCase().replace(/[^A-Z]/g,"").slice(0,2));
   document.querySelectorAll("#aaTabs .aa-tab").forEach(t=>t.onclick=()=>aaSetTipo(t.dataset.tipo));
-  aaFitCanvas();
-  document.getElementById("aaClear").onclick=aaClearSig;
+  const _sig=document.getElementById("aaSigNome");
+  if(_sig)_sig.addEventListener("input",aaSigPreview);
   document.getElementById("aaForm").addEventListener("submit",aaSubmit);
   document.getElementById("aaNew").onclick=aaReset;
   document.getElementById("aaReceipt").onclick=()=>{if(aaUltimo)aaComprovante(aaUltimo);};
@@ -1671,12 +1689,17 @@ function aaInit(){
   if(configurado){ try{ sb.channel("assinaturas").on("postgres_changes",{event:"INSERT",schema:"public",table:"assinaturas"},()=>aaAtualizar()).subscribe(); }catch(e){} }
 }
 function aaSetTipo(t){aaTipo=t;document.querySelectorAll("#aaTabs .aa-tab").forEach(x=>x.classList.toggle("on",x.dataset.tipo===t));document.querySelectorAll("#aaSec .aa-campos").forEach(c=>c.style.display=c.dataset.c===t?"block":"none");}
-function aaFitCanvas(){const c=document.getElementById("aaSig");if(!c)return;aaCtx=c.getContext("2d");const r=c.getBoundingClientRect(),dpr=window.devicePixelRatio||1;c.width=r.width*dpr;c.height=r.height*dpr;aaCtx.scale(dpr,dpr);aaCtx.lineWidth=2.2;aaCtx.lineCap="round";aaCtx.lineJoin="round";aaCtx.strokeStyle="#231F20";
-  c.addEventListener("pointerdown",e=>{e.preventDefault();aaDraw=true;const p=aaPos(e,c);aaCtx.beginPath();aaCtx.moveTo(p.x,p.y);document.getElementById("aaSigHint").style.display="none";});
-  c.addEventListener("pointermove",e=>{if(!aaDraw)return;e.preventDefault();const p=aaPos(e,c);aaCtx.lineTo(p.x,p.y);aaCtx.stroke();aaHas=true;});
-  window.addEventListener("pointerup",()=>aaDraw=false);}
-function aaPos(e,c){const r=c.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top};}
-function aaClearSig(){const c=document.getElementById("aaSig");if(aaCtx)aaCtx.clearRect(0,0,c.width,c.height);aaHas=false;document.getElementById("aaSigHint").style.display="flex";}
+function aaSigPreview(){const v=aaV("aaSigNome");const el=document.getElementById("aaSigPrev");if(!el)return;if(v){el.textContent=v;el.removeAttribute("data-empty");}else{el.textContent="Sua assinatura aparecerá aqui";el.setAttribute("data-empty","1");}}
+function aaClearSig(){const s=document.getElementById("aaSigNome");if(s)s.value="";aaSigPreview();}
+async function aaAssinaturaImg(nome){
+  try{await document.fonts.load("700 80px 'Dancing Script'");}catch(e){}
+  const c=document.createElement("canvas");c.width=760;c.height=220;const x=c.getContext("2d");
+  x.fillStyle="#231F20";x.textBaseline="middle";x.textAlign="center";
+  let size=92;x.font="700 "+size+"px 'Dancing Script', cursive";
+  while(x.measureText(nome).width>710&&size>28){size-=4;x.font="700 "+size+"px 'Dancing Script', cursive";}
+  x.fillText(nome,c.width/2,c.height/2);
+  return c.toDataURL("image/png");
+}
 
 async function aaAtualizar(){
   let total=0,ag=0,ent=0,cid=0,apo=[];
@@ -1701,12 +1724,13 @@ async function aaSubmit(e){
   e.preventDefault();const err=document.getElementById("aaErr");err.textContent="";
   if(document.getElementById("aaWeb").value)return;
   if(!document.getElementById("aaConsent").checked){err.textContent="É preciso marcar o aceite de dados (LGPD).";return;}
-  if(!aaHas){err.textContent="Por favor, faça a assinatura no quadro.";return;}
+  const _sigNome=aaV("aaSigNome");
+  if(_sigNome.length<2){err.textContent="Digite seu nome completo no campo de assinatura.";return;}
   let rec={tipo:aaTipo};
   if(aaTipo==="agente_politico"){rec.responsavel=aaV("aaNome");rec.cargo=aaV("aaCargo");rec.partido=aaV("aaPartido");rec.uf=aaV("aaUF");rec.entidade=aaV("aaCasa");rec.cpf=aaV("aaCpf");rec.cidade=aaV("aaCidade");rec.email=aaV("aaEmail");if(!rec.responsavel||!rec.cargo){err.textContent="Preencha nome e cargo/função.";return;}}
   else if(aaTipo==="entidade"){rec.entidade=aaV("aaEntidade");rec.cnpj=aaV("aaCnpj");rec.endereco=aaV("aaEndereco");rec.responsavel=aaV("aaPresidente");rec.cpf=aaV("aaCpfE");rec.cidade=aaV("aaCidadeE");rec.email=aaV("aaEmailE");if(!rec.entidade||!rec.cnpj||!rec.responsavel||!rec.cpf){err.textContent="Preencha entidade, CNPJ, presidente e CPF.";return;}}
   else{rec.responsavel=aaV("aaCnome");rec.cpf=aaV("aaCpfC");rec.cidade=aaV("aaCidadeC");rec.email=aaV("aaEmailC");if(!rec.responsavel||!rec.cpf){err.textContent="Preencha seu nome e CPF.";return;}}
-  rec.assinatura_png=document.getElementById("aaSig").toDataURL("image/png");
+  rec.assinatura_png=await aaAssinaturaImg(_sigNome);
   rec.criado_em=new Date().toISOString();
   rec.hash=await aaHash([rec.tipo,rec.entidade||"",rec.responsavel,rec.cpf||"",rec.criado_em].join("|"));
   const btn=document.getElementById("aaBtn");btn.disabled=true;btn.textContent="Registrando…";
@@ -1730,7 +1754,7 @@ function aaSecH(doc,txt,n,y){if(y+16>282){doc.addPage();y=20;}doc.setFillColor(1
 function aaEntry(doc,r,idx,y){const h=r.tipo==="cidadao"?26:40;if(y+h>282){doc.addPage();y=20;}doc.setDrawColor(230);doc.setFillColor(249,247,253);doc.rect(14,y,182,h-6,"FD");doc.setFont("helvetica","bold");doc.setFontSize(9.5);doc.text(doc.splitTextToSize(idx+". "+(r.tipo==="entidade"?(r.entidade||"Entidade"):(r.responsavel||"")),118),17,y+7);doc.setFont("helvetica","normal");doc.setFontSize(8);let ly=y+13,info=[];if(r.tipo==="agente_politico"){info.push("Cargo: "+(r.cargo||"-")+(r.partido?"   Partido: "+r.partido:"")+(r.uf?"   UF: "+r.uf:""));if(r.entidade)info.push("Casa/órgão: "+r.entidade);info.push((r.cpf?"CPF: "+r.cpf+"   ":"")+"Cidade: "+(r.cidade||"-"));info.push("Data: "+aaFmt(r.criado_em)+"   Cod.: "+(r.hash||"-"));}else if(r.tipo==="entidade"){info.push("CNPJ: "+(r.cnpj||"-")+"   Cidade: "+(r.cidade||"-"));info.push("Presidente: "+(r.responsavel||"-"));info.push("CPF: "+(r.cpf||"-")+"   Data: "+aaFmt(r.criado_em));info.push("Cod.: "+(r.hash||"-"));}else{info.push("CPF: "+(r.cpf||"-")+"   Cidade: "+(r.cidade||"-"));info.push("Data: "+aaFmt(r.criado_em)+"   Cod.: "+(r.hash||"-"));}info.forEach(t=>{doc.text(t,17,ly);ly+=4.5;});try{doc.addImage(r.assinatura_png,"PNG",150,y+4,42,16);}catch(e){}return y+h;}
 async function aaDocumento(regs){const {jsPDF}=window.jspdf;const doc=new jsPDF({unit:"mm",format:"a4"});const logo=AA_LOGO_OFICIAL;let hy0=aaCab(doc,"Abaixo-Assinado de Apoio","Novo Aeroporto Regional de Santa Maria",logo);doc.setFont("helvetica","normal");doc.setFontSize(10);const mL=doc.splitTextToSize(AA_MANIFESTO,182);doc.text(mL,14,hy0+3);let hy=hy0+3+mL.length*4.8+6;doc.setFont("helvetica","bold");doc.setFontSize(11);doc.text("Total de assinaturas: "+regs.length,14,hy);doc.setFontSize(8);doc.setFont("helvetica","normal");doc.setTextColor(120);doc.text("Documento gerado em "+aaFmt(new Date().toISOString()),14,hy+6);doc.setTextColor(35,31,32);let y=hy+16,idx=1;AA_ORDEM.forEach(tp=>{const g=regs.filter(r=>r.tipo===tp);if(!g.length)return;y=aaSecH(doc,AA_PERSONA[tp].plural.toUpperCase(),g.length,y);g.forEach(r=>{y=aaEntry(doc,r,idx++,y);});y+=4;});const pgs=doc.internal.getNumberOfPages();for(let p=1;p<=pgs;p++){doc.setPage(p);doc.setFontSize(8);doc.setTextColor(140);doc.text("Novo Aeroporto Regional de Santa Maria — Abaixo-Assinado · Página "+p+"/"+pgs,14,290);}doc.save("abaixo-assinado-aeroporto-sm.pdf");}
 
-function aaURL(){return location.href.split("#")[0]+"#aaSec";}
+function aaURL(){return location.origin+location.pathname+"?assinar";}
 function aaCopiar(){const u=aaURL();const done=()=>{const b=document.getElementById("aaCopy");const o=b.textContent;b.textContent="Link copiado!";setTimeout(()=>b.textContent=o,2000);};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(done).catch(done);}else{const t=document.createElement("textarea");t.value=u;document.body.appendChild(t);t.select();try{document.execCommand("copy");}catch(e){}document.body.removeChild(t);done();}}
 function aaBaixarQR(){const box=document.getElementById("aaQRbox");if(!aaQRfeito){new QRCode(box,{text:aaURL(),width:180,height:180,colorDark:"#231F20",colorLight:"#ffffff"});aaQRfeito=true;setTimeout(aaDLqr,350);}else{aaDLqr();}}
 function aaDLqr(){const img=document.querySelector("#aaQRbox img")||document.querySelector("#aaQRbox canvas");if(!img)return;const url=img.tagName==="IMG"?img.src:img.toDataURL("image/png");const a=document.createElement("a");a.href=url;a.download="qrcode-abaixo-assinado.png";a.click();}
