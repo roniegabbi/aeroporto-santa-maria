@@ -3,10 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Abaixo-Assinado — Novo Aeroporto Regional de Santa Maria</title>
-<meta name="description" content="Assine em apoio ao Novo Aeroporto Regional de Santa Maria." />
-<meta property="og:title" content="Abaixo-Assinado — Novo Aeroporto Regional de Santa Maria" />
-<meta property="og:description" content="Some sua voz: assine em apoio ao novo aeroporto regional." />
+<title>Novo Aeroporto Regional de Santa Maria — Painel de Transparência</title>
+<meta name="description" content="Acompanhe de forma transparente o status e o avanço do projeto do Novo Aeroporto Regional de Santa Maria." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -14,116 +12,264 @@
   :root{
     --roxo:#662382; --roxo-2:#7d2a93; --roxo-esc:#4a1a5e;
     --coral:#E5006D; --amarelo:#F9B000; --amarelo-2:#FFED00;
-    --verde:#51AE32; --azul:#2581C4; --azul-mar:#302683;
-    --escuro:#231F20; --cinza:#6b6b72; --cinza-cl:#eceaf0;
-    --sombra:0 8px 30px rgba(48,38,131,.10); --raio:18px;
+    --verde:#51AE32; --verde-2:#92C020; --azul:#2581C4; --azul-mar:#302683;
+    --escuro:#231F20; --cinza:#6b6b72; --cinza-cl:#eceaf0; --branco:#ffffff;
+    --concluido:#51AE32; --andamento:#F9B000; --iniciar:#b9b4c2;
+    --sombra:0 8px 30px rgba(48,38,131,.10);
+    --raio:18px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Montserrat',system-ui,sans-serif;color:var(--escuro);background:#f5f3f8;line-height:1.5;-webkit-font-smoothing:antialiased}
-  h1,h2,h3,h4{font-family:'Baloo Bhai 2','Montserrat',sans-serif;line-height:1.15}
-  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
-  .cfgbar{background:#fff3cd;color:#7a5b00;text-align:center;padding:9px;font-size:13px;font-weight:600}
+  h1,h2,h3,h4,.font-title{font-family:'Baloo Bhai 2','Montserrat',sans-serif;line-height:1.15}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+  /* HERO */
   header.hero{background:linear-gradient(135deg,var(--roxo-esc) 0%,var(--roxo) 45%,var(--roxo-2) 100%);color:#fff;position:relative;overflow:hidden}
-  .hero::after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(229,0,109,.35),transparent 70%)}
-  .topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 0;gap:10px}
+  .hero::after{content:"";position:absolute;right:-120px;top:-120px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(229,0,109,.35),transparent 70%)}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
   .brand{display:flex;align-items:center;gap:14px}
-  .heart{width:44px;height:44px}
+  .heart{width:44px;height:44px;flex:0 0 auto}
   .brand .bt{font-family:'Baloo Bhai 2';font-weight:700;font-size:15px;line-height:1.05;text-transform:lowercase}
   .brand .bt small{display:block;font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;opacity:.85}
-  .top-actions{display:flex;gap:8px}
-  .admin-link{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;padding:8px 14px;border-radius:999px;font-size:12px;font-weight:600;cursor:pointer}
+  .tagline{font-family:'Baloo Bhai 2';font-size:11px;letter-spacing:.28em;opacity:.9}
+  .admin-link{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff;padding:8px 14px;border-radius:999px;font-size:12px;font-weight:600;cursor:pointer;backdrop-filter:blur(4px)}
   .admin-link:hover{background:rgba(255,255,255,.24)}
-  .hero-main{padding:8px 0 48px;position:relative;z-index:2}
+  .hero-main{padding:14px 0 56px;position:relative;z-index:2}
   .eyebrow{font-family:'Baloo Bhai 2';font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--amarelo-2);margin-bottom:10px}
-  .hero h1{font-size:clamp(26px,4.6vw,44px);font-weight:800;max-width:760px}
-  .hero .sub{margin-top:14px;max-width:620px;font-size:16px;opacity:.92}
-  .counter{display:grid;grid-template-columns:1.35fr 1fr 1fr 1fr;gap:12px;margin-top:26px}
-  @media(max-width:720px){.counter{grid-template-columns:1fr 1fr}}
-  .cbox{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);border-radius:var(--raio);padding:16px 18px;position:relative;overflow:hidden}
-  .cbox .ic{position:absolute;right:12px;top:12px;width:24px;height:24px;opacity:.32}
-  .cbox b{font-family:'Baloo Bhai 2';font-size:32px;font-weight:800;display:block;line-height:1}
-  .cbox span{font-size:11.5px;opacity:.92;text-transform:uppercase;letter-spacing:.04em}
-  .cbox.total{background:rgba(255,237,0,.16);border-color:rgba(255,237,0,.42)}
-  .cbox.total b{font-size:42px;color:var(--amarelo-2)}
-  .cbox.total .ic{opacity:.5;color:var(--amarelo-2)}
-  .meta-wrap{margin-top:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:14px 18px}
-  .meta-top{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;margin-bottom:9px;gap:10px;flex-wrap:wrap}
-  .meta-top b{font-family:'Baloo Bhai 2';font-size:15px}
-  .meta-bar{height:12px;background:rgba(255,255,255,.16);border-radius:999px;overflow:hidden}
-  .meta-bar i{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--amarelo),var(--coral));transition:width .9s ease}
-  main{padding:46px 0}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
-  @media(max-width:840px){.grid{grid-template-columns:1fr}}
-  .card{background:#fff;border-radius:var(--raio);box-shadow:var(--sombra);padding:26px}
-  .card h2{color:var(--roxo);font-size:22px;font-weight:800;margin-bottom:12px}
-  .manifesto p{margin-bottom:12px;font-size:15px}
-  .manifesto .assina{font-weight:700;color:var(--roxo)}
-  .tabs{display:flex;gap:6px;margin-bottom:18px;background:var(--cinza-cl);padding:5px;border-radius:12px}
-  .tab{flex:1;text-align:center;padding:10px 6px;border-radius:9px;font-weight:700;font-size:13px;cursor:pointer;color:var(--cinza)}
-  .tab.on{background:#fff;color:var(--roxo);box-shadow:0 2px 8px rgba(0,0,0,.06)}
-  label{font-size:13px;font-weight:600;display:block;margin:12px 0 5px}
-  .inp{width:100%;padding:11px 13px;border:1.5px solid #ddd;border-radius:10px;font-family:inherit;font-size:14px;background:#fff}
-  .inp:focus{outline:none;border-color:var(--roxo)}
-  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .row3{display:grid;grid-template-columns:1fr 1fr 90px;gap:12px}
-  @media(max-width:480px){.row2,.row3{grid-template-columns:1fr}}
-  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-  .sig-wrap{margin-top:14px}
-  .sig-box{border:2px dashed #cbb8db;border-radius:12px;background:#faf7fd;position:relative}
-  canvas#sig{width:100%;height:170px;display:block;touch-action:none;border-radius:12px;cursor:crosshair}
-  .sig-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#b3a3c4;font-size:14px;pointer-events:none}
-  .sig-actions{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
-  .link-btn{background:none;border:none;color:var(--coral);font-weight:600;font-size:13px;cursor:pointer}
-  .consent{display:flex;gap:10px;align-items:flex-start;margin-top:16px;font-size:12.5px;color:#555}
-  .consent input{margin-top:3px}
-  .btn{background:var(--roxo);color:#fff;border:none;padding:13px 18px;border-radius:11px;font-weight:700;cursor:pointer;font-family:inherit;font-size:15px;width:100%;margin-top:16px}
-  .btn:hover{background:#561c6e}.btn:disabled{opacity:.6;cursor:not-allowed}
-  .btn.sec{background:#eee;color:#333;width:auto;margin-top:0;padding:10px 16px;font-size:13.5px}
-  .btn.amar{background:var(--amarelo);color:#3a2e00}
-  .btn.amar:hover{background:#e0a000}
-  .err{color:var(--coral);font-size:13px;margin-top:8px;min-height:16px}
-  .mural{margin-top:26px}
-  .mural h3{color:var(--roxo);font-size:15px;margin:14px 0 9px}
-  .chips{display:flex;flex-wrap:wrap;gap:8px}
-  .chip{background:#f0eaf6;color:#5a3a70;font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px}
-  .chip.ag{background:#fbe6ef;color:#9a1c4e}
-  .ok{text-align:center;padding:10px 0}
-  .ok .ic{width:64px;height:64px;border-radius:50%;background:#e7f3e1;color:var(--verde);display:flex;align-items:center;justify-content:center;font-size:34px;margin:0 auto 14px}
-  .ok h2{color:var(--verde)!important}
-  footer{background:var(--escuro);color:#cfc9d6;padding:28px 0;font-size:13px;text-align:center}
+  .title-row{display:flex;align-items:center;gap:18px;max-width:840px}
+  .plane-badge{flex:0 0 auto;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+  .plane-badge svg{width:34px;height:34px;color:var(--amarelo-2)}
+  @media(max-width:560px){.plane-badge{width:50px;height:50px}.plane-badge svg{width:27px;height:27px}.title-row{gap:13px}}
+  .hero h1{font-size:clamp(28px,5vw,50px);font-weight:800;max-width:780px}
+  .hero .sub{margin-top:14px;max-width:640px;font-size:16px;opacity:.92}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;margin-top:34px}
+  @media(max-width:760px){.hero-grid{grid-template-columns:1fr}}
+  .cta-assinar{display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:var(--amarelo);color:#3a2e00;font-weight:800;font-family:'Baloo Bhai 2';font-size:16px;padding:14px 24px;border-radius:999px;text-decoration:none;box-shadow:0 8px 24px rgba(249,176,0,.38);transition:transform .15s,box-shadow .15s}
+  .cta-assinar:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(249,176,0,.5)}
+  .cta-assinar svg{width:20px;height:20px}
+
+  /* progress ring */
+  .ring-card{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);border-radius:var(--raio);padding:26px;display:flex;gap:22px;align-items:center;backdrop-filter:blur(6px)}
+  .ring{position:relative;width:138px;height:138px;flex:0 0 auto}
+  .ring svg{transform:rotate(-90deg)}
+  .ring .pct{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .ring .pct b{font-family:'Baloo Bhai 2';font-size:34px;font-weight:800;line-height:1}
+  .ring .pct span{font-size:11px;letter-spacing:.1em;opacity:.85;text-transform:uppercase}
+  .ring-info h3{font-size:18px;font-weight:700}
+  .ring-info p{font-size:13px;opacity:.9;margin-top:4px}
+  .pill{display:inline-block;margin-top:10px;background:var(--amarelo);color:#3a2e00;font-weight:700;font-size:12px;padding:5px 12px;border-radius:999px}
+
+  .next-card{background:#fff;color:var(--escuro);border-radius:var(--raio);padding:22px;box-shadow:var(--sombra)}
+  .next-card .lab{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);font-weight:700}
+  .next-card h3{font-size:18px;font-weight:700;margin-top:6px;font-family:'Baloo Bhai 2'}
+  .next-card .when{margin-top:8px;font-weight:700;color:var(--roxo)}
+  .next-card .meta{font-size:12px;color:var(--cinza);margin-top:6px}
+
+  /* SECTIONS */
+  section{padding:52px 0}
+  .sec-head{text-align:center;max-width:680px;margin:0 auto 34px}
+  .sec-head .eyebrow{color:var(--coral)}
+  .sec-head h2{font-size:clamp(22px,3.4vw,32px);font-weight:800;color:var(--roxo)}
+  .sec-head p{color:var(--cinza);margin-top:8px;font-size:15px}
+
+  /* fases / steps */
+  .fases{display:grid;gap:16px}
+  .fase{background:#fff;border-radius:var(--raio);box-shadow:var(--sombra);padding:20px 22px;display:grid;grid-template-columns:46px 1fr auto;gap:18px;align-items:center;border-left:6px solid var(--iniciar)}
+  .fase[data-st="concluido"]{border-left-color:var(--concluido)}
+  .fase[data-st="em_andamento"]{border-left-color:var(--andamento)}
+  .fase .num{width:46px;height:46px;border-radius:14px;background:var(--cinza-cl);display:flex;align-items:center;justify-content:center;font-family:'Baloo Bhai 2';font-weight:800;font-size:20px;color:var(--roxo)}
+  .fase[data-st="concluido"] .num{background:#e7f3e1;color:var(--verde)}
+  .fase[data-st="em_andamento"] .num{background:#fef0d4;color:#b87900}
+  .fase .body h4{font-size:17px;font-weight:700}
+  .fase .body .per{font-size:12px;color:var(--cinza);margin-top:2px}
+  .fase .bar{height:8px;background:var(--cinza-cl);border-radius:999px;margin-top:10px;overflow:hidden;max-width:520px}
+  .fase .bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--coral),var(--roxo))}
+  .fase .right{text-align:right;min-width:120px}
+  .badge{display:inline-block;font-size:11px;font-weight:700;padding:5px 11px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em}
+  .badge.concluido{background:#e7f3e1;color:#2f7a18}
+  .badge.em_andamento{background:#fef0d4;color:#9a6500}
+  .badge.a_iniciar{background:#eee;color:#7a7a82}
+  .fase .right b{display:block;font-family:'Baloo Bhai 2';font-size:22px;font-weight:800;color:var(--roxo);margin-top:8px}
+  @media(max-width:680px){.fase{grid-template-columns:42px 1fr}.fase .right{grid-column:1/-1;text-align:left;display:flex;align-items:center;gap:14px;min-width:0}.fase .right b{margin-top:0}}
+
+  /* timeline */
+  .tl{position:relative;margin-top:10px}
+  .tl::before{content:"";position:absolute;left:18px;top:6px;bottom:6px;width:3px;background:linear-gradient(var(--roxo),var(--coral))}
+  .tl-item{position:relative;padding:0 0 22px 52px}
+  .tl-item .dot{position:absolute;left:9px;top:2px;width:20px;height:20px;border-radius:50%;background:#fff;border:4px solid var(--iniciar)}
+  .tl-item[data-st="concluido"] .dot{border-color:var(--concluido)}
+  .tl-item[data-st="em_andamento"] .dot{border-color:var(--andamento);box-shadow:0 0 0 5px rgba(249,176,0,.2)}
+  .tl-item .tt{font-weight:700;font-family:'Baloo Bhai 2';font-size:16px}
+  .tl-item .dd{font-size:13px;color:var(--cinza)}
+
+  /* timeline HORIZONTAL (etapas da fonte) — base clara */
+  .htl-wrap{background:transparent;padding:8px 0 4px;position:relative}
+  .htl-scroll{overflow-x:auto;padding:10px 6px 14px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;position:relative;z-index:1}
+  .htl{display:flex;min-width:1320px;position:relative;align-items:flex-start}
+  .htl .step{flex:1 1 0;position:relative;padding:0 8px;text-align:center}
+  .htl .step::after{content:"";position:absolute;top:30px;left:50%;width:100%;height:4px;background:var(--seg,#dcd7e4);z-index:0;border-radius:999px}
+  .htl .step:last-child::after{display:none}
+  .htl .node{position:relative;z-index:1;width:62px;height:62px;margin:0 auto;border-radius:50%;background:#fff;border:4px solid var(--iniciar);display:flex;align-items:center;justify-content:center;font-family:'Baloo Bhai 2';font-weight:800;font-size:23px;color:var(--roxo);box-shadow:0 4px 14px rgba(48,38,131,.10);transition:transform .2s}
+  .htl .step:hover .node{transform:translateY(-3px)}
+  .htl .step[data-st="concluido"] .node{border-color:var(--concluido);color:var(--verde)}
+  .htl .step[data-st="concluido"] .node::after{content:"\2713";font-size:26px}
+  .htl .step[data-st="em_andamento"] .node{border-color:var(--andamento);color:#b87900;box-shadow:0 0 0 6px rgba(249,176,0,.20);animation:pulseNode 2.2s ease-in-out infinite}
+  @keyframes pulseNode{0%,100%{box-shadow:0 0 0 6px rgba(249,176,0,.20)}50%{box-shadow:0 0 0 11px rgba(249,176,0,.06)}}
+  .htl .scard{background:#fff;border-radius:16px;border:1px solid #ece8f2;box-shadow:0 6px 20px rgba(48,38,131,.07);padding:16px 14px;margin-top:16px;min-height:184px;position:relative;border-top:4px solid var(--iniciar)}
+  .htl .step[data-st="concluido"] .scard{border-top-color:var(--concluido)}
+  .htl .step[data-st="em_andamento"] .scard{border-top-color:var(--andamento)}
+  .htl .scard h4{font-size:15px;font-weight:700;line-height:1.18;color:var(--escuro);font-family:'Baloo Bhai 2'}
+  .htl .scard .resp{font-size:11px;color:var(--roxo);font-weight:700;margin-top:7px;letter-spacing:.02em}
+  .htl .scard .per{font-size:11.5px;color:var(--cinza);margin-top:3px}
+  .htl .scard .badge{margin-top:11px}
+  .htl .scard b{display:block;font-family:'Baloo Bhai 2';font-size:22px;color:var(--roxo);margin-top:9px}
+  .htl .scard .par{position:absolute;top:-11px;right:10px;background:var(--azul);color:#fff;font-size:9.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;box-shadow:0 3px 8px rgba(37,129,196,.30)}
+  .htl .step.plane .node{border-color:var(--amarelo);background:linear-gradient(135deg,var(--coral),var(--roxo));box-shadow:0 8px 20px rgba(229,0,109,.32)}
+  .htl .step.plane .node svg{animation:flyPlane 3.4s ease-in-out infinite}
+  @keyframes flyPlane{0%,100%{transform:translate(0,0)}50%{transform:translate(3px,-4px)}}
+  .htl .step.plane .scard{background:linear-gradient(135deg,var(--roxo),var(--azul-mar));color:#fff;border:none;border-top:4px solid var(--amarelo);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+  .htl .step.plane .scard b{color:#fff;font-size:21px}
+  .htl .step.plane .scard span{font-size:13px;opacity:.92;margin-top:2px}
+  .htl-legend{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-top:8px;position:relative;z-index:1}
+  .htl-legend span{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--cinza);font-weight:600}
+  .htl-legend i{width:12px;height:12px;border-radius:50%;display:inline-block}
+  @media(max-width:680px){.htl{min-width:1180px}}
+
+  /* marcos */
+  .marcos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media(max-width:820px){.marcos{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.marcos{grid-template-columns:1fr}}
+  .marco{background:#fff;border-radius:var(--raio);box-shadow:var(--sombra);padding:18px;border-top:5px solid var(--coral)}
+  .marco .cod{font-family:'Baloo Bhai 2';font-weight:800;color:var(--coral)}
+  .marco .dt{font-weight:700;color:var(--roxo);font-size:13px;margin:4px 0 8px}
+  .marco p{font-size:13px;color:#444}
+
+  /* numeros / contexto */
+  .ctx{background:linear-gradient(135deg,var(--roxo) 0%,var(--azul-mar) 100%);color:#fff}
+  .nums{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:36px}
+  @media(max-width:820px){.nums{grid-template-columns:repeat(2,1fr)}}
+  .num-c{text-align:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:var(--raio);padding:22px 14px}
+  .num-c b{display:block;font-family:'Baloo Bhai 2';font-size:34px;font-weight:800;color:var(--amarelo-2)}
+  .num-c span{font-size:12.5px;opacity:.92}
+  .why{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:820px){.why{grid-template-columns:1fr}}
+  .why-c{background:rgba(255,255,255,.07);border-radius:var(--raio);padding:22px}
+  .why-c h4{font-size:17px;color:#fff;margin-bottom:8px}
+  .why-c p{font-size:14px;opacity:.92}
+
+  footer{background:var(--escuro);color:#cfc9d6;padding:34px 0;font-size:13px}
+  footer .fwrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
   footer b{color:#fff}
-  .modal{position:fixed;inset:0;background:rgba(35,31,32,.55);display:none;align-items:flex-start;justify-content:center;padding:34px 16px;z-index:50;overflow:auto}
+
+  /* MODAL ADMIN */
+  .modal{position:fixed;inset:0;background:rgba(35,31,32,.55);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;z-index:50;overflow:auto;backdrop-filter:blur(3px)}
   .modal.open{display:flex}
-  .panel{background:#fff;border-radius:20px;width:100%;max-width:900px;box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden}
-  .panel.sm{max-width:440px}
-  .panel .ph{background:var(--roxo);color:#fff;padding:16px 22px;display:flex;justify-content:space-between;align-items:center}
-  .panel .ph h3{font-family:'Baloo Bhai 2'}
-  .panel .ph .x{cursor:pointer;font-size:24px;background:none;border:none;color:#fff}
-  .panel .pb{padding:22px}
-  .login{max-width:340px;margin:6px auto}
-  .adm-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px}
-  .adm-stats{font-size:14px;color:#444}.adm-stats b{color:var(--roxo)}
-  .adm-filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
-  .fbtn{border:1.5px solid #e0d5ea;background:#fff;color:#6a4d7a;border-radius:999px;padding:6px 12px;font-size:12.5px;font-weight:600;cursor:pointer}
-  .fbtn.on{background:var(--roxo);color:#fff;border-color:var(--roxo)}
-  table.list{width:100%;border-collapse:collapse;font-size:12.5px}
-  table.list th{text-align:left;background:#f4eefa;color:var(--roxo);padding:8px;position:sticky;top:0}
-  table.list td{padding:8px;border-bottom:1px solid #eee}
-  .tbl-scroll{max-height:330px;overflow:auto;border:1px solid #eee;border-radius:10px}
-  .note{background:#fbf6ff;border:1px solid #ead9f5;border-radius:12px;padding:11px 14px;font-size:12.5px;color:#6a4d7a;margin-top:14px}
-  .share-url{display:flex;gap:8px;margin:6px 0 16px}
-  .share-url input{flex:1;padding:10px;border:1.5px solid #ddd;border-radius:10px;font-size:13px}
-  #qrbox{display:flex;justify-content:center;padding:14px;background:#faf7fd;border-radius:14px}
-  #qrbox img,#qrbox canvas{border-radius:8px}
+  .panel{background:#fff;border-radius:20px;width:100%;max-width:760px;box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden}
+  .panel .ph{background:var(--roxo);color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center}
+  .panel .ph h3{font-family:'Baloo Bhai 2';font-weight:700}
+  .panel .ph .x{cursor:pointer;font-size:24px;line-height:1;background:none;border:none;color:#fff;opacity:.85}
+  .panel .pb{padding:24px}
+  .login{max-width:340px;margin:10px auto 6px}
+  .login label{font-size:13px;font-weight:600;display:block;margin-bottom:6px}
+  .inp{width:100%;padding:11px 13px;border:1.5px solid #ddd;border-radius:10px;font-family:inherit;font-size:14px}
+  .inp:focus{outline:none;border-color:var(--roxo)}
+  .btn{background:var(--roxo);color:#fff;border:none;padding:11px 18px;border-radius:10px;font-weight:700;cursor:pointer;font-family:inherit;font-size:14px}
+  .btn:hover{background:#561c6e}
+  .btn.sec{background:#eee;color:#333}
+  .btn.sec:hover{background:#e2e2e2}
+  .err{color:var(--coral);font-size:13px;margin-top:10px;min-height:18px}
+  .adm-row{display:grid;grid-template-columns:1fr 150px 110px 90px;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid #eee}
+  .adm-row .nm{font-size:14px;font-weight:600}
+  .adm-row .nm small{display:block;font-weight:500;color:var(--cinza)}
+  .adm-row select,.adm-row input{padding:8px;border:1.5px solid #ddd;border-radius:8px;font-family:inherit;font-size:13px;width:100%}
+  .adm-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;align-items:center}
+  .saved{color:var(--verde);font-size:13px;font-weight:600}
+  .note{background:#fbf6ff;border:1px solid #ead9f5;border-radius:12px;padding:12px 14px;font-size:12.5px;color:#6a4d7a;margin-top:16px}
+  @media(max-width:560px){.adm-row{grid-template-columns:1fr 1fr;gap:8px}.adm-row .nm{grid-column:1/-1}}
+  .upd{font-size:12px;opacity:.8}
+
+  /* ===== MURAL DE APOIO ===== */
+  .apoio-top{max-width:540px;margin:0 auto}
+  .apoio-form{background:linear-gradient(135deg,var(--roxo) 0%,var(--roxo-2) 100%);color:#fff;border-radius:var(--raio);padding:18px 20px;box-shadow:var(--sombra)}
+  .apoio-form h3{font-size:17px;font-weight:700}
+  .apoio-form .fhint{font-size:12px;opacity:.9;margin:3px 0 12px}
+  .apoio-form label{display:block;font-size:11.5px;font-weight:600;margin:8px 0 4px}
+  .apoio-form .inp,.apoio-form textarea{width:100%;padding:9px 12px;border:none;border-radius:9px;font-family:inherit;font-size:13.5px;color:var(--escuro)}
+  .apoio-form textarea{resize:vertical;min-height:58px}
+  .apoio-form .row2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  @media(max-width:430px){.apoio-form .row2{grid-template-columns:1fr}}
+  .btn-apoio{width:100%;margin-top:12px;background:var(--amarelo);color:#3a2e00;border:none;padding:11px;border-radius:9px;font-weight:800;font-size:14.5px;cursor:pointer;font-family:inherit}
+  .btn-apoio:hover{background:#ffc52e}
+  .btn-apoio:disabled{opacity:.6;cursor:not-allowed}
+  .charc{font-size:11px;opacity:.85;text-align:right;margin-top:3px}
+  .fmsg{font-size:12.5px;font-weight:600;margin-top:8px;min-height:16px}
+  .hpot{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+
+  /* faixa de mensagens em movimento contínuo (marquee) */
+  .apoio-marquee{margin-top:32px;overflow:hidden;position:relative;-webkit-mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+  .apoio-track{display:flex;align-items:stretch;width:max-content;animation:apoioMarquee 45s linear infinite}
+  .apoio-marquee:hover .apoio-track{animation-play-state:paused}
+  @keyframes apoioMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .apoio-marquee.is-empty{-webkit-mask:none;mask:none}
+  .apoio-marquee.is-empty .apoio-track{animation:none;width:100%;justify-content:center}
+  .apoio-card{flex:0 0 340px;width:340px;margin-right:20px;background:#fff;border-radius:18px;box-shadow:0 12px 36px rgba(48,38,131,.14);padding:22px 24px;border-left:6px solid var(--coral);display:flex;flex-direction:column}
+  .apoio-card .msg{font-size:16px;color:#2c2630;line-height:1.5;font-weight:500}
+  .apoio-card .msg::before{content:"\201C";font-family:'Baloo Bhai 2';color:var(--coral);font-size:30px;font-weight:800;margin-right:3px;line-height:0;vertical-align:-7px}
+  .apoio-card .who{margin-top:auto;padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .apoio-card .who b{font-family:'Baloo Bhai 2';color:var(--roxo);font-size:14.5px}
+  .apoio-card .who .cid{font-weight:500;color:var(--cinza);font-size:12.5px}
+  .apoio-card .who .dt{font-size:11.5px;color:var(--iniciar)}
+  .apoio-empty{color:var(--cinza);font-size:14px;text-align:center;padding:34px 18px;background:#faf8fc;border-radius:var(--raio);max-width:520px}
+  @media(prefers-reduced-motion:reduce){.apoio-track{animation:none}}
+
+  /* ===== MODERAÇÃO ADMIN ===== */
+  .mod-sec{margin-top:24px;border-top:1px solid #eee;padding-top:18px}
+  .mod-sec h4{font-size:16px;color:var(--roxo);font-family:'Baloo Bhai 2'}
+  .mod-tabs{display:flex;gap:8px;margin:12px 0}
+  .mod-tab{font-size:12px;font-weight:700;padding:6px 13px;border-radius:999px;border:1.5px solid #ddd;background:#fff;cursor:pointer;font-family:inherit}
+  .mod-tab.active{background:var(--roxo);color:#fff;border-color:var(--roxo)}
+  .mod-tab .cnt{opacity:.8;font-weight:600}
+  .mod-item{border:1px solid #eee;border-radius:12px;padding:13px 15px;margin-bottom:10px}
+  .mod-item .mm{font-size:14px;color:#333;line-height:1.5}
+  .mod-item .mw{font-size:12px;color:var(--cinza);margin-top:6px}
+  .mod-item .ma{display:flex;gap:8px;margin-top:11px}
+  .mod-item .ma button{font-size:12px;font-weight:700;padding:7px 13px;border-radius:8px;border:none;cursor:pointer;font-family:inherit}
+  .btn-ok{background:var(--verde);color:#fff}
+  .btn-del{background:#fdeaf2;color:var(--coral)}
+  .mod-empty{font-size:13px;color:var(--cinza);padding:14px 0}
+
+  /* ===== TICKER DE LOGOMARCAS (instituições apoiadoras) ===== */
+  .logos-marquee{overflow:hidden;position:relative;margin-top:6px;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+  .logos-track{display:flex;align-items:center;width:max-content;animation:logosMarquee 32s linear infinite}
+  .logos-marquee:hover .logos-track{animation-play-state:paused}
+  @keyframes logosMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .logos-marquee.is-empty{-webkit-mask:none;mask:none}
+  .logos-marquee.is-empty .logos-track{animation:none;width:100%;justify-content:center}
+  .logo-item{flex:0 0 auto;margin-right:54px;height:86px;display:flex;align-items:center;justify-content:center}
+  .logo-item img{max-height:74px;max-width:190px;object-fit:contain;filter:grayscale(1);opacity:.72;transition:filter .3s,opacity .3s}
+  .logo-item:hover img{filter:none;opacity:1}
+  .logos-empty{color:var(--cinza);font-size:14px;text-align:center;padding:30px 18px;background:#faf8fc;border-radius:var(--raio);max-width:560px}
+  @media(prefers-reduced-motion:reduce){.logos-track{animation:none}}
+  /* gestão de logos no admin */
+  .logo-form{display:grid;grid-template-columns:1fr 1.4fr auto;gap:8px;align-items:center;margin:12px 0}
+  @media(max-width:560px){.logo-form{grid-template-columns:1fr}}
+  .logo-form input{padding:9px 11px;border:1.5px solid #ddd;border-radius:8px;font-family:inherit;font-size:13px;width:100%}
+  .logo-form .btn{padding:9px 14px}
+  .logo-adm{display:flex;align-items:center;gap:12px;border:1px solid #eee;border-radius:10px;padding:8px 10px;margin-bottom:8px}
+  .logo-adm img{height:38px;max-width:96px;object-fit:contain;background:#f7f5fa;border-radius:6px}
+  .logo-adm .ln{flex:1;font-size:13px;font-weight:600}
+  .logo-adm button{font-size:12px;font-weight:700;padding:6px 11px;border-radius:8px;border:none;cursor:pointer;background:#fdeaf2;color:var(--coral)}
 </style>
 </head>
 <body>
-<div class="cfgbar" id="cfgbar" style="display:none"></div>
+<!-- ================= HERO ================= -->
 <header class="hero">
   <div class="wrap">
     <div class="topbar">
       <div class="brand">
         <svg class="heart" viewBox="0 0 100 92" aria-hidden="true">
+          <path d="M50 88C20 66 4 50 4 30 4 15 15 5 28 5c9 0 16 5 22 13C56 10 63 5 72 5c13 0 24 10 24 25 0 20-16 36-46 58Z" fill="none"/>
           <path d="M50 86C24 66 8 51 8 31 8 17 18 8 29 8c8 0 14 4 21 14" fill="none" stroke="#E5006D" stroke-width="9" stroke-linecap="round"/>
           <path d="M29 8c8 0 14 4 21 14" fill="none" stroke="#F9B000" stroke-width="9" stroke-linecap="round"/>
           <path d="M50 22c6-10 13-14 22-14 11 0 21 9 21 23 0 20-16 35-43 55" fill="none" stroke="#2581C4" stroke-width="9" stroke-linecap="round"/>
@@ -131,500 +277,482 @@
         </svg>
         <div class="bt"><small>prefeitura de</small>santa&nbsp;maria</div>
       </div>
-      <div class="top-actions">
-        <button class="admin-link" id="openShare">Compartilhar</button>
-        <button class="admin-link" id="openAdmin">Área administrativa</button>
-      </div>
+      <button class="admin-link" id="openAdmin">Área administrativa</button>
     </div>
+
     <div class="hero-main">
-      <div class="eyebrow">Abaixo-Assinado Público · Inovar é Cuidar</div>
-      <h1>Apoie o Novo Aeroporto Regional de Santa Maria</h1>
-      <p class="sub">Some sua voz à de agentes políticos, entidades e cidadãos que apoiam este projeto estratégico para a Região Central do Rio Grande do Sul.</p>
-      <div class="counter">
-        <div class="cbox total">
-          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
-          <b id="cTotal">0</b><span>Assinaturas no total</span>
-        </div>
-        <div class="cbox">
-          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg>
-          <b id="cAg">0</b><span>Agentes políticos</span>
-        </div>
-        <div class="cbox">
-          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-          <b id="cEnt">0</b><span>Entidades</span>
-        </div>
-        <div class="cbox">
-          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          <b id="cCid">0</b><span>Sociedade civil</span>
-        </div>
+      <div class="eyebrow">Painel de Transparência · Inovar é Cuidar</div>
+      <div class="title-row">
+        <span class="plane-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.639 10.258l4.83 -1.294a2 2 0 1 1 1.035 3.863l-14.489 3.883l-4.45 -5.02l2.897 -.776l2.45 2.099l2.897 -.776l-3.743 -6.244l2.898 -.777l5.668 5.042z"/>
+            <path d="M3 21h18"/>
+          </svg>
+        </span>
+        <h1>Novo Aeroporto Regional de Santa Maria</h1>
       </div>
-      <div class="meta-wrap">
-        <div class="meta-top"><span>Meta de assinaturas</span><span><b id="metaAtual">0</b> de <b id="metaTotal">1.000</b> · <b id="metaPct">0%</b></span></div>
-        <div class="meta-bar"><i id="metaBar"></i></div>
+      <p class="sub">Acompanhe, de forma aberta e atualizada, cada etapa do projeto que vai transformar a aviação na Região Central do Rio Grande do Sul.</p>
+
+      <!-- Botão de destaque para o Abaixo-Assinado. Após publicar, troque o href pela URL do abaixo-assinado. -->
+      <a class="cta-assinar" id="ctaAssinar" href="../abaixo-assinado/index.html" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+        Assine o abaixo-assinado de apoio
+      </a>
+
+      <div class="hero-grid">
+        <div class="ring-card">
+          <div class="ring">
+            <svg width="138" height="138" viewBox="0 0 138 138">
+              <circle cx="69" cy="69" r="60" stroke="rgba(255,255,255,.2)" stroke-width="14" fill="none"/>
+              <circle id="ringArc" cx="69" cy="69" r="60" stroke="#FFED00" stroke-width="14" fill="none" stroke-linecap="round" stroke-dasharray="376.99" stroke-dashoffset="376.99"/>
+            </svg>
+            <div class="pct"><b id="ringPct">0%</b><span>concluído</span></div>
+          </div>
+          <div class="ring-info">
+            <h3>Avanço geral do projeto</h3>
+            <p>Prazo total estimado: 75 meses<br/>(nov/2025 a jan/2032)</p>
+            <span class="pill" id="faseAtualPill">—</span>
+          </div>
+        </div>
+
+        <div class="next-card">
+          <div class="lab">Próximo marco</div>
+          <h3 id="nextNome">—</h3>
+          <div class="when" id="nextData">—</div>
+          <div class="meta" id="nextResp">—</div>
+        </div>
       </div>
     </div>
   </div>
 </header>
 
-<main>
-  <div class="wrap grid">
-    <div class="card manifesto">
-      <h2>Manifesto de apoio</h2>
-      <p>A <b>Região Central do Rio Grande do Sul</b> convive há décadas com uma lacuna histórica: nunca dispôs de um aeroporto civil à altura de sua importância. A aviação em Santa Maria existe desde <b>1933</b>, mas segue limitada a uma pista de uso compartilhado — militar e civil —, capaz de operar apenas aeronaves regionais. É hora de corrigir essa defasagem.</p>
-      <p>E a demanda já se provou: entre 2021 e 2024, o movimento de passageiros cresceu <b>quase 80%</b>, ultrapassando <b>46 mil usuários por ano</b>. Santa Maria é o coração geográfico do Estado e polo de dezenas de municípios — um mercado real, hoje represado pela falta de infraestrutura para receber jatos como o Boeing 737 e o Airbus A320.</p>
-      <p>As <b>enchentes de 2024</b> deixaram uma lição definitiva sobre <b>resiliência climática</b>. Quando rotas e aeroportos do Estado ficaram inoperantes, a Região Central se revelou alternativa logística estratégica para socorro, evacuação médica e chegada de suprimentos. Diante de eventos climáticos extremos cada vez mais frequentes, um aeroporto regional moderno deixa de ser conveniência e passa a ser questão de segurança — e de vidas.</p>
-      <p>O novo aeroporto é, também, <b>motor de desenvolvimento regional</b>. Ele conecta a região aos grandes hubs do país — Guarulhos, Congonhas e Brasília —, fortalece as universidades e a rede hospitalar, impulsiona o turismo, atrai investimentos e gera empregos, consolidando Santa Maria como <b>hub logístico moderno, competitivo e estratégico</b> para todo o interior gaúcho.</p>
-      <p>Por tudo isso, nós, entidades e cidadãos da Região Central do Rio Grande do Sul, <b>assinamos em apoio à continuidade e à priorização deste projeto</b>. Chegou a hora de dotar o Coração do Rio Grande do Sul de um aeroporto à altura de seu povo e de seu futuro.</p>
-      <p class="assina">Santa Maria nunca esteve tão perto de ter o seu novo aeroporto regional.</p>
-      <div class="mural" id="mural" style="display:none">
-        <div id="muralAg" style="display:none"><h3>Agentes políticos que apoiam</h3><div class="chips" id="chipsAg"></div></div>
-        <div id="muralEnt" style="display:none"><h3>Entidades que apoiam</h3><div class="chips" id="chipsEnt"></div></div>
-      </div>
+<!-- ============ MURAL DE APOIO ============ -->
+<section style="background:#fff" id="apoioSec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Mural de apoio</div>
+      <h2>Deixe sua mensagem de apoio</h2>
+      <p>Some sua voz às <b id="apoioCount">0</b> manifestações de quem acredita no novo aeroporto. Toda mensagem passa por uma breve revisão antes de aparecer no mural.</p>
     </div>
-
-    <div class="card" id="formCard">
-      <h2>Assine agora</h2>
-      <div class="tabs" id="tabs">
-        <div class="tab on" data-tipo="agente_politico">Agente político</div>
-        <div class="tab" data-tipo="entidade">Entidade</div>
-        <div class="tab" data-tipo="cidadao">Cidadão</div>
-      </div>
-      <form id="form" autocomplete="off">
-        <!-- AGENTE POLÍTICO -->
-        <div class="campos" data-c="agente_politico">
-          <label>Nome do agente / bancada *</label>
-          <input class="inp" id="apNome" placeholder="Ex.: Dep. Fulano de Tal / Bancada do RS" />
-          <div class="row3">
-            <div><label>Cargo / função *</label>
-              <select class="inp" id="apCargo">
-                <option value="">Selecione…</option>
-                <option>Senador(a)</option>
-                <option>Deputado(a) Federal</option>
-                <option>Deputado(a) Estadual</option>
-                <option>Vereador(a)</option>
-                <option>Prefeito(a)</option>
-                <option>Vice-Prefeito(a)</option>
-                <option>Secretário(a)</option>
-                <option>Bancada</option>
-                <option>Outro</option>
-              </select>
-            </div>
-            <div><label>Partido</label><input class="inp" id="apPartido" placeholder="Sigla" /></div>
-            <div><label>UF</label><input class="inp" id="apUF" placeholder="RS" maxlength="2" /></div>
-          </div>
-          <label>Casa / órgão</label>
-          <input class="inp" id="apCasa" placeholder="Ex.: Assembleia Legislativa do RS, Câmara Municipal de Santa Maria" />
-          <div class="row2">
-            <div><label>CPF (opcional)</label><input class="inp" id="apCpf" placeholder="000.000.000-00" inputmode="numeric" /></div>
-            <div><label>Cidade / base</label><input class="inp" id="apCidade" placeholder="Santa Maria" /></div>
-          </div>
-          <label>E-mail (opcional, para o comprovante)</label>
-          <input class="inp" id="apEmail" placeholder="gabinete@email.leg.br" inputmode="email" />
+    <div class="apoio-top">
+      <form class="apoio-form" id="apoioForm" autocomplete="off">
+        <h3>Sua voz importa</h3>
+        <p class="fhint">Conte por que você apoia o novo aeroporto. Sua mensagem aparece no mural após a revisão da equipe.</p>
+        <div class="row2">
+          <div><label for="apNome">Seu nome</label><input id="apNome" class="inp" maxlength="80" placeholder="Ex.: Maria Silva" required /></div>
+          <div><label for="apCidade">Cidade</label><input id="apCidade" class="inp" maxlength="80" placeholder="Ex.: Santa Maria" /></div>
         </div>
-
-        <!-- ENTIDADE -->
-        <div class="campos" data-c="entidade" style="display:none">
-          <label>Entidade (razão social) *</label>
-          <input class="inp" id="entidade" placeholder="Ex.: Associação Comercial de Santa Maria" />
-          <div class="row2">
-            <div><label>CNPJ *</label><input class="inp" id="cnpj" placeholder="00.000.000/0000-00" inputmode="numeric" /></div>
-            <div><label>Cidade</label><input class="inp" id="cidadeE" placeholder="Santa Maria" /></div>
-          </div>
-          <label>Endereço</label>
-          <input class="inp" id="endereco" placeholder="Rua, nº, bairro" />
-          <div class="row2">
-            <div><label>Presidente *</label><input class="inp" id="presidente" placeholder="Nome do presidente" /></div>
-            <div><label>CPF do Presidente *</label><input class="inp" id="cpfE" placeholder="000.000.000-00" inputmode="numeric" /></div>
-          </div>
-          <label>E-mail (opcional, para o comprovante)</label>
-          <input class="inp" id="emailE" placeholder="contato@entidade.org" inputmode="email" />
-        </div>
-
-        <!-- CIDADÃO -->
-        <div class="campos" data-c="cidadao" style="display:none">
-          <label>Nome completo *</label>
-          <input class="inp" id="nome" placeholder="Seu nome completo" />
-          <div class="row2">
-            <div><label>CPF *</label><input class="inp" id="cpfC" placeholder="000.000.000-00" inputmode="numeric" /></div>
-            <div><label>Cidade</label><input class="inp" id="cidadeC" placeholder="Santa Maria" /></div>
-          </div>
-          <label>E-mail (opcional, para o comprovante)</label>
-          <input class="inp" id="emailC" placeholder="voce@email.com" inputmode="email" />
-        </div>
-
-        <input class="hp" id="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-
-        <div class="sig-wrap">
-          <label>Assinatura *</label>
-          <div class="sig-box"><canvas id="sig"></canvas><div class="sig-hint" id="sigHint">Assine aqui com o dedo ou o mouse</div></div>
-          <div class="sig-actions"><span style="font-size:12px;color:#999">Desenhe a assinatura no quadro acima</span>
-            <button type="button" class="link-btn" id="clearSig">Limpar</button></div>
-        </div>
-
-        <label class="consent"><input type="checkbox" id="consent" />
-          <span>Declaro que as informações são verdadeiras e autorizo o uso dos dados exclusivamente para fins deste abaixo-assinado, conforme a LGPD (Lei 13.709/2018).</span></label>
-
-        <div class="err" id="formErr"></div>
-        <button type="submit" class="btn" id="submitBtn">Assinar em apoio ao projeto</button>
+        <label for="apMsg">Mensagem de apoio</label>
+        <textarea id="apMsg" maxlength="500" placeholder="Escreva aqui o seu apoio ao projeto…" required></textarea>
+        <div class="charc"><span id="apCount">0</span>/500</div>
+        <input type="text" id="apWeb" class="hpot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button type="submit" class="btn-apoio" id="apBtn">Enviar meu apoio</button>
+        <div class="fmsg" id="apFeedbackMsg"></div>
       </form>
+    </div>
+    <div class="apoio-marquee" id="apoioMarquee"><div class="apoio-track" id="apoioFeed"></div></div>
+  </div>
+</section>
 
-      <div id="successView" style="display:none" class="ok">
-        <div class="ic">&#10003;</div>
-        <h2>Assinatura registrada!</h2>
-        <p style="margin:8px 0 18px;color:#555">Obrigado por apoiar o Novo Aeroporto Regional de Santa Maria.</p>
-        <button class="btn sec" id="downloadReceipt" style="width:100%">Baixar comprovante (PDF)</button>
-        <div><button class="link-btn" id="newSign" style="margin-top:16px">Assinar outra</button></div>
+<!-- ============ ETAPAS / LINHA DO TEMPO (unificado) ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Onde estamos · Linha do tempo</div>
+      <h2>As etapas do projeto</h2>
+      <p>Do estudo de áreas à obra — acompanhe o status de cada uma das nove etapas do cronograma, até a decolagem.</p>
+    </div>
+    <div class="htl-wrap">
+      <div class="htl-scroll"><div class="htl" id="fasesList"></div></div>
+      <div class="htl-legend">
+        <span><i style="background:var(--concluido)"></i>Concluído</span>
+        <span><i style="background:var(--andamento)"></i>Em andamento</span>
+        <span><i style="background:var(--iniciar)"></i>A iniciar</span>
+        <span><i style="background:var(--azul)"></i>Etapa paralela</span>
       </div>
     </div>
   </div>
-</main>
+</section>
+
+<!-- ============ MARCOS ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Marcos do projeto</div>
+      <h2>Momentos-chave</h2>
+      <p>Eventos importantes que marcam a articulação política e institucional do projeto.</p>
+    </div>
+    <div class="marcos" id="marcosList"></div>
+  </div>
+</section>
+
+<!-- ============ CONTEXTO / NÚMEROS ============ -->
+<section class="ctx">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" style="color:var(--amarelo-2)">Por que um novo aeroporto?</div>
+      <h2 style="color:#fff">Santa Maria, hub logístico do RS</h2>
+    </div>
+    <div class="nums">
+      <div class="num-c"><b>+80%</b><span>de crescimento de passageiros entre 2021 e 2024</span></div>
+      <div class="num-c"><b>46 mil</b><span>usuários por ano no terminal atual</span></div>
+      <div class="num-c"><b>36 → 6</b><span>áreas mapeadas pelo ITA, 6 priorizadas</span></div>
+      <div class="num-c"><b>43 km</b><span>raio de busca a partir do Centro</span></div>
+    </div>
+    <div class="why">
+      <div class="why-c"><h4>Superar o limite técnico</h4><p>A pista atual atende apenas aeronaves regionais (ATR 72). O novo aeroporto receberá jatos de grande porte como Boeing 737 e Airbus A320, ampliando conexões com Guarulhos, Congonhas e Brasília.</p></div>
+      <div class="why-c"><h4>Papel estratégico no Estado</h4><p>As enchentes de 2024 mostraram Santa Maria como alternativa logística para o Rio Grande do Sul, fortalecendo turismo, cultura, saúde e a resposta a emergências.</p></div>
+      <div class="why-c"><h4>Desenvolvimento regional</h4><p>O projeto impulsiona universidades, hospitais, inovação, investimentos e geração de empregos em toda a Região Central — Município, Governo Federal e ITA atuando de forma integrada.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSTITUIÇÕES APOIADORAS (ticker) ============ -->
+<section style="background:#fff" id="apoiadoresSec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Apoio institucional</div>
+      <h2>Instituições que apoiam o projeto</h2>
+      <p>Organizações que caminham junto pela realização do novo aeroporto regional de Santa Maria.</p>
+    </div>
+    <div class="logos-marquee" id="logosMarquee"><div class="logos-track" id="logosTrack"></div></div>
+  </div>
+</section>
 
 <footer>
-  <div class="wrap">Abaixo-Assinado Público — <b>Novo Aeroporto Regional de Santa Maria</b><br/>
-  Seus dados são tratados conforme a LGPD e usados apenas para este fim.</div>
+  <div class="wrap fwrap">
+    <div>Painel público de transparência — <b>Novo Aeroporto Regional de Santa Maria</b><br/>
+    Fontes: Cronograma do projeto (SAC / Município) e apresentação institucional.</div>
+    <div class="upd">Última atualização: <b id="lastUpd">—</b></div>
+  </div>
 </footer>
 
-<!-- COMPARTILHAR -->
-<div class="modal" id="shareModal">
-  <div class="panel sm">
-    <div class="ph"><h3>Compartilhar abaixo-assinado</h3><button class="x" id="closeShare">&times;</button></div>
-    <div class="pb">
-      <p style="font-size:13px;color:#555;margin-bottom:6px">Copie o link ou baixe o QR Code para imprimir em cartazes e divulgar.</p>
-      <div class="share-url"><input id="shareUrl" readonly /><button class="btn sec" id="copyUrl">Copiar</button></div>
-      <div id="qrbox"></div>
-      <button class="btn amar" id="downloadQR" style="width:100%">Baixar QR Code (PNG)</button>
-      <div class="note">O link leva direto a esta página de assinatura. Após publicar no Vercel, este endereço já será o definitivo.</div>
-    </div>
-  </div>
-</div>
-
-<!-- ADMIN -->
+<!-- ============ MODAL ADMIN ============ -->
 <div class="modal" id="adminModal">
   <div class="panel">
-    <div class="ph"><h3>Área administrativa — Assinaturas</h3><button class="x" id="closeAdmin">&times;</button></div>
+    <div class="ph"><h3>Área administrativa</h3><button class="x" id="closeAdmin">&times;</button></div>
     <div class="pb">
+      <!-- LOGIN -->
       <div id="loginView">
         <div class="login">
-          <label>E-mail</label><input type="email" id="admEmail" class="inp" autocomplete="username" />
-          <label>Senha</label><input type="password" id="admPwd" class="inp" autocomplete="current-password" />
+          <label for="pwd">Senha de acesso</label>
+          <input type="password" id="pwd" class="inp" placeholder="Digite a senha" autocomplete="current-password" />
           <div class="err" id="loginErr"></div>
-          <button class="btn" id="doLogin">Entrar</button>
+          <button class="btn" id="doLogin" style="width:100%;margin-top:6px">Entrar</button>
         </div>
-        <div class="note">Acesso restrito. Autenticação segura via Supabase; CPF/CNPJ só são visíveis para administradores logados.</div>
+        <div class="note"><b>Atenção de segurança:</b> esta é uma versão de validação. A verificação de senha acontece no navegador (não é segura para produção). Para uso público real, a autenticação e os dados devem ficar em um servidor — veja o caminho recomendado entregue junto ao arquivo.</div>
       </div>
-      <div id="adminView" style="display:none">
-        <div class="adm-top">
-          <div class="adm-stats">Total: <b id="admTotal">0</b> · Agentes: <b id="admAg">0</b> · Entidades: <b id="admEnt">0</b> · Sociedade: <b id="admCid">0</b></div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <button class="btn sec" id="exportDoc">Exportar documento A4 (PDF)</button>
-            <button class="btn sec" id="logoutBtn">Sair</button>
+      <!-- EDITOR -->
+      <div id="editorView" style="display:none">
+        <p style="font-size:13px;color:var(--cinza);margin-bottom:8px">Atualize o status e o percentual de cada fase. O avanço geral é recalculado automaticamente.</p>
+        <div id="admFases"></div>
+        <div style="margin-top:18px">
+          <label style="font-size:13px;font-weight:600">Próximo marco em destaque</label>
+          <select id="admNext" class="inp" style="margin-top:6px"></select>
+        </div>
+        <div class="adm-actions">
+          <button class="btn" id="saveBtn">Salvar alterações</button>
+          <button class="btn sec" id="exportBtn">Exportar dados (.json)</button>
+          <button class="btn sec" id="logoutBtn">Sair</button>
+          <span class="saved" id="savedMsg"></span>
+        </div>
+        <div class="note">As alterações ficam salvas neste navegador. Para publicar para todos os visitantes, clique em <b>Exportar dados</b> e substitua o arquivo de dados no servidor (ou conecte ao backend conforme o guia).</div>
+
+        <div class="mod-sec">
+          <h4>Mural de apoio — moderação</h4>
+          <p style="font-size:12.5px;color:var(--cinza);margin-top:4px">Aprove as mensagens para que apareçam no site, ou exclua as indevidas. (Demo: salvo neste navegador.)</p>
+          <div class="mod-tabs">
+            <button type="button" class="mod-tab active" data-tab="pendentes" id="tabPend">Pendentes <span class="cnt" id="cntPend">(0)</span></button>
+            <button type="button" class="mod-tab" data-tab="publicadas" id="tabPub">Publicadas <span class="cnt" id="cntPub">(0)</span></button>
           </div>
+          <div id="modLista"></div>
         </div>
-        <div class="adm-filters" id="admFilters">
-          <button class="fbtn on" data-f="todos">Todos</button>
-          <button class="fbtn" data-f="agente_politico">Agentes políticos</button>
-          <button class="fbtn" data-f="entidade">Entidades</button>
-          <button class="fbtn" data-f="cidadao">Sociedade</button>
+
+        <div class="mod-sec">
+          <h4>Instituições apoiadoras — logomarcas</h4>
+          <p style="font-size:12.5px;color:var(--cinza);margin-top:4px">Cadastre a logo informando a URL de uma imagem (PNG/SVG/JPG). Ela entra no ticker público imediatamente. (Demo: salvo neste navegador.)</p>
+          <form class="logo-form" id="logoForm" autocomplete="off">
+            <input type="text" id="logoNome" placeholder="Nome da instituição" maxlength="120">
+            <input type="url" id="logoUrl" placeholder="URL da imagem (https://...)">
+            <input type="url" id="logoSite" placeholder="Site (opcional)">
+            <button type="submit" class="btn" id="logoAdd">Adicionar</button>
+          </form>
+          <div id="logoMsg" style="font-size:12.5px;font-weight:600;color:var(--coral);min-height:16px"></div>
+          <div id="logosAdminList"></div>
         </div>
-        <div class="tbl-scroll">
-          <table class="list"><thead><tr><th>#</th><th>Persona</th><th>Nome / Entidade</th><th>Detalhe</th><th>Cidade</th><th>Data</th></tr></thead>
-          <tbody id="admRows"></tbody></table>
-        </div>
-        <div class="note">O documento A4 é gerado com as assinaturas <b>agrupadas por persona</b> (Agentes Políticos, Entidades e Sociedade Civil), com os dados e a imagem de cada assinatura — pronto para protocolo.</div>
       </div>
     </div>
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-// ===================== CONFIGURAÇÃO SUPABASE =====================
-const SUPABASE_URL  = "https://gvrgbyvyqrxhvoppkiuc.supabase.co";
-const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd2cmdieXZ5cXJ4aHZvcHBraXVjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE4OTYwMDAsImV4cCI6MjA5NzQ3MjAwMH0.FD3oVDWGn-MK4YepAjIcoo669evp75PYQPweUll27c4";
-const META = 1000;   // meta de assinaturas exibida na barra pública (ajuste à vontade)
-// ================================================================
-const configurado = SUPABASE_URL.startsWith("http") && SUPABASE_ANON.length>20;
-let sb = configurado ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON) : null;
-const DEMO_KEY="abaixo_assinado_demo_v2";
-const { jsPDF } = window.jspdf;
+// ============ DADOS BASE (editáveis) ============
+// Senha de demonstração — TROQUE antes de usar. Em produção, validar no servidor.
+const ADMIN_PASSWORD = "SantaMaria2026";
 
-const PERSONA={agente_politico:{lab:"Agente político",plural:"Agentes Políticos"},
-               entidade:{lab:"Entidade",plural:"Entidades"},
-               cidadao:{lab:"Cidadão",plural:"Sociedade Civil"}};
-const ORDEM=["agente_politico","entidade","cidadao"];
-let tipoAtual="agente_politico";
-let ultimoRegistro=null;
-
-const onlyDigits=s=>(s||"").replace(/\D/g,"");
-function maskCPF(v){v=onlyDigits(v).slice(0,11);return v.replace(/(\d{3})(\d)/,"$1.$2").replace(/(\d{3})\.(\d{3})(\d)/,"$1.$2.$3").replace(/(\d{3})\.(\d{3})\.(\d{3})(\d)/,"$1.$2.$3-$4");}
-function maskCNPJ(v){v=onlyDigits(v).slice(0,14);return v.replace(/(\d{2})(\d)/,"$1.$2").replace(/(\d{2})\.(\d{3})(\d)/,"$1.$2.$3").replace(/\.(\d{3})(\d)/,".$1/$2").replace(/(\d{4})(\d)/,"$1-$2");}
-["cpfE","cpfC","apCpf"].forEach(id=>document.getElementById(id).addEventListener("input",e=>e.target.value=maskCPF(e.target.value)));
-document.getElementById("cnpj").addEventListener("input",e=>e.target.value=maskCNPJ(e.target.value));
-document.getElementById("apUF").addEventListener("input",e=>e.target.value=e.target.value.toUpperCase().replace(/[^A-Z]/g,"").slice(0,2));
-
-// tabs
-document.querySelectorAll("#tabs .tab").forEach(t=>t.onclick=()=>setTipo(t.dataset.tipo));
-function setTipo(t){tipoAtual=t;
-  document.querySelectorAll("#tabs .tab").forEach(x=>x.classList.toggle("on",x.dataset.tipo===t));
-  document.querySelectorAll(".campos").forEach(c=>c.style.display=c.dataset.c===t?"block":"none");
-}
-
-// canvas
-const canvas=document.getElementById("sig"),ctx=canvas.getContext("2d");
-let drawing=false,hasSig=false;
-function fitCanvas(){const r=canvas.getBoundingClientRect(),dpr=window.devicePixelRatio||1;
-  canvas.width=r.width*dpr;canvas.height=r.height*dpr;ctx.scale(dpr,dpr);
-  ctx.lineWidth=2.2;ctx.lineCap="round";ctx.lineJoin="round";ctx.strokeStyle="#231F20";}
-setTimeout(fitCanvas,60);window.addEventListener("resize",fitCanvas);
-function pos(e){const r=canvas.getBoundingClientRect();return{x:(e.clientX)-r.left,y:(e.clientY)-r.top};}
-canvas.addEventListener("pointerdown",e=>{e.preventDefault();drawing=true;const p=pos(e);ctx.beginPath();ctx.moveTo(p.x,p.y);document.getElementById("sigHint").style.display="none";});
-canvas.addEventListener("pointermove",e=>{if(!drawing)return;e.preventDefault();const p=pos(e);ctx.lineTo(p.x,p.y);ctx.stroke();hasSig=true;});
-window.addEventListener("pointerup",()=>drawing=false);
-document.getElementById("clearSig").onclick=()=>{ctx.clearRect(0,0,canvas.width,canvas.height);hasSig=false;document.getElementById("sigHint").style.display="flex";};
-
-// contadores + mural
-async function atualizar(){
-  let total=0,ag=0,ent=0,cid=0,apo=[];
-  if(configurado){
-    try{
-      const {data:r}=await sb.rpc("resumo_apoios"); if(r){total=r.total;ag=r.agentes;ent=r.entidades;cid=r.cidadaos;}
-      const {data:a}=await sb.rpc("apoiadores_publicos"); if(a) apo=a;
-    }catch(e){}
-  }else{
-    const arr=JSON.parse(localStorage.getItem(DEMO_KEY)||"[]");
-    total=arr.length;ag=arr.filter(a=>a.tipo==="agente_politico").length;ent=arr.filter(a=>a.tipo==="entidade").length;cid=arr.filter(a=>a.tipo==="cidadao").length;
-    apo=arr.filter(a=>a.tipo!=="cidadao").map(a=>({tipo:a.tipo,nome:a.tipo==="entidade"?a.entidade:a.responsavel,cargo:a.cargo,partido:a.partido,uf:a.uf,cidade:a.cidade}));
-  }
-  countUp(cTotal,total);countUp(cAg,ag);countUp(cEnt,ent);countUp(cCid,cid);
-  document.getElementById("metaTotal").textContent=META.toLocaleString("pt-BR");
-  countUp(document.getElementById("metaAtual"),total);
-  const pct=Math.min(100,Math.round(total/META*100));
-  document.getElementById("metaBar").style.width=pct+"%";
-  document.getElementById("metaPct").textContent=pct+"%";
-  const ags=apo.filter(a=>a.tipo==="agente_politico"),ents=apo.filter(a=>a.tipo==="entidade");
-  const mural=document.getElementById("mural");let vis=false;
-  if(ags.length){vis=true;document.getElementById("muralAg").style.display="block";
-    document.getElementById("chipsAg").innerHTML=ags.slice(0,60).map(a=>`<span class="chip ag">${esc(a.nome)}${a.cargo?" · "+esc(a.cargo):""}${a.partido?" ("+esc(a.partido)+(a.uf?"/"+esc(a.uf):"")+")":""}</span>`).join("");}
-  if(ents.length){vis=true;document.getElementById("muralEnt").style.display="block";
-    document.getElementById("chipsEnt").innerHTML=ents.slice(0,60).map(e=>`<span class="chip">${esc(e.nome)}</span>`).join("");}
-  mural.style.display=vis?"block":"none";
-}
-function esc(s){return (s||"").replace(/</g,"&lt;");}
-function val(id){return document.getElementById(id).value.trim();}
-function countUp(el,to){to=+to||0;const from=+(el.dataset.v||0);el.dataset.v=to;
-  if(from===to){el.textContent=to.toLocaleString("pt-BR");return;}
-  const t0=performance.now(),dur=700;
-  (function step(t){const p=Math.min(1,(t-t0)/dur);const v=Math.round(from+(to-from)*(0.5-Math.cos(p*Math.PI)/2));
-    el.textContent=v.toLocaleString("pt-BR");if(p<1)requestAnimationFrame(step);})(t0);}
-
-async function gerarHash(txt){const buf=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(txt));
-  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,"0")).join("").slice(0,16).toUpperCase();}
-
-// submit
-document.getElementById("form").addEventListener("submit",async e=>{
-  e.preventDefault();const err=document.getElementById("formErr");err.textContent="";
-  if(document.getElementById("website").value)return;
-  if(!document.getElementById("consent").checked){err.textContent="É preciso marcar o aceite de dados (LGPD).";return;}
-  if(!hasSig){err.textContent="Por favor, faça a assinatura no quadro.";return;}
-  let rec={tipo:tipoAtual};
-  if(tipoAtual==="agente_politico"){
-    rec.responsavel=val("apNome");rec.cargo=val("apCargo");rec.partido=val("apPartido");rec.uf=val("apUF");
-    rec.entidade=val("apCasa");rec.cpf=val("apCpf");rec.cidade=val("apCidade");rec.email=val("apEmail");
-    if(!rec.responsavel||!rec.cargo){err.textContent="Preencha nome e cargo/função.";return;}
-  }else if(tipoAtual==="entidade"){
-    rec.entidade=val("entidade");rec.cnpj=val("cnpj");rec.endereco=val("endereco");
-    rec.responsavel=val("presidente");rec.cpf=val("cpfE");rec.cidade=val("cidadeE");rec.email=val("emailE");
-    if(!rec.entidade||!rec.cnpj||!rec.responsavel||!rec.cpf){err.textContent="Preencha entidade, CNPJ, presidente e CPF.";return;}
-  }else{
-    rec.responsavel=val("nome");rec.cpf=val("cpfC");rec.cidade=val("cidadeC");rec.email=val("emailC");
-    if(!rec.responsavel||!rec.cpf){err.textContent="Preencha seu nome e CPF.";return;}
-  }
-  rec.assinatura_png=canvas.toDataURL("image/png");
-  rec.criado_em=new Date().toISOString();
-  rec.hash=await gerarHash([rec.tipo,rec.entidade||"",rec.responsavel,rec.cpf||"",rec.criado_em].join("|"));
-  const btn=document.getElementById("submitBtn");btn.disabled=true;btn.textContent="Registrando…";
-  try{
-    if(configurado){const {error}=await sb.from("assinaturas").insert([{...rec,user_agent:navigator.userAgent}]);if(error)throw error;}
-    else{const arr=JSON.parse(localStorage.getItem(DEMO_KEY)||"[]");arr.push(rec);localStorage.setItem(DEMO_KEY,JSON.stringify(arr));}
-    ultimoRegistro=rec;
-    document.getElementById("form").style.display="none";
-    document.getElementById("tabs").style.display="none";
-    document.getElementById("successView").style.display="block";
-    atualizar();
-  }catch(ex){err.textContent="Não foi possível registrar agora. Tente novamente.";}
-  btn.disabled=false;btn.textContent="Assinar em apoio ao projeto";
-});
-document.getElementById("newSign").onclick=()=>{
-  document.getElementById("form").reset();document.getElementById("clearSig").click();
-  document.getElementById("successView").style.display="none";
-  document.getElementById("form").style.display="block";document.getElementById("tabs").style.display="flex";setTipo("agente_politico");
-};
-document.getElementById("downloadReceipt").onclick=()=>{if(ultimoRegistro)gerarComprovante(ultimoRegistro);};
-
-// ===================== PDF =====================
-function cab(doc,titulo){
-  doc.setFillColor(102,35,130);doc.rect(0,0,210,30,"F");
-  doc.setFillColor(229,0,109);doc.rect(0,30,210,2,"F");
-  doc.setTextColor(255,255,255);doc.setFont("helvetica","bold");doc.setFontSize(9);
-  doc.text("PREFEITURA DE SANTA MARIA · INOVAR É CUIDAR",14,13);
-  doc.setFontSize(14);doc.text(titulo,14,23);doc.setTextColor(35,31,32);
-}
-const manifestoPDF="Nos, entidades, agentes politicos e cidadaos da Regiao Central do Rio Grande do Sul, assinamos em apoio ao Novo Aeroporto Regional de Santa Maria. A regiao convive com uma lacuna historica: desde 1933 tem aviacao, mas nunca teve um aeroporto civil a altura de sua importancia, seguindo limitada a uma pista compartilhada, militar e civil. A demanda ja se provou, com crescimento de quase 80% de passageiros entre 2021 e 2024 e mais de 46 mil usuarios por ano. As enchentes de 2024 comprovaram o papel estrategico da regiao como alternativa logistica para socorro e evacuacao - uma questao de resiliencia climatica e de vidas. Um novo aeroporto conecta a regiao aos grandes hubs do pais, fortalece universidades, hospitais, turismo, investimentos e empregos, consolidando Santa Maria como hub logistico moderno e estrategico. Por isso, apoiamos a continuidade e a priorizacao deste projeto.";
-function fmtBR(iso){const d=new Date(iso);return d.toLocaleDateString("pt-BR")+" "+d.toLocaleTimeString("pt-BR").slice(0,5);}
-
-function gerarComprovante(r){
-  const doc=new jsPDF({unit:"mm",format:"a4"});
-  cab(doc,"Comprovante de Assinatura");
-  doc.setFont("helvetica","bold");doc.setFontSize(12);
-  doc.text("Abaixo-Assinado — Novo Aeroporto Regional de Santa Maria",14,44,{maxWidth:182});
-  doc.setFont("helvetica","normal");doc.setFontSize(9.5);
-  const mLin=doc.splitTextToSize(manifestoPDF,182);doc.text(mLin,14,54);
-  let y=54+mLin.length*4.6+8;doc.setDrawColor(220);doc.line(14,y,196,y);y+=8;
-  doc.setFont("helvetica","bold");doc.setFontSize(11);doc.text("Dados da assinatura",14,y);y+=8;
-  doc.setFontSize(10);
-  const L=[];
-  if(r.tipo==="agente_politico"){L.push(["Tipo","Agente politico"],["Nome",r.responsavel||"-"],["Cargo/funcao",r.cargo||"-"],["Partido",r.partido||"-"],["UF",r.uf||"-"],["Casa/orgao",r.entidade||"-"]);if(r.cpf)L.push(["CPF",r.cpf]);}
-  else if(r.tipo==="entidade"){L.push(["Tipo","Entidade"],["Entidade",r.entidade||"-"],["CNPJ",r.cnpj||"-"],["Endereco",r.endereco||"-"],["Presidente",r.responsavel||"-"],["CPF do Presidente",r.cpf||"-"]);}
-  else{L.push(["Tipo","Cidadao"],["Nome",r.responsavel||"-"],["CPF",r.cpf||"-"]);}
-  L.push(["Cidade",r.cidade||"-"],["Data/Hora",fmtBR(r.criado_em)],["Codigo de verificacao",r.hash||"-"]);
-  L.forEach(([k,v])=>{doc.setFont("helvetica","bold");doc.text(k+":",14,y);doc.setFont("helvetica","normal");doc.text(String(v),70,y,{maxWidth:126});y+=8;});
-  y+=4;doc.setFont("helvetica","bold");doc.text("Assinatura:",14,y);y+=2;
-  try{doc.addImage(r.assinatura_png,"PNG",14,y,70,26);}catch(e){}
-  doc.setDrawColor(200);doc.line(14,y+28,84,y+28);
-  doc.setFontSize(8);doc.setTextColor(120);
-  doc.text("Assinatura eletronica registrada conforme a Lei 14.063/2020. Documento gerado eletronicamente.",14,285);
-  doc.save("comprovante-assinatura.pdf");
-}
-
-function secHeader(doc,txt,n,y){
-  if(y+16>282){doc.addPage();y=20;}
-  doc.setFillColor(102,35,130);doc.rect(14,y,182,9,"F");
-  doc.setTextColor(255,255,255);doc.setFont("helvetica","bold");doc.setFontSize(10);
-  doc.text(txt+"  ("+n+")",17,y+6);doc.setTextColor(35,31,32);return y+13;
-}
-function entryH(r){return r.tipo==="cidadao"?26:40;}
-function drawEntry(doc,r,idx,y){
-  const h=entryH(r);if(y+h>282){doc.addPage();y=20;}
-  doc.setDrawColor(230);doc.setFillColor(249,247,253);doc.rect(14,y,182,h-6,"FD");
-  doc.setFont("helvetica","bold");doc.setFontSize(9.5);
-  const titulo=idx+". "+(r.tipo==="entidade"?(r.entidade||"Entidade"):(r.responsavel||""));
-  doc.text(doc.splitTextToSize(titulo,118),17,y+7);
-  doc.setFont("helvetica","normal");doc.setFontSize(8);let ly=y+13;
-  let info=[];
-  if(r.tipo==="agente_politico"){
-    info.push("Cargo: "+(r.cargo||"-")+(r.partido?("   Partido: "+r.partido):"")+(r.uf?("   UF: "+r.uf):""));
-    if(r.entidade)info.push("Casa/orgao: "+r.entidade);
-    info.push((r.cpf?("CPF: "+r.cpf+"   "):"")+"Cidade: "+(r.cidade||"-"));
-    info.push("Data: "+fmtBR(r.criado_em)+"   Cod.: "+(r.hash||"-"));
-  }else if(r.tipo==="entidade"){
-    info.push("CNPJ: "+(r.cnpj||"-")+"   Cidade: "+(r.cidade||"-"));
-    info.push("Presidente: "+(r.responsavel||"-"));
-    info.push("CPF: "+(r.cpf||"-")+"   Data: "+fmtBR(r.criado_em));
-    info.push("Cod.: "+(r.hash||"-"));
-  }else{
-    info.push("CPF: "+(r.cpf||"-")+"   Cidade: "+(r.cidade||"-"));
-    info.push("Data: "+fmtBR(r.criado_em)+"   Cod.: "+(r.hash||"-"));
-  }
-  info.forEach(t=>{doc.text(t,17,ly);ly+=4.5;});
-  try{doc.addImage(r.assinatura_png,"PNG",150,y+4,42,16);}catch(e){}
-  doc.setFontSize(7);doc.setTextColor(150);doc.text("assinatura",165,y+22);doc.setTextColor(35,31,32);
-  return y+h;
-}
-function gerarDocumento(regs){
-  const doc=new jsPDF({unit:"mm",format:"a4"});
-  cab(doc,"Abaixo-Assinado");
-  doc.setFont("helvetica","bold");doc.setFontSize(13);
-  doc.text("Apoio ao Novo Aeroporto Regional de Santa Maria",14,44,{maxWidth:182});
-  doc.setFont("helvetica","normal");doc.setFontSize(10);
-  const mLin=doc.splitTextToSize(manifestoPDF,182);doc.text(mLin,14,54);
-  let hy=54+mLin.length*4.8+6;
-  doc.setFont("helvetica","bold");doc.setFontSize(11);doc.text("Total de assinaturas: "+regs.length,14,hy);
-  doc.setFontSize(8);doc.setFont("helvetica","normal");doc.setTextColor(120);
-  doc.text("Documento gerado em "+fmtBR(new Date().toISOString()),14,hy+6);doc.setTextColor(35,31,32);
-  let y=hy+16,idx=1;
-  ORDEM.forEach(tp=>{
-    const grupo=regs.filter(r=>r.tipo===tp);if(!grupo.length)return;
-    y=secHeader(doc,PERSONA[tp].plural.toUpperCase(),grupo.length,y);
-    grupo.forEach(r=>{y=drawEntry(doc,r,idx++,y);});
-    y+=4;
-  });
-  const pgs=doc.internal.getNumberOfPages();
-  for(let p=1;p<=pgs;p++){doc.setPage(p);doc.setFontSize(8);doc.setTextColor(140);
-    doc.text("Novo Aeroporto Regional de Santa Maria — Abaixo-Assinado   ·   Pagina "+p+"/"+pgs,14,290);}
-  doc.save("abaixo-assinado-aeroporto-sm.pdf");
-}
-
-// ===================== COMPARTILHAR (link + QR) =====================
-const shareModal=document.getElementById("shareModal");let qrRendered=false;
-document.getElementById("openShare").onclick=()=>{
-  const url=location.href.split("#")[0];
-  document.getElementById("shareUrl").value=url;
-  if(!qrRendered){new QRCode(document.getElementById("qrbox"),{text:url,width:200,height:200,colorDark:"#231F20",colorLight:"#ffffff"});qrRendered=true;}
-  shareModal.classList.add("open");
-};
-document.getElementById("closeShare").onclick=()=>shareModal.classList.remove("open");
-shareModal.addEventListener("click",e=>{if(e.target===shareModal)shareModal.classList.remove("open");});
-document.getElementById("copyUrl").onclick=async()=>{
-  const i=document.getElementById("shareUrl");
-  try{await navigator.clipboard.writeText(i.value);}catch(e){i.select();document.execCommand("copy");}
-  const b=document.getElementById("copyUrl");b.textContent="Copiado!";setTimeout(()=>b.textContent="Copiar",2000);
-};
-document.getElementById("downloadQR").onclick=()=>{
-  const img=document.querySelector("#qrbox img")||document.querySelector("#qrbox canvas");if(!img)return;
-  let dataURL=img.tagName==="IMG"?img.src:img.toDataURL("image/png");
-  const a=document.createElement("a");a.href=dataURL;a.download="qrcode-abaixo-assinado.png";a.click();
+const DEFAULT_DATA = {
+  atualizadoEm: "2026-06-19",
+  proximoMarco: "M1",
+  fases: [
+    {id:"f1", num:"1", nome:"Estudo e priorização de áreas", periodo:"nov/2025 – set/2026", resp:"ITA e SAC", peso:8, status:"em_andamento", progresso:40, paralela:false,
+      desc:"Estudo técnico de áreas e priorização pelo ITA/SAC."},
+    {id:"f2", num:"2", nome:"Escolha da área pelo Município", periodo:"out/2026 – dez/2026", resp:"Município", peso:4, status:"a_iniciar", progresso:0, paralela:false,
+      desc:"Avaliação e escolha definitiva do sítio aeroportuário."},
+    {id:"f3", num:"3", nome:"Viabilidade técnica e ambiental", periodo:"mar/2027 – out/2027", resp:"SAC", peso:10, status:"a_iniciar", progresso:0, paralela:false,
+      desc:"Levantamento, diretrizes, cenários e estudo preliminar."},
+    {id:"f4", num:"4", nome:"Declaração de utilidade pública", periodo:"nov/2027 – dez/2027", resp:"Município", peso:3, status:"a_iniciar", progresso:0, paralela:false,
+      desc:"Decreto de utilidade pública das áreas necessárias."},
+    {id:"f5", num:"5", nome:"Convênio de Delegação SAC", periodo:"jan/2028 – mar/2028", resp:"SAC e Município", peso:5, status:"a_iniciar", progresso:0, paralela:false,
+      desc:"Celebração do convênio de delegação SAC/Município."},
+    {id:"f6", num:"6", nome:"Desapropriação das áreas", periodo:"jan/2028 – dez/2028", resp:"Município", peso:10, status:"a_iniciar", progresso:0, paralela:true,
+      desc:"Desapropriação das áreas — corre em paralelo às demais etapas."},
+    {id:"f7", num:"7", nome:"Licença Prévia Ambiental", periodo:"jun/2027 – mai/2029", resp:"SAC e Município", peso:15, status:"a_iniciar", progresso:0, paralela:true,
+      desc:"Licenciamento ambiental — em paralelo do início até o fim da obra."},
+    {id:"f8", num:"8", nome:"Projeto Básico", periodo:"abr/2028 – jul/2029", resp:"SAC", peso:15, status:"a_iniciar", progresso:0, paralela:false,
+      desc:"Elaboração do Projeto Básico de engenharia."},
+    {id:"f9", num:"9", nome:"Execução da obra", periodo:"ago/2029 – jan/2032", resp:"SAC e Município", peso:30, status:"a_iniciar", progresso:0, paralela:false,
+      desc:"Execução da obra do novo aeroporto."}
+  ],
+  marcos: [
+    {cod:"M1", nome:"Apresentação à AMCentro das tratativas e próximos passos", data:"jul/2026", resp:"Município"},
+    {cod:"M2", nome:"Recepção do estudo de áreas para o novo sítio aeroportuário", data:"out/2026", resp:"Município"},
+    {cod:"M3", nome:"Visita ao Ministro de Portos e Aeroportos e apresentação da área", data:"dez/2026", resp:"SAC e Município"},
+    {cod:"M4", nome:"Celebração do Convênio de delegação SAC/Município", data:"mar/2028", resp:"SAC e Município"}
+  ]
 };
 
-// ===================== ADMIN =====================
-const modal=document.getElementById("adminModal");let regsAdmin=[],filtro="todos";
-document.getElementById("openAdmin").onclick=async()=>{modal.classList.add("open");
-  if(configurado){const {data}=await sb.auth.getSession();if(data&&data.session)mostrarAdmin();}};
-document.getElementById("closeAdmin").onclick=()=>modal.classList.remove("open");
+const STATUS_LABEL = {concluido:"Concluído", em_andamento:"Em andamento", a_iniciar:"A iniciar"};
+const STORE_KEY = "aeroporto_sm_dashboard_v2";
+
+function loadData(){
+  try{ const s=localStorage.getItem(STORE_KEY); if(s) return JSON.parse(s); }catch(e){}
+  return JSON.parse(JSON.stringify(DEFAULT_DATA));
+}
+function saveData(d){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(d)); }catch(e){} }
+
+let DATA = loadData();
+
+// ============ RENDER PÚBLICO ============
+function overallPct(d){
+  let sp=0, sw=0; d.fases.forEach(f=>{ sp += (f.progresso||0)*(f.peso||0); sw += (f.peso||0); });
+  return sw? Math.round(sp/sw):0;
+}
+function fmtDateBR(iso){
+  if(!iso) return "—";
+  const [y,m,dd]=iso.split("-"); return `${dd}/${m}/${y}`;
+}
+function render(){
+  const pct = overallPct(DATA);
+  const C=2*Math.PI*60;
+  document.getElementById("ringArc").setAttribute("stroke-dashoffset", C*(1-pct/100));
+  document.getElementById("ringPct").textContent = pct+"%";
+  const atual = DATA.fases.find(f=>f.status==="em_andamento") || DATA.fases.find(f=>f.status==="a_iniciar") || DATA.fases[DATA.fases.length-1];
+  document.getElementById("faseAtualPill").textContent = "Fase atual: "+(atual?atual.nome:"—");
+  document.getElementById("lastUpd").textContent = fmtDateBR(DATA.atualizadoEm);
+
+  // próximo marco
+  const nm = DATA.marcos.find(m=>m.cod===DATA.proximoMarco) || DATA.marcos[0];
+  if(nm){ document.getElementById("nextNome").textContent=nm.nome; document.getElementById("nextData").textContent=nm.data; document.getElementById("nextResp").textContent="Responsável: "+nm.resp; }
+
+  // etapas / linha do tempo HORIZONTAL
+  const segCor={concluido:"var(--concluido)",em_andamento:"var(--andamento)",a_iniciar:"var(--iniciar)"};
+  const fimObra=(DATA.fases[DATA.fases.length-1].periodo.split(/[–—-]/).pop()||"").trim();
+  document.getElementById("fasesList").innerHTML = DATA.fases.map(f=>`
+    <div class="step" data-st="${f.status}" style="--seg:${segCor[f.status]||'var(--iniciar)'}">
+      <div class="node">${f.status==="concluido"?"":f.num}</div>
+      <div class="scard">
+        ${f.paralela?'<span class="par">Paralela</span>':''}
+        <h4>${f.nome}</h4>
+        ${f.resp?`<div class="resp">${f.resp}</div>`:''}
+        <div class="per">${f.periodo}</div>
+        <span class="badge ${f.status}">${STATUS_LABEL[f.status]}</span>
+        <b>${f.progresso}%</b>
+      </div>
+    </div>`).join("") + `
+    <div class="step plane">
+      <div class="node"><svg viewBox="0 0 24 24" width="27" height="27" fill="#fff" aria-hidden="true"><path d="M2.5 19h19v2h-19v-2zm19.57-9.36c-.21-.8-1.04-1.28-1.84-1.06L14.92 10l-6.9-6.43-1.93.51 4.14 7.17-4.97 1.33-1.97-1.54-1.45.39 2.59 4.49 1.71-.46 8.65-2.32 5.34-1.43c.81-.23 1.28-1.05 1.07-1.85z"/></svg></div>
+      <div class="scard"><b>Decolagem</b><span>${fimObra}</span></div>
+    </div>`;
+
+  // marcos
+  document.getElementById("marcosList").innerHTML = DATA.marcos.map(m=>`
+    <div class="marco">
+      <div class="cod">${m.cod}</div>
+      <div class="dt">${m.data}</div>
+      <p>${m.nome}</p>
+    </div>`).join("");
+}
+render();
+
+// ============ ADMIN ============
+const modal=document.getElementById("adminModal");
+document.getElementById("openAdmin").onclick=()=>{modal.classList.add("open");};
+document.getElementById("closeAdmin").onclick=()=>{modal.classList.remove("open");};
 modal.addEventListener("click",e=>{if(e.target===modal)modal.classList.remove("open");});
-document.getElementById("doLogin").onclick=login;
-document.getElementById("admPwd").addEventListener("keydown",e=>{if(e.key==="Enter")login();});
-async function login(){
-  const err=document.getElementById("loginErr");err.textContent="";
-  if(!configurado){err.textContent="Sem Supabase: exibindo dados do modo demo neste navegador.";mostrarAdmin();return;}
-  const {error}=await sb.auth.signInWithPassword({email:val("admEmail"),password:document.getElementById("admPwd").value});
-  if(error){err.textContent="E-mail ou senha incorretos.";return;}
-  document.getElementById("admPwd").value="";mostrarAdmin();
+
+document.getElementById("doLogin").onclick=tryLogin;
+document.getElementById("pwd").addEventListener("keydown",e=>{if(e.key==="Enter")tryLogin();});
+function tryLogin(){
+  const v=document.getElementById("pwd").value;
+  if(v===ADMIN_PASSWORD){ document.getElementById("loginErr").textContent=""; document.getElementById("pwd").value=""; showEditor(); }
+  else{ document.getElementById("loginErr").textContent="Senha incorreta."; }
 }
-document.getElementById("logoutBtn").onclick=async()=>{if(sb)await sb.auth.signOut();
-  document.getElementById("adminView").style.display="none";document.getElementById("loginView").style.display="block";};
-document.querySelectorAll("#admFilters .fbtn").forEach(b=>b.onclick=()=>{
-  filtro=b.dataset.f;document.querySelectorAll("#admFilters .fbtn").forEach(x=>x.classList.toggle("on",x===b));renderRows();
-});
-async function mostrarAdmin(){
+document.getElementById("logoutBtn").onclick=()=>{ document.getElementById("editorView").style.display="none"; document.getElementById("loginView").style.display="block"; };
+
+function showEditor(){
   document.getElementById("loginView").style.display="none";
-  document.getElementById("adminView").style.display="block";
-  if(configurado){const {data}=await sb.from("assinaturas").select("*").order("criado_em",{ascending:false});regsAdmin=data||[];}
-  else{regsAdmin=JSON.parse(localStorage.getItem(DEMO_KEY)||"[]").slice().reverse();}
-  admTotal.textContent=regsAdmin.length;
-  admAg.textContent=regsAdmin.filter(r=>r.tipo==="agente_politico").length;
-  admEnt.textContent=regsAdmin.filter(r=>r.tipo==="entidade").length;
-  admCid.textContent=regsAdmin.filter(r=>r.tipo==="cidadao").length;
-  renderRows();
+  document.getElementById("editorView").style.display="block";
+  document.getElementById("admFases").innerHTML = DATA.fases.map((f,i)=>`
+    <div class="adm-row">
+      <div class="nm">${f.nome}<small>${f.periodo}</small></div>
+      <select data-i="${i}" class="admStatus">
+        <option value="a_iniciar"${f.status==="a_iniciar"?" selected":""}>A iniciar</option>
+        <option value="em_andamento"${f.status==="em_andamento"?" selected":""}>Em andamento</option>
+        <option value="concluido"${f.status==="concluido"?" selected":""}>Concluído</option>
+      </select>
+      <input type="number" min="0" max="100" value="${f.progresso}" data-i="${i}" class="admProg" />
+      <span style="font-size:12px;color:#999">% / peso ${f.peso}</span>
+    </div>`).join("");
+  document.getElementById("admNext").innerHTML = DATA.marcos.map(m=>`<option value="${m.cod}"${DATA.proximoMarco===m.cod?" selected":""}>${m.cod} — ${m.data} — ${m.nome.slice(0,42)}…</option>`).join("");
+  carregarModeracao();
 }
-function renderRows(){
-  const rows=regsAdmin.filter(r=>filtro==="todos"||r.tipo===filtro);
-  document.getElementById("admRows").innerHTML=rows.map((r,i)=>{
-    const detalhe=r.tipo==="agente_politico"?((r.cargo||"")+(r.partido?" ("+r.partido+(r.uf?"/"+r.uf:"")+")":"")):(r.tipo==="entidade"?(r.cnpj||""):(r.cpf||""));
-    return `<tr><td>${i+1}</td><td>${PERSONA[r.tipo].lab}</td>
-      <td>${esc((r.tipo==="entidade"?r.entidade:r.responsavel)||"")}</td>
-      <td>${esc(detalhe)}</td><td>${esc(r.cidade||"")}</td><td>${fmtBR(r.criado_em)}</td></tr>`;
-  }).join("")||`<tr><td colspan="6" style="text-align:center;color:#999;padding:16px">Nenhuma assinatura.</td></tr>`;
-}
-document.getElementById("exportDoc").onclick=()=>{
-  if(!regsAdmin.length){alert("Nenhuma assinatura para exportar.");return;}
-  gerarDocumento(regsAdmin.slice().reverse());
+
+document.getElementById("saveBtn").onclick=()=>{
+  document.querySelectorAll(".admStatus").forEach(s=>{DATA.fases[+s.dataset.i].status=s.value;});
+  document.querySelectorAll(".admProg").forEach(p=>{let v=Math.max(0,Math.min(100,+p.value||0));DATA.fases[+p.dataset.i].progresso=v;});
+  // auto: concluído -> 100, a iniciar -> 0 se 0
+  DATA.fases.forEach(f=>{ if(f.status==="concluido") f.progresso=100; });
+  DATA.proximoMarco=document.getElementById("admNext").value;
+  const d=new Date(); DATA.atualizadoEm=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+  saveData(DATA); render(); showEditor();
+  const m=document.getElementById("savedMsg"); m.textContent="✓ Salvo e publicado neste navegador"; setTimeout(()=>m.textContent="",3500);
 };
 
-// init
-if(!configurado){const b=document.getElementById("cfgbar");b.textContent="Modo demonstração — configure o Supabase no arquivo para coletar assinaturas de verdade.";b.style.display="block";}
-atualizar();
+document.getElementById("exportBtn").onclick=()=>{
+  const blob=new Blob([JSON.stringify(DATA,null,2)],{type:"application/json"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob); a.download="dados-aeroporto-sm.json"; a.click();
+};
+
+// ============ MURAL DE APOIO (demo / localStorage) ============
+const APOIO_KEY="aeroporto_sm_apoios_v1";
+function loadApoios(){
+  try{ const s=localStorage.getItem(APOIO_KEY); if(s) return JSON.parse(s); }catch(e){}
+  return [{id:"seed1",nome:"Equipe do Projeto",cidade:"Santa Maria",mensagem:"Que este mural se encha de vozes que acreditam no futuro da nossa região. Deixe aqui o seu apoio!",aprovado:true,criado_em:new Date().toISOString()}];
+}
+function saveApoios(l){ try{ localStorage.setItem(APOIO_KEY,JSON.stringify(l)); }catch(e){} }
+let APOIOS=loadApoios();
+
+function escapeHtml(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
+function fmtDataApoio(iso){try{const d=new Date(iso);return `${String(d.getDate()).padStart(2,"0")}/${String(d.getMonth()+1).padStart(2,"0")}/${d.getFullYear()}`;}catch(e){return "";}}
+
+function apoioCardHtml(m){
+  return `<div class="apoio-card">
+      <div class="msg">${escapeHtml(m.mensagem)}</div>
+      <div class="who"><span><b>${escapeHtml(m.nome)}</b>${m.cidade?` <span class="cid">· ${escapeHtml(m.cidade)}</span>`:""}</span>
+      <span class="dt">${fmtDataApoio(m.criado_em)}</span></div>
+    </div>`;
+}
+function renderApoios(){
+  const aprovados=APOIOS.filter(a=>a.aprovado).sort((a,b)=>new Date(b.criado_em)-new Date(a.criado_em));
+  document.getElementById("apoioCount").textContent=aprovados.length;
+  const track=document.getElementById("apoioFeed"), wrap=document.getElementById("apoioMarquee");
+  if(!aprovados.length){ wrap.classList.add("is-empty"); track.innerHTML=`<div class="apoio-empty">Seja a primeira pessoa a deixar uma mensagem de apoio ao novo aeroporto.</div>`; return; }
+  wrap.classList.remove("is-empty");
+  let base=aprovados.slice(); while(base.length<4){ base=base.concat(aprovados); } // garante largura p/ loop suave
+  const uma=base.map(apoioCardHtml).join("");
+  track.innerHTML=uma+uma; // duas cópias = rolagem contínua sem emendas
+  track.style.animationDuration=Math.max(26,base.length*7)+"s";
+}
+renderApoios();
+
+document.getElementById("apMsg").addEventListener("input",e=>{document.getElementById("apCount").textContent=e.target.value.length;});
+document.getElementById("apoioForm").addEventListener("submit",ev=>{
+  ev.preventDefault();
+  const msgEl=document.getElementById("apFeedbackMsg");
+  const nome=document.getElementById("apNome").value.trim();
+  const cidade=document.getElementById("apCidade").value.trim();
+  const mensagem=document.getElementById("apMsg").value.trim();
+  if(document.getElementById("apWeb").value){ return; } // honeypot
+  if(nome.length<2||mensagem.length<3){ msgEl.style.color="#FFED00"; msgEl.textContent="Preencha seu nome e uma mensagem."; return; }
+  APOIOS.push({id:"a"+Date.now(),nome,cidade:cidade||null,mensagem,aprovado:false,criado_em:new Date().toISOString()});
+  saveApoios(APOIOS);
+  document.getElementById("apoioForm").reset(); document.getElementById("apCount").textContent="0";
+  msgEl.style.color="#FFED00"; msgEl.textContent="✓ Obrigado! Sua mensagem foi enviada e aparecerá após a revisão.";
+  setTimeout(()=>{msgEl.textContent="";},6000);
+});
+
+// ===== Moderação (demo) =====
+let MOD_TAB="pendentes";
+function carregarModeracao(){ renderModeracao(); renderLogosAdmin(); }
+function renderModeracao(){
+  const pend=APOIOS.filter(m=>!m.aprovado), pub=APOIOS.filter(m=>m.aprovado);
+  document.getElementById("cntPend").textContent=`(${pend.length})`;
+  document.getElementById("cntPub").textContent=`(${pub.length})`;
+  const lista=(MOD_TAB==="pendentes"?pend:pub).sort((a,b)=>new Date(b.criado_em)-new Date(a.criado_em));
+  const el=document.getElementById("modLista");
+  if(!lista.length){ el.innerHTML=`<div class="mod-empty">${MOD_TAB==="pendentes"?"Nenhuma mensagem pendente.":"Nenhuma mensagem publicada ainda."}</div>`; return; }
+  el.innerHTML=lista.map(m=>`
+    <div class="mod-item">
+      <div class="mm">${escapeHtml(m.mensagem)}</div>
+      <div class="mw"><b>${escapeHtml(m.nome)}</b>${m.cidade?" · "+escapeHtml(m.cidade):""} · ${fmtDataApoio(m.criado_em)}</div>
+      <div class="ma">
+        ${m.aprovado?"":`<button class="btn-ok" data-ap="${m.id}">✓ Aprovar</button>`}
+        <button class="btn-del" data-del="${m.id}">Excluir</button>
+      </div>
+    </div>`).join("");
+  el.querySelectorAll("[data-ap]").forEach(b=>b.onclick=()=>{const m=APOIOS.find(x=>x.id===b.dataset.ap);if(m){m.aprovado=true;saveApoios(APOIOS);renderModeracao();renderApoios();}});
+  el.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{ if(!confirm("Excluir esta mensagem definitivamente?"))return; APOIOS=APOIOS.filter(x=>x.id!==b.dataset.del);saveApoios(APOIOS);renderModeracao();renderApoios();});
+}
+document.getElementById("tabPend").onclick=()=>{MOD_TAB="pendentes";document.getElementById("tabPend").classList.add("active");document.getElementById("tabPub").classList.remove("active");renderModeracao();};
+document.getElementById("tabPub").onclick=()=>{MOD_TAB="publicadas";document.getElementById("tabPub").classList.add("active");document.getElementById("tabPend").classList.remove("active");renderModeracao();};
+
+// ===== Instituições apoiadoras (logos) — demo =====
+const LOGOS_KEY="aeroporto_sm_apoiadores_v1";
+function loadLogos(){ try{ const s=localStorage.getItem(LOGOS_KEY); if(s) return JSON.parse(s); }catch(e){} return []; }
+function saveLogos(l){ try{ localStorage.setItem(LOGOS_KEY,JSON.stringify(l)); }catch(e){} }
+let LOGOS=loadLogos();
+
+function logoItemHtml(l){
+  const img=`<img src="${escapeHtml(l.url)}" alt="${escapeHtml(l.nome)}" loading="lazy" onerror="this.parentNode.style.display='none'">`;
+  const inner=l.site?`<a href="${escapeHtml(l.site)}" target="_blank" rel="noopener" title="${escapeHtml(l.nome)}">${img}</a>`:img;
+  return `<div class="logo-item">${inner}</div>`;
+}
+function renderLogos(){
+  const track=document.getElementById("logosTrack"), wrap=document.getElementById("logosMarquee");
+  if(!LOGOS.length){ wrap.classList.add("is-empty"); track.innerHTML=`<div class="logos-empty">Em breve, as instituições que apoiam o projeto aparecerão aqui.</div>`; return; }
+  wrap.classList.remove("is-empty");
+  let base=LOGOS.slice(); while(base.length<5){ base=base.concat(LOGOS); }
+  const uma=base.map(logoItemHtml).join("");
+  track.innerHTML=uma+uma;
+  track.style.animationDuration=Math.max(24,base.length*5)+"s";
+}
+renderLogos();
+
+function renderLogosAdmin(){
+  const el=document.getElementById("logosAdminList");
+  if(!LOGOS.length){ el.innerHTML=`<div class="mod-empty">Nenhuma logomarca cadastrada ainda.</div>`; return; }
+  el.innerHTML=LOGOS.map(l=>`
+    <div class="logo-adm">
+      <img src="${escapeHtml(l.url)}" alt="" onerror="this.style.visibility='hidden'">
+      <span class="ln">${escapeHtml(l.nome)}</span>
+      <button data-dellogo="${l.id}">Excluir</button>
+    </div>`).join("");
+  el.querySelectorAll("[data-dellogo]").forEach(b=>b.onclick=()=>{ if(!confirm("Excluir esta logomarca?"))return; LOGOS=LOGOS.filter(x=>x.id!==b.dataset.dellogo); saveLogos(LOGOS); renderLogosAdmin(); renderLogos(); });
+}
+document.getElementById("logoForm").addEventListener("submit",ev=>{
+  ev.preventDefault();
+  const msg=document.getElementById("logoMsg");
+  const nome=document.getElementById("logoNome").value.trim();
+  const url=document.getElementById("logoUrl").value.trim();
+  const site=document.getElementById("logoSite").value.trim();
+  if(nome.length<1||!/^https?:\/\//i.test(url)){ msg.style.color="var(--coral)"; msg.textContent="Informe o nome e uma URL de imagem válida (https://...)."; return; }
+  LOGOS.push({id:"l"+Date.now(),nome,url,site:site||null});
+  saveLogos(LOGOS);
+  document.getElementById("logoForm").reset();
+  msg.style.color="var(--verde)"; msg.textContent="✓ Logomarca adicionada.";
+  setTimeout(()=>{msg.textContent="";},4000);
+  renderLogosAdmin(); renderLogos();
+});
 </script>
 </body>
 </html>
