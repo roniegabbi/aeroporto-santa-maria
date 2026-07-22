@@ -9,7 +9,7 @@
 <meta property="og:description" content="Status e avanço do projeto do novo aeroporto, atualizado etapa a etapa." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   :root{
     --roxo:#662382; --roxo-2:#7d2a93; --roxo-esc:#4a1a5e;
@@ -721,13 +721,13 @@
 #aaSec canvas.aa-sig{width:100%;height:150px;display:block;touch-action:none;border-radius:12px;cursor:crosshair}
 #aaSec .aa-sighint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#b3a3c4;font-size:14px;pointer-events:none}
 #aaSec .aa-sigact{display:flex;justify-content:flex-end;margin-top:6px}
-#aaSec .aa-sig-preview{margin-top:8px;min-height:72px;display:flex;align-items:center;justify-content:center;border:1.5px solid #e6dcf0;border-radius:12px;background:#faf7fd;font-family:'Dancing Script',cursive;font-weight:700;font-size:38px;color:#231F20;padding:6px 14px;word-break:break-word;text-align:center;line-height:1.05}
-#aaSec .aa-sig-preview[data-empty="1"]{font-family:'Montserrat',sans-serif;font-weight:500;font-size:14px;color:#b3a3c4}
 #aaSec .aa-sighelp{font-size:12px;color:#8a7d96;margin-top:6px}
+#aaSec .aa-optsig{margin-top:12px}
+#aaSec .aa-drawtoggle{width:100%;background:none;border:1px dashed #c9b8dc;color:#7a5a92;border-radius:10px;padding:9px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+#aaSec .aa-drawtoggle:hover{background:#f6f0fb}
 #aaSec .aa-inp{font-size:16px}
 @media(max-width:520px){
   #aaSec .aa-tab{font-size:12px;padding:9px 3px}
-  #aaSec .aa-sig-preview{font-size:30px}
   #aaSec .aa-cbox b{font-size:26px}
   #aaSec .aa-cbox.total b{font-size:32px}
   #aaSec .aa-card{padding:18px}
@@ -848,13 +848,17 @@ body.modo-assinatura #aaSec{opacity:1!important;transform:none!important;padding
 
           <input class="aa-hp" id="aaWeb" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-          <label>Assinatura * <span style="font-weight:400;color:#888">— digite seu nome completo</span></label>
-          <input class="aa-inp" id="aaSigNome" placeholder="Digite seu nome como assinatura" autocomplete="off" />
-          <div class="aa-sig-preview" id="aaSigPrev" data-empty="1">Sua assinatura aparecerá aqui</div>
-          <div class="aa-sighelp">Ao digitar, seu nome vira sua assinatura eletrônica, registrada com data, hora e código de verificação (Lei 14.063/2020).</div>
-
           <label class="aa-consent"><input type="checkbox" id="aaConsent" />
-            <span>Declaro que as informações são verdadeiras e autorizo o uso dos dados exclusivamente para este abaixo-assinado, conforme a LGPD (Lei 13.709/2018).</span></label>
+            <span>Li o manifesto e <b>assino eletronicamente</b> em apoio ao projeto. Declaro que as informações são verdadeiras e autorizo o uso dos meus dados exclusivamente para este abaixo-assinado, conforme a LGPD (Lei 13.709/2018).</span></label>
+          <div class="aa-sighelp">Assinatura eletrônica (Lei 14.063/2020): registramos seu nome, CPF, data, hora e um código único de verificação. Assinar já é válido — desenhar a assinatura é opcional.</div>
+
+          <div class="aa-optsig">
+            <button type="button" class="aa-drawtoggle" id="aaDrawToggle">Desenhar minha assinatura (opcional)</button>
+            <div id="aaDrawWrap" style="display:none">
+              <div class="aa-sigbox"><canvas id="aaSig" class="aa-sig"></canvas><div class="aa-sighint" id="aaSigHint">Assine no quadro com o dedo ou o mouse</div></div>
+              <div class="aa-sigact"><button type="button" class="aa-link" id="aaClear">Limpar</button></div>
+            </div>
+          </div>
 
           <div class="aa-err" id="aaErr"></div>
           <button type="submit" class="aa-btn" id="aaBtn">Assinar em apoio ao projeto</button>
@@ -1676,8 +1680,8 @@ function aaInit(){
   const cn=document.getElementById("aaCnpj");if(cn)cn.addEventListener("input",e=>e.target.value=aaMCNPJ(e.target.value));
   const uf=document.getElementById("aaUF");if(uf)uf.addEventListener("input",e=>e.target.value=e.target.value.toUpperCase().replace(/[^A-Z]/g,"").slice(0,2));
   document.querySelectorAll("#aaTabs .aa-tab").forEach(t=>t.onclick=()=>aaSetTipo(t.dataset.tipo));
-  const _sig=document.getElementById("aaSigNome");
-  if(_sig)_sig.addEventListener("input",aaSigPreview);
+  const _tg=document.getElementById("aaDrawToggle");if(_tg)_tg.onclick=aaToggleDraw;
+  const _cl=document.getElementById("aaClear");if(_cl)_cl.onclick=aaClearSig;
   document.getElementById("aaForm").addEventListener("submit",aaSubmit);
   document.getElementById("aaNew").onclick=aaReset;
   document.getElementById("aaReceipt").onclick=()=>{if(aaUltimo)aaComprovante(aaUltimo);};
@@ -1690,17 +1694,13 @@ function aaInit(){
   if(configurado){ try{ sb.channel("assinaturas").on("postgres_changes",{event:"INSERT",schema:"public",table:"assinaturas"},()=>aaAtualizar()).subscribe(); }catch(e){} }
 }
 function aaSetTipo(t){aaTipo=t;document.querySelectorAll("#aaTabs .aa-tab").forEach(x=>x.classList.toggle("on",x.dataset.tipo===t));document.querySelectorAll("#aaSec .aa-campos").forEach(c=>c.style.display=c.dataset.c===t?"block":"none");}
-function aaSigPreview(){const v=aaV("aaSigNome");const el=document.getElementById("aaSigPrev");if(!el)return;if(v){el.textContent=v;el.removeAttribute("data-empty");}else{el.textContent="Sua assinatura aparecerá aqui";el.setAttribute("data-empty","1");}}
-function aaClearSig(){const s=document.getElementById("aaSigNome");if(s)s.value="";aaSigPreview();}
-async function aaAssinaturaImg(nome){
-  try{await document.fonts.load("700 80px 'Dancing Script'");}catch(e){}
-  const c=document.createElement("canvas");c.width=760;c.height=220;const x=c.getContext("2d");
-  x.fillStyle="#231F20";x.textBaseline="middle";x.textAlign="center";
-  let size=92;x.font="700 "+size+"px 'Dancing Script', cursive";
-  while(x.measureText(nome).width>710&&size>28){size-=4;x.font="700 "+size+"px 'Dancing Script', cursive";}
-  x.fillText(nome,c.width/2,c.height/2);
-  return c.toDataURL("image/png");
-}
+function aaToggleDraw(){const w=document.getElementById("aaDrawWrap");const open=w.style.display==="none";w.style.display=open?"block":"none";document.getElementById("aaDrawToggle").textContent=open?"Ocultar desenho da assinatura":"Desenhar minha assinatura (opcional)";if(open)aaFitCanvas();}
+function aaFitCanvas(){const c=document.getElementById("aaSig");if(!c||c._init)return;c._init=1;aaCtx=c.getContext("2d");const r=c.getBoundingClientRect(),dpr=window.devicePixelRatio||1;c.width=r.width*dpr;c.height=r.height*dpr;aaCtx.scale(dpr,dpr);aaCtx.lineWidth=2.4;aaCtx.lineCap="round";aaCtx.lineJoin="round";aaCtx.strokeStyle="#231F20";
+  c.addEventListener("pointerdown",e=>{e.preventDefault();aaDraw=true;const p=aaPos(e,c);aaCtx.beginPath();aaCtx.moveTo(p.x,p.y);document.getElementById("aaSigHint").style.display="none";});
+  c.addEventListener("pointermove",e=>{if(!aaDraw)return;e.preventDefault();const p=aaPos(e,c);aaCtx.lineTo(p.x,p.y);aaCtx.stroke();aaHas=true;});
+  window.addEventListener("pointerup",()=>aaDraw=false);}
+function aaPos(e,c){const r=c.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top};}
+function aaClearSig(){const c=document.getElementById("aaSig");if(aaCtx&&c)aaCtx.clearRect(0,0,c.width,c.height);aaHas=false;const hint=document.getElementById("aaSigHint");if(hint)hint.style.display="flex";}
 
 async function aaAtualizar(){
   let total=0,ag=0,ent=0,cid=0,apo=[];
@@ -1725,13 +1725,11 @@ async function aaSubmit(e){
   e.preventDefault();const err=document.getElementById("aaErr");err.textContent="";
   if(document.getElementById("aaWeb").value)return;
   if(!document.getElementById("aaConsent").checked){err.textContent="É preciso marcar o aceite de dados (LGPD).";return;}
-  const _sigNome=aaV("aaSigNome");
-  if(_sigNome.length<2){err.textContent="Digite seu nome completo no campo de assinatura.";return;}
   let rec={tipo:aaTipo};
   if(aaTipo==="agente_politico"){rec.responsavel=aaV("aaNome");rec.cargo=aaV("aaCargo");rec.partido=aaV("aaPartido");rec.uf=aaV("aaUF");rec.entidade=aaV("aaCasa");rec.cpf=aaV("aaCpf");rec.cidade=aaV("aaCidade");rec.email=aaV("aaEmail");if(!rec.responsavel||!rec.cargo){err.textContent="Preencha nome e cargo/função.";return;}}
   else if(aaTipo==="entidade"){rec.entidade=aaV("aaEntidade");rec.cnpj=aaV("aaCnpj");rec.endereco=aaV("aaEndereco");rec.responsavel=aaV("aaPresidente");rec.cpf=aaV("aaCpfE");rec.cidade=aaV("aaCidadeE");rec.email=aaV("aaEmailE");if(!rec.entidade||!rec.cnpj||!rec.responsavel||!rec.cpf){err.textContent="Preencha entidade, CNPJ, presidente e CPF.";return;}}
   else{rec.responsavel=aaV("aaCnome");rec.cpf=aaV("aaCpfC");rec.cidade=aaV("aaCidadeC");rec.email=aaV("aaEmailC");if(!rec.responsavel||!rec.cpf){err.textContent="Preencha seu nome e CPF.";return;}}
-  rec.assinatura_png=await aaAssinaturaImg(_sigNome);
+  rec.assinatura_png=aaHas?document.getElementById("aaSig").toDataURL("image/png"):null;
   rec.criado_em=new Date().toISOString();
   rec.hash=await aaHash([rec.tipo,rec.entidade||"",rec.responsavel,rec.cpf||"",rec.criado_em].join("|"));
   const btn=document.getElementById("aaBtn");btn.disabled=true;btn.textContent="Registrando…";
@@ -1743,17 +1741,17 @@ async function aaSubmit(e){
   }catch(ex){err.textContent="Não foi possível registrar agora. Tente novamente.";}
   btn.disabled=false;btn.textContent="Assinar em apoio ao projeto";
 }
-function aaReset(){document.getElementById("aaForm").reset();aaClearSig();document.getElementById("aaSuccess").style.display="none";document.getElementById("aaForm").style.display="block";document.getElementById("aaTabs").style.display="flex";aaSetTipo("agente_politico");}
+function aaReset(){document.getElementById("aaForm").reset();aaClearSig();var w=document.getElementById("aaDrawWrap");if(w)w.style.display="none";var tg=document.getElementById("aaDrawToggle");if(tg)tg.textContent="Desenhar minha assinatura (opcional)";document.getElementById("aaSuccess").style.display="none";document.getElementById("aaForm").style.display="block";document.getElementById("aaTabs").style.display="flex";aaSetTipo("agente_politico");}
 
 let AA_LOGO_CACHE;
 function aaLoadImg(url){return new Promise(res=>{if(!url)return res(null);const im=new Image();im.crossOrigin="anonymous";im.onload=()=>{try{const c=document.createElement("canvas");c.width=im.naturalWidth;c.height=im.naturalHeight;c.getContext("2d").drawImage(im,0,0);res({data:c.toDataURL("image/png"),w:im.naturalWidth,h:im.naturalHeight});}catch(e){res(null);}};im.onerror=()=>res(null);im.src=url;});}
 async function aaLogo(){if(AA_LOGO_CACHE!==undefined)return AA_LOGO_CACHE;let url=null;try{if(typeof DATA!=="undefined"&&DATA&&DATA.logoPrefeitura)url=DATA.logoPrefeitura;}catch(e){}AA_LOGO_CACHE=await aaLoadImg(url);return AA_LOGO_CACHE;}
 function aaCab(doc,titulo,sub,logo){if(logo){let h=15,w=logo.w*(h/logo.h);if(w>60){w=60;h=logo.h*(w/logo.w);}try{doc.addImage(logo.data,"PNG",196-w,11,w,h);}catch(e){}}doc.setTextColor(102,35,130);doc.setFont("helvetica","bold");doc.setFontSize(8);doc.text("PREFEITURA DE SANTA MARIA · INOVAR É CUIDAR",14,15);doc.setTextColor(35,31,32);doc.setFont("helvetica","bold");doc.setFontSize(21);doc.text(titulo,14,26);if(sub){doc.setFont("helvetica","normal");doc.setFontSize(12);doc.setTextColor(90,74,102);doc.text(doc.splitTextToSize(sub,150),14,33);doc.setTextColor(35,31,32);}doc.setDrawColor(102,35,130);doc.setLineWidth(0.8);doc.line(14,39,196,39);doc.setLineWidth(0.2);return 47;}
 const AA_MANIFESTO="Nós, entidades, agentes políticos e cidadãos da Região Central do Rio Grande do Sul, assinamos em apoio ao Novo Aeroporto Regional de Santa Maria. A região convive com uma lacuna histórica: desde 1933 tem aviação, mas nunca teve um aeroporto civil à altura de sua importância, seguindo limitada a uma pista compartilhada, militar e civil. A demanda já se provou, com crescimento de quase 80% de passageiros entre 2021 e 2024 e mais de 46 mil usuários por ano. As enchentes de 2024 comprovaram o papel estratégico da região como alternativa logística para socorro e evacuação — uma questão de resiliência climática e de vidas. Um novo aeroporto conecta a região aos grandes hubs do país, fortalece universidades, hospitais, turismo, investimentos e empregos. Por isso, apoiamos a continuidade e a priorização deste projeto.";
-async function aaComprovante(r){const {jsPDF}=window.jspdf;const doc=new jsPDF({unit:"mm",format:"a4"});const logo=AA_LOGO_OFICIAL;let y=aaCab(doc,"Comprovante de Assinatura","Abaixo-Assinado — Novo Aeroporto Regional de Santa Maria",logo);doc.setFont("helvetica","normal");doc.setFontSize(9.5);const mL=doc.splitTextToSize(AA_MANIFESTO,182);doc.text(mL,14,y+3);y=y+3+mL.length*4.6+8;doc.setDrawColor(220);doc.line(14,y,196,y);y+=8;doc.setFont("helvetica","bold");doc.setFontSize(11);doc.text("Dados da assinatura",14,y);y+=8;doc.setFontSize(10);const L=[];if(r.tipo==="agente_politico"){L.push(["Tipo","Agente político"],["Nome",r.responsavel||"-"],["Cargo/função",r.cargo||"-"],["Partido",r.partido||"-"],["UF",r.uf||"-"],["Casa/órgão",r.entidade||"-"]);if(r.cpf)L.push(["CPF",r.cpf]);}else if(r.tipo==="entidade"){L.push(["Tipo","Entidade"],["Entidade",r.entidade||"-"],["CNPJ",r.cnpj||"-"],["Endereço",r.endereco||"-"],["Presidente",r.responsavel||"-"],["CPF do Presidente",r.cpf||"-"]);}else{L.push(["Tipo","Cidadão"],["Nome",r.responsavel||"-"],["CPF",r.cpf||"-"]);}L.push(["Cidade",r.cidade||"-"],["Data/Hora",aaFmt(r.criado_em)],["Código",r.hash||"-"]);L.forEach(([k,v])=>{doc.setFont("helvetica","bold");doc.text(k+":",14,y);doc.setFont("helvetica","normal");doc.text(String(v),70,y,{maxWidth:126});y+=8;});y+=4;doc.setFont("helvetica","bold");doc.text("Assinatura:",14,y);y+=2;try{doc.addImage(r.assinatura_png,"PNG",14,y,70,26);}catch(e){}doc.setDrawColor(200);doc.line(14,y+28,84,y+28);doc.setFontSize(8);doc.setTextColor(120);doc.text("Assinatura eletrônica registrada conforme a Lei 14.063/2020.",14,285);doc.save("comprovante-assinatura.pdf");}
+async function aaComprovante(r){const {jsPDF}=window.jspdf;const doc=new jsPDF({unit:"mm",format:"a4"});const logo=AA_LOGO_OFICIAL;let y=aaCab(doc,"Comprovante de Assinatura","Abaixo-Assinado — Novo Aeroporto Regional de Santa Maria",logo);doc.setFont("helvetica","normal");doc.setFontSize(9.5);const mL=doc.splitTextToSize(AA_MANIFESTO,182);doc.text(AA_MANIFESTO,14,y+3,{maxWidth:182,align:"justify"});y=y+3+mL.length*4.6+8;doc.setDrawColor(220);doc.line(14,y,196,y);y+=8;doc.setFont("helvetica","bold");doc.setFontSize(11);doc.text("Dados da assinatura",14,y);y+=8;doc.setFontSize(10);const L=[];if(r.tipo==="agente_politico"){L.push(["Tipo","Agente político"],["Nome",r.responsavel||"-"],["Cargo/função",r.cargo||"-"],["Partido",r.partido||"-"],["UF",r.uf||"-"],["Casa/órgão",r.entidade||"-"]);if(r.cpf)L.push(["CPF",r.cpf]);}else if(r.tipo==="entidade"){L.push(["Tipo","Entidade"],["Entidade",r.entidade||"-"],["CNPJ",r.cnpj||"-"],["Endereço",r.endereco||"-"],["Presidente",r.responsavel||"-"],["CPF do Presidente",r.cpf||"-"]);}else{L.push(["Tipo","Cidadão"],["Nome",r.responsavel||"-"],["CPF",r.cpf||"-"]);}L.push(["Cidade",r.cidade||"-"],["Data/Hora",aaFmt(r.criado_em)],["Código",r.hash||"-"]);L.forEach(([k,v])=>{doc.setFont("helvetica","bold");doc.text(k+":",14,y);doc.setFont("helvetica","normal");doc.text(String(v),70,y,{maxWidth:126});y+=8;});y+=6;doc.setFillColor(244,238,250);doc.setDrawColor(210,190,225);doc.roundedRect(14,y,182,22,2,2,"FD");doc.setFont("helvetica","bold");doc.setFontSize(10);doc.setTextColor(90,60,120);doc.text("Assinado eletronicamente por "+(r.responsavel||"-")+".",18,y+8,{maxWidth:174});doc.setFont("helvetica","normal");doc.setFontSize(8.5);doc.setTextColor(80,80,80);doc.text("Código de verificação "+(r.hash||"-")+"   ·   "+aaFmt(r.criado_em)+"   ·   Lei 14.063/2020",18,y+15,{maxWidth:174});doc.setTextColor(35,31,32);y+=30;if(r.assinatura_png){doc.setFont("helvetica","bold");doc.setFontSize(9);doc.text("Assinatura de próprio punho (opcional):",14,y);y+=2;try{doc.addImage(r.assinatura_png,"PNG",14,y,70,26);}catch(e){}doc.setDrawColor(200);doc.line(14,y+28,84,y+28);}doc.setFontSize(8);doc.setTextColor(120);doc.text("Documento gerado eletronicamente. A autenticidade pode ser verificada pelo código de verificação acima.",14,285,{maxWidth:182});doc.setTextColor(35,31,32);doc.save("comprovante-assinatura.pdf");}
 function aaSecH(doc,txt,n,y){if(y+16>282){doc.addPage();y=20;}doc.setFillColor(102,35,130);doc.rect(14,y,182,9,"F");doc.setTextColor(255,255,255);doc.setFont("helvetica","bold");doc.setFontSize(10);doc.text(txt+"  ("+n+")",17,y+6);doc.setTextColor(35,31,32);return y+13;}
-function aaEntry(doc,r,idx,y){const h=r.tipo==="cidadao"?26:40;if(y+h>282){doc.addPage();y=20;}doc.setDrawColor(230);doc.setFillColor(249,247,253);doc.rect(14,y,182,h-6,"FD");doc.setFont("helvetica","bold");doc.setFontSize(9.5);doc.text(doc.splitTextToSize(idx+". "+(r.tipo==="entidade"?(r.entidade||"Entidade"):(r.responsavel||"")),118),17,y+7);doc.setFont("helvetica","normal");doc.setFontSize(8);let ly=y+13,info=[];if(r.tipo==="agente_politico"){info.push("Cargo: "+(r.cargo||"-")+(r.partido?"   Partido: "+r.partido:"")+(r.uf?"   UF: "+r.uf:""));if(r.entidade)info.push("Casa/órgão: "+r.entidade);info.push((r.cpf?"CPF: "+r.cpf+"   ":"")+"Cidade: "+(r.cidade||"-"));info.push("Data: "+aaFmt(r.criado_em)+"   Cod.: "+(r.hash||"-"));}else if(r.tipo==="entidade"){info.push("CNPJ: "+(r.cnpj||"-")+"   Cidade: "+(r.cidade||"-"));info.push("Presidente: "+(r.responsavel||"-"));info.push("CPF: "+(r.cpf||"-")+"   Data: "+aaFmt(r.criado_em));info.push("Cod.: "+(r.hash||"-"));}else{info.push("CPF: "+(r.cpf||"-")+"   Cidade: "+(r.cidade||"-"));info.push("Data: "+aaFmt(r.criado_em)+"   Cod.: "+(r.hash||"-"));}info.forEach(t=>{doc.text(t,17,ly);ly+=4.5;});try{doc.addImage(r.assinatura_png,"PNG",150,y+4,42,16);}catch(e){}return y+h;}
-async function aaDocumento(regs){const {jsPDF}=window.jspdf;const doc=new jsPDF({unit:"mm",format:"a4"});const logo=AA_LOGO_OFICIAL;let hy0=aaCab(doc,"Abaixo-Assinado de Apoio","Novo Aeroporto Regional de Santa Maria",logo);doc.setFont("helvetica","normal");doc.setFontSize(10);const mL=doc.splitTextToSize(AA_MANIFESTO,182);doc.text(mL,14,hy0+3);let hy=hy0+3+mL.length*4.8+6;doc.setFont("helvetica","bold");doc.setFontSize(11);doc.text("Total de assinaturas: "+regs.length,14,hy);doc.setFontSize(8);doc.setFont("helvetica","normal");doc.setTextColor(120);doc.text("Documento gerado em "+aaFmt(new Date().toISOString()),14,hy+6);doc.setTextColor(35,31,32);let y=hy+16,idx=1;AA_ORDEM.forEach(tp=>{const g=regs.filter(r=>r.tipo===tp);if(!g.length)return;y=aaSecH(doc,AA_PERSONA[tp].plural.toUpperCase(),g.length,y);g.forEach(r=>{y=aaEntry(doc,r,idx++,y);});y+=4;});const pgs=doc.internal.getNumberOfPages();for(let p=1;p<=pgs;p++){doc.setPage(p);doc.setFontSize(8);doc.setTextColor(140);doc.text("Novo Aeroporto Regional de Santa Maria — Abaixo-Assinado · Página "+p+"/"+pgs,14,290);}doc.save("abaixo-assinado-aeroporto-sm.pdf");}
+function aaEntry(doc,r,idx,y){const h=r.tipo==="cidadao"?26:40;if(y+h>282){doc.addPage();y=20;}doc.setDrawColor(230);doc.setFillColor(249,247,253);doc.rect(14,y,182,h-6,"FD");doc.setFont("helvetica","bold");doc.setFontSize(9.5);doc.text(doc.splitTextToSize(idx+". "+(r.tipo==="entidade"?(r.entidade||"Entidade"):(r.responsavel||"")),118),17,y+7);doc.setFont("helvetica","normal");doc.setFontSize(8);let ly=y+13,info=[];if(r.tipo==="agente_politico"){info.push("Cargo: "+(r.cargo||"-")+(r.partido?"   Partido: "+r.partido:"")+(r.uf?"   UF: "+r.uf:""));if(r.entidade)info.push("Casa/órgão: "+r.entidade);info.push((r.cpf?"CPF: "+r.cpf+"   ":"")+"Cidade: "+(r.cidade||"-"));info.push("Assinado eletronicamente em "+aaFmt(r.criado_em)+" · Cód. "+(r.hash||"-"));}else if(r.tipo==="entidade"){info.push("CNPJ: "+(r.cnpj||"-")+"   Cidade: "+(r.cidade||"-"));info.push("Presidente: "+(r.responsavel||"-")+"   CPF: "+(r.cpf||"-"));info.push("Assinado eletronicamente em "+aaFmt(r.criado_em)+" · Cód. "+(r.hash||"-"));}else{info.push("CPF: "+(r.cpf||"-")+"   Cidade: "+(r.cidade||"-"));info.push("Assinado eletronicamente em "+aaFmt(r.criado_em)+" · Cód. "+(r.hash||"-"));}info.forEach(t=>{doc.text(t,17,ly);ly+=4.5;});if(r.assinatura_png){try{doc.addImage(r.assinatura_png,"PNG",150,y+4,42,16);}catch(e){}doc.setFontSize(6.5);doc.setTextColor(150);doc.text("assinatura de próprio punho",171,y+22,{align:"center"});doc.setTextColor(35,31,32);}else if(r.tipo!=="cidadao"){doc.setDrawColor(205,185,222);doc.setFillColor(247,242,251);doc.roundedRect(150,y+6,42,17,2,2,"FD");doc.setFontSize(6.8);doc.setTextColor(120,80,150);doc.text("ASSINADO",171,y+12,{align:"center"});doc.text("ELETRONICAMENTE",171,y+16.5,{align:"center"});doc.setTextColor(35,31,32);}return y+h;}
+async function aaDocumento(regs){const {jsPDF}=window.jspdf;const doc=new jsPDF({unit:"mm",format:"a4"});const logo=AA_LOGO_OFICIAL;let hy0=aaCab(doc,"Abaixo-Assinado de Apoio","Novo Aeroporto Regional de Santa Maria",logo);doc.setFont("helvetica","normal");doc.setFontSize(10);const mL=doc.splitTextToSize(AA_MANIFESTO,182);doc.text(AA_MANIFESTO,14,hy0+3,{maxWidth:182,align:"justify"});let hy=hy0+3+mL.length*4.8+6;doc.setFont("helvetica","bold");doc.setFontSize(11);doc.text("Total de assinaturas: "+regs.length,14,hy);doc.setFontSize(8);doc.setFont("helvetica","normal");doc.setTextColor(120);doc.text("Documento gerado em "+aaFmt(new Date().toISOString()),14,hy+6);doc.setTextColor(35,31,32);let y=hy+16,idx=1;AA_ORDEM.forEach(tp=>{const g=regs.filter(r=>r.tipo===tp);if(!g.length)return;y=aaSecH(doc,AA_PERSONA[tp].plural.toUpperCase(),g.length,y);g.forEach(r=>{y=aaEntry(doc,r,idx++,y);});y+=4;});const pgs=doc.internal.getNumberOfPages();for(let p=1;p<=pgs;p++){doc.setPage(p);doc.setFontSize(8);doc.setTextColor(140);doc.text("Novo Aeroporto Regional de Santa Maria — Abaixo-Assinado · Página "+p+"/"+pgs,14,290);}doc.save("abaixo-assinado-aeroporto-sm.pdf");}
 
 function aaURL(){return location.origin+location.pathname+"?assinar";}
 function aaCopiar(){const u=aaURL();const done=()=>{const b=document.getElementById("aaCopy");const o=b.textContent;b.textContent="Link copiado!";setTimeout(()=>b.textContent=o,2000);};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(done).catch(done);}else{const t=document.createElement("textarea");t.value=u;document.body.appendChild(t);t.select();try{document.execCommand("copy");}catch(e){}document.body.removeChild(t);done();}}
