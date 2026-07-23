@@ -744,7 +744,12 @@ body.modo-assinatura #aaSec{opacity:1!important;transform:none!important;padding
 #aaSec .aa-link{background:none;border:0;color:var(--coral,#E5006D);font-weight:600;font-size:13px;cursor:pointer}
 #aaSec .aa-err{color:var(--coral,#E5006D);font-size:13px;margin-top:8px;min-height:16px;font-weight:600}
 #aaSec .aa-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
-#aaSec .aa-chip{background:#f0eaf6;color:#5a3a70;font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px}
+#aaSec .aa-chip{background:#f0eaf6;color:#5a3a70;font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;white-space:nowrap}
+#aaSec .aa-marquee{overflow:hidden;position:relative;margin-top:6px;-webkit-mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+#aaSec .aa-track{display:flex;align-items:center;gap:8px;width:max-content;animation:aaMarquee 40s linear infinite}
+#aaSec .aa-marquee:hover .aa-track{animation-play-state:paused}
+@keyframes aaMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){#aaSec .aa-track{animation:none}}
 #aaSec .aa-chip.ag{background:#fbe6ef;color:#9a1c4e}
 #aaSec .aa-mural h4{font-size:14px;color:var(--roxo,#662382);margin:12px 0 4px}
 #aaSec .aa-share{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
@@ -782,8 +787,8 @@ body.modo-assinatura #aaSec{opacity:1!important;transform:none!important;padding
         <h3>Manifesto</h3>
         <p>Nós, entidades, agentes políticos e cidadãos da Região Central do Rio Grande do Sul, apoiamos a implantação do novo aeroporto: uma <b>necessidade histórica</b> — a região nunca teve um aeroporto civil à altura —, uma questão de <b>resiliência climática</b> comprovada nas enchentes de 2024, e um <b>motor de desenvolvimento</b> e integração logística para todo o interior gaúcho.</p>
         <div class="aa-mural" id="aaMural" style="display:none">
-          <div id="aaMuralAg" style="display:none"><h4>Agentes políticos que apoiam</h4><div class="aa-chips" id="aaChipsAg"></div></div>
-          <div id="aaMuralEnt" style="display:none"><h4>Entidades que apoiam</h4><div class="aa-chips" id="aaChipsEnt"></div></div>
+          <div id="aaMuralAg" style="display:none"><h4>Agentes políticos que apoiam</h4><div class="aa-marquee"><div class="aa-track" id="aaChipsAg"></div></div></div>
+          <div id="aaMuralEnt" style="display:none"><h4>Entidades que apoiam</h4><div class="aa-marquee"><div class="aa-track" id="aaChipsEnt"></div></div></div>
         </div>
         <div class="aa-share">
           <button type="button" class="aa-btn" id="aaCopy">Copiar link</button>
@@ -1714,10 +1719,12 @@ async function aaAtualizar(){
   const pct=Math.min(100,Math.round(total/AA_META*100));
   document.getElementById("aaMetaBar").style.width=pct+"%";document.getElementById("aaMetaPct").textContent=pct+"%";
   const ags=apo.filter(a=>a.tipo==="agente_politico"),ents=apo.filter(a=>a.tipo==="entidade");let vis=false;
-  if(ags.length){vis=true;document.getElementById("aaMuralAg").style.display="block";document.getElementById("aaChipsAg").innerHTML=ags.slice(0,60).map(a=>`<span class="aa-chip ag">${escapeHtml(a.nome)}${a.cargo?" · "+escapeHtml(a.cargo):""}${a.partido?" ("+escapeHtml(a.partido)+(a.uf?"/"+escapeHtml(a.uf):"")+")":""}</span>`).join("");}
-  if(ents.length){vis=true;document.getElementById("aaMuralEnt").style.display="block";document.getElementById("aaChipsEnt").innerHTML=ents.slice(0,60).map(e=>`<span class="aa-chip">${escapeHtml(e.nome)}</span>`).join("");}
+  if(ags.length){vis=true;document.getElementById("aaMuralAg").style.display="block";aaTicker(document.getElementById("aaChipsAg"),ags);}
+  if(ents.length){vis=true;document.getElementById("aaMuralEnt").style.display="block";aaTicker(document.getElementById("aaChipsEnt"),ents);}
   document.getElementById("aaMural").style.display=vis?"block":"none";
 }
+function aaChip(a){let s=escapeHtml(a.nome||"");const cg=(a.cargo||"").trim();if(cg&&!/^outro$/i.test(cg))s+=" · "+escapeHtml(cg);const pt=(a.partido||"").trim();if(pt&&!/^(n[aã]o( tenho)?|sem( partido)?|nenhum|-|\.)$/i.test(pt))s+=" ("+escapeHtml(pt)+(a.uf?"/"+escapeHtml(a.uf):"")+")";return '<span class="aa-chip'+(a.tipo==="agente_politico"?" ag":"")+'">'+s+"</span>";}
+function aaTicker(el,items){if(!el)return;if(!items.length){el.innerHTML="";return;}let src=items.slice(0,120),base=src.slice();while(base.length<10)base=base.concat(src);const one=base.map(aaChip).join("");el.innerHTML=one+one;el.style.animationDuration=Math.max(26,base.length*3)+"s";}
 function aaCount(id,to){const el=document.getElementById(id);if(!el)return;to=+to||0;const from=+(el.dataset.v||0);el.dataset.v=to;if(from===to){el.textContent=to.toLocaleString("pt-BR");return;}const t0=performance.now();(function s(t){const p=Math.min(1,(t-t0)/700);const v=Math.round(from+(to-from)*(0.5-Math.cos(p*Math.PI)/2));el.textContent=v.toLocaleString("pt-BR");if(p<1)requestAnimationFrame(s);})(t0);}
 async function aaHash(txt){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(txt));return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,"0")).join("").slice(0,16).toUpperCase();}
 
