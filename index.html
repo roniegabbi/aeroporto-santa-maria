@@ -466,6 +466,38 @@
   .rk-ci .track i{display:block;height:100%;background:linear-gradient(90deg,var(--azul,#2581C4),#5aa9e0);border-radius:6px}
   @media(max-width:820px){.rk-panels{grid-template-columns:1fr}.rk-winner h3{font-size:30px}}
 
+
+  /* --- Faixa de destaque + Secao Ato oficial --- */
+  .faixa-ato{background:linear-gradient(100deg,var(--coral),var(--roxo) 80%);color:#fff;position:relative;overflow:hidden}
+  .faixa-ato .fa-in{max-width:1120px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;position:relative;z-index:1}
+  .faixa-ato .fa-pill{background:var(--amarelo);color:#4a3600;font-family:'Baloo Bhai 2';font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:6px 13px;border-radius:999px;white-space:nowrap}
+  .faixa-ato .fa-msg{font-weight:600;font-size:15px;flex:1;min-width:220px}
+  .faixa-ato .fa-msg b{font-weight:800}
+  .faixa-ato a.fa-cta{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px;white-space:nowrap}
+  .faixa-ato a.fa-cta:hover{background:rgba(255,255,255,.26)}
+  .faixa-ato::after{content:"";position:absolute;right:-60px;top:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(249,176,0,.4),transparent 70%)}
+  .ato-sec{padding:52px 0}
+  .ato-sec .ato-eyebrow{color:var(--coral);font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase;text-align:center}
+  .ato-sec h2{text-align:center;color:var(--roxo-esc);font-size:32px;font-weight:800;margin:10px auto 6px;max-width:760px}
+  .ato-sec .ato-lead{text-align:center;color:#5a5560;font-size:15px;max-width:720px;margin:0 auto 34px}
+  .ato-grid{display:grid;grid-template-columns:330px 1fr;gap:30px;align-items:start;max-width:1120px;margin:0 auto}
+  .ato-video{position:relative;border-radius:22px;overflow:hidden;box-shadow:0 18px 44px rgba(74,26,94,.22);background:#000;aspect-ratio:9/16}
+  .ato-video video{width:100%;height:100%;object-fit:cover;display:block}
+  .ato-video .ato-badge{position:absolute;top:12px;left:12px;background:rgba(229,0,109,.95);color:#fff;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:999px;display:flex;align-items:center;gap:6px;z-index:2}
+  .ato-video .ato-badge i{width:7px;height:7px;border-radius:50%;background:#fff;animation:atoPulse 1.4s infinite}
+  @keyframes atoPulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .ato-card{background:#fff;border-radius:20px;padding:26px;box-shadow:0 10px 34px rgba(74,26,94,.08);border:1px solid #efeaf4;margin-bottom:22px}
+  .ato-card h3{color:var(--roxo-esc);font-size:21px;font-weight:800;margin-bottom:10px;font-family:'Baloo Bhai 2'}
+  .ato-card p{font-size:14.5px;color:#453f4c;margin-bottom:12px}
+  .ato-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .ato-chips .c{background:#faf5fc;border:1px solid #ecdcf2;border-radius:12px;padding:10px 14px;min-width:120px;flex:1}
+  .ato-chips .c b{display:block;font-family:'Baloo Bhai 2';font-size:20px;color:var(--coral);line-height:1}
+  .ato-chips .c span{font-size:11.5px;color:#7a6a86;font-weight:600}
+  .ato-mapa{border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(48,38,131,.1);border:1px solid #ece7f1;background:#fff}
+  .ato-mapa img{width:100%;display:block}
+  .ato-mapa .cap{padding:13px 18px;font-size:12.5px;color:#5a5560}
+  .ato-mapa .cap b{color:var(--roxo-esc)}
+  @media(max-width:820px){.ato-grid{grid-template-columns:1fr}.ato-video{max-width:330px;margin:0 auto}.ato-sec h2{font-size:25px}}
 </style>
 </head>
 <body>
@@ -581,6 +613,40 @@
     </div>
   </div>
 </header>
+
+<div class="faixa-ato"><div class="fa-in">
+  <span class="fa-pill">● Ato oficial</span>
+  <div class="fa-msg"><b>Prefeitura entrega o Parecer Técnico de aceite</b> da área indicada pelo ITA e pela SAC para o novo aeroporto.</div>
+  <a class="fa-cta" href="#ato">Assistir ao ato →</a>
+</div></div>
+
+<section class="ato-sec reveal" id="ato"><div class="wrap">
+  <div class="ato-eyebrow">Novembro de 2026 · Ato oficial</div>
+  <h2>Prefeitura entrega o Parecer Técnico de aceite da área</h2>
+  <p class="ato-lead">Um passo decisivo: o Município reconhece formalmente a área indicada pelo estudo do ITA e da SAC para receber o novo Aeroporto Regional de Santa Maria.</p>
+  <div class="ato-grid">
+    <div class="ato-video">
+      <span class="ato-badge"><i></i>Vídeo do ato</span>
+      <video autoplay muted loop playsinline poster="ato-entrega-poster.jpg"><source src="ato-entrega-parecer.mp4" type="video/mp4"></video>
+    </div>
+    <div class="ato-content">
+      <div class="ato-card">
+        <h3>O que aconteceu</h3>
+        <p>A Prefeitura de Santa Maria entregou formalmente o <b>Parecer Técnico de aceite</b> da área indicada pelo ITA e pela Secretaria de Aviação Civil (SAC) para a implantação do novo aeroporto regional — o reconhecimento oficial do Município à área estudada (sítio S-1-B).</p>
+        <div class="ato-chips">
+          <div class="c"><b>447,54 ha</b><span>Área de interesse (4,48 km²)</span></div>
+          <div class="c"><b>158,22 ha</b><span>Área de estudo (1,58 km²)</span></div>
+          <div class="c"><b>S-1-B</b><span>Área indicada pelo ITA</span></div>
+        </div>
+      </div>
+      <div class="ato-mapa">
+        <img src="mapa-delimitacao.jpg" alt="Mapa de delimitação da área de interesse do aeroporto">
+        <div class="cap"><b>Delimitação oficial</b> da área de interesse para implantação do novo aeroporto — Prefeitura Municipal de Santa Maria.</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
 
 <section id="etapasSec" class="reveal">
   <div class="wrap">
